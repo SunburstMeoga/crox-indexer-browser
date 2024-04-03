@@ -1,4 +1,6 @@
 import React from "react";
+
+
 import { Outlet, useNavigate } from "react-router-dom";
 
 const Layout = () => {
@@ -9,7 +11,8 @@ const Layout = () => {
     }
 
     const toDetails = () => {
-        navigate('/details/' + 3)
+        navigate('/details/' + 3, { replace: true })
+
     }
 
     return <div>

@@ -10,7 +10,6 @@ const router = createBrowserRouter([
         element: <Suspense><Layout></Layout></Suspense>,
         children: [
             {
-                path: 'home',
                 index: true,
                 element: <Suspense><Home></Home></Suspense>,
             },
