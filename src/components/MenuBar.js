@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 const MenuBar = () => {
     let languages = [{ title: 'Eng' }, { title: '繁体' }]
     let [currentLange, setLanguage] = useState(0)

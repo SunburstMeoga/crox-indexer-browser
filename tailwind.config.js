@@ -10,7 +10,12 @@ module.exports = {
         'word-gray': '#DDDDDD',
         'search-gray': '#CDCDCD',
         'search-line': '#383838',
-        'primary-green': '#ADFF00'
+        'primary-green': '#ADFF00',
+        'black-0.58': 'rgba(0,0,0,0.58)',
+        'black-0.78': 'rgba(0,0,0,0.78)',
+
+        'select-color': '#808080',
+        'module-title': '#242424'
       }
     },
   },
