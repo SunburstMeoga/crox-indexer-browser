@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 const Layout = lazy(() => import('@/components/Layout'))
 const Home = lazy(() => import('@/pages/Home'))
 const Details = lazy(() => import('@/pages/Details'))
+const LastestBlock = lazy(() => import('@/pages/LastestBlock'))
 
 const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Suspense><Home></Home></Suspense>,
+            },
+            {
+                path: '/latest-block',
+                element: <Suspense><LastestBlock></LastestBlock></Suspense>
             },
             {
                 path: 'details/:id',

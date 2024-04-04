@@ -1,24 +1,13 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+import MenuBar from "./MenuBar";
 
-
-import { Outlet, useNavigate } from "react-router-dom";
 
 const Layout = () => {
-    const navigate = useNavigate()
-
-    const toHome = () => {
-        navigate('/')
-    }
-
-    const toDetails = () => {
-        navigate('/details/' + 3, { replace: true })
-
-    }
-
     return <div>
-        <div onClick={() => toHome()}>to home</div>
-        <div onClick={() => toDetails()}>to details</div>
+        <MenuBar></MenuBar>
         <Outlet></Outlet>
+        <div>底部栏</div>
     </div>
 }
 
