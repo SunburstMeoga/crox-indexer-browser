@@ -20,12 +20,12 @@ const DataTable = ({ titleColumns, dataColumns }) => {
             {titleColumns.map((item, index) => {
               return <div
                 key={index} className={['flex text-select-color justify-between items-center h-16', titleColumns[index].colWidth ? titleColumns[index].colWidth : 'flex-1', index !== 0 ? 'border-l border-word-gray' : ''].join(" ")}>
-                <div className={['flex pl-2 items-center overflow-hidden break-words break-all', titleColumns[index].colWidth ? titleColumns[index].colWidth : 'flex-1',].join(" ")}>
-                  {item.content}
+                <div className={['flex pl-2 items-center overflow-hidden break-words break-all', titleColumns[index].colWidth ? titleColumns[index].colWidth : 'flex-1'].join(" ")}>
+                  {_item.height}
                 </div>
                 {titleColumns[index].canCopy &&
                   <div className='h-full flex flex-col justify-start pr-2 ml-4 pt-1'>
-                    <div className='icon iconfont icon-copy2 text-copy-icon cursor-pointer' style={{ fontSize: '18px' }}></div>
+                    <div className='icon iconfont icon-copy2 text-copy-icon cursor-pointer pointer-hover' style={{ fontSize: '18px' }}></div>
                   </div>
                 }
               </div>
