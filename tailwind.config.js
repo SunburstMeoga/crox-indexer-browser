@@ -13,9 +13,9 @@ module.exports = {
         'primary-green': '#ADFF00',
         'black-0.58': 'rgba(0,0,0,0.58)',
         'black-0.78': 'rgba(0,0,0,0.78)',
-
         'select-color': '#808080',
-        'module-title': '#242424'
+        'module-title': '#242424',
+        'copy-icon': '#717FFF'
       }
     },
   },

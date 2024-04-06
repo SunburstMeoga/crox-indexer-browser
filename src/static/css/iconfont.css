@@ -1,10 +1,10 @@
 @font-face {
     font-family: "iconfont";
     /* Project id 4475476 */
-    src: url('//at.alicdn.com/t/c/font_4475476_00lb28a9atgir.woff2?t=1712220268706') format('woff2'),
-        url('//at.alicdn.com/t/c/font_4475476_00lb28a9atgir.woff?t=1712220268706') format('woff'),
-        url('//at.alicdn.com/t/c/font_4475476_00lb28a9atgir.ttf?t=1712220268706') format('truetype'),
-        url('//at.alicdn.com/t/c/font_4475476_00lb28a9atgir.svg?t=1712220268706#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/c/font_4475476_zj9g69mua5g.woff2?t=1712385869092') format('woff2'),
+        url('//at.alicdn.com/t/c/font_4475476_zj9g69mua5g.woff?t=1712385869092') format('woff'),
+        url('//at.alicdn.com/t/c/font_4475476_zj9g69mua5g.ttf?t=1712385869092') format('truetype'),
+        url('//at.alicdn.com/t/c/font_4475476_zj9g69mua5g.svg?t=1712385869092#iconfont') format('svg');
 }
 
 .iconfont {
@@ -13,6 +13,14 @@
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-copy1:before {
+    content: "\e662";
+}
+
+.icon-copy:before {
+    content: "\e6e5";
 }
 
 .icon-search:before {

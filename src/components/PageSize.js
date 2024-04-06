@@ -47,8 +47,8 @@ const PageSize = () => {
                                 key={index}
                                 className={[
                                     'text-center py-1.5 cursor-pointer w-11/12',
-                                    pageSize === item.value ? 'text-white' : 'text-select-color',
-                                    mouseEnterItem === index ? 'text-white' : 'text-select-color',
+                                    pageSize === item.value ? 'text-white font-bold' : 'text-select-color',
+                                    mouseEnterItem === index ? 'text-white font-bold' : 'text-select-color',
                                 ].join(" ")} >
                                 {item.value}
                             </div>
