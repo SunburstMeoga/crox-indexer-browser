@@ -9,7 +9,6 @@ const PageSize = () => {
     const handlePageSize = (item) => {
         setPageSize(pageSize = item.value)
         handleTogglePageSize()
-
     }
 
     const handleTogglePageSize = () => {

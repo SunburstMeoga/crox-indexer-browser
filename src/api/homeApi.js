@@ -1,5 +1,5 @@
 import { post } from './axiosInstance';
 
-export const getBRC20List = (data) => {
+export const getListBlock = (data) => {
     return post('', data)
 }

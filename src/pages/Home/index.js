@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getBRC20List } from '@/api/homeApi';
+import { getListBlock } from '@/api/homeApi';
 // import axios from 'axios';
 const Home = () => {
     useEffect(() => {
@@ -8,7 +8,7 @@ const Home = () => {
 
     const fetchBRC20Data = async () => {
         try {
-            const BRC20Data = await getBRC20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202" }, "id": 83 })
+            const BRC20Data = await getListBlock({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202" }, "id": 83 })
             console.log(BRC20Data)
         } catch (err) {
             console.log(err)
