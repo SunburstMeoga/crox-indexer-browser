@@ -22,7 +22,7 @@ const PageSize = () => {
         <div>
             <div className='relative'>
                 <div className='flex justify-center items-center px-3 py-2 bg-black rounded-lg text-white'
-                    onMouseEnter={() => handleTogglePageSize()}>
+                    onClick={() => handleTogglePageSize()}>
                     <div className='flex justify-end items-center'>
                         <div>
                             显示数量：

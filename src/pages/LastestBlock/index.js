@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PageSize from '@/components/PageSize'
+import Pagination from '../../components/Pagination';
 import DataTable from '@/components/DataTable'
 import { getListBlock } from '@/api/homeApi';
 
@@ -14,7 +15,6 @@ const LastestBlock = () => {
     { title: 'Number of transactions', titleWidth: '', colWidth: '', canCopy: false, flag: 'txcount' },
     { title: 'Time', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])
-  let [titleColumns, changeTitleColumns] = useState(titleColumnsData)
   useEffect(() => {
     fetchListBlock()
   }, [])
@@ -36,8 +36,11 @@ const LastestBlock = () => {
         <div className='w-10/12 flex justify-end mb-2'>
           <PageSize />
         </div>
-        <div className='bg-white w-10/12 rounded-3xl p-4 mb-14 shadow-2xl'>
-          <DataTable titleColumns={titleColumns} dataColumns={dataColumns} />
+        <div className='bg-white w-10/12 rounded-3xl p-4 mb-2 shadow-2xl'>
+          <DataTable titleColumns={titleColumnsData} dataColumns={dataColumns} />
+        </div>
+        <div className='w-10/12 flex justify-end mb-10'>
+          <Pagination />
         </div>
       </div>
     </div>

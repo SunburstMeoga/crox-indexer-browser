@@ -1,11 +1,22 @@
 import React from 'react'
 import { FilterAddress } from '../utils/format'
+import { notification } from "antd";
+const Context = React.createContext({
+  name: 'Default',
+});
 const DataTable = ({ titleColumns, dataColumns }) => {
+  const [api, contextHolder] = notification.useNotification();
   const handleCopyText = (value) => {
     console.log(value)
+    api['success']({
+      message: '已复制',
+      description:
+        `已将 ${value} 添加至粘贴板`,
+    });
   }
   return (
     <div>
+      {contextHolder}
       <div className=''>
         <div className='flex justify-between items-center border-b-4 border-line-gray'>
           {titleColumns.map((item, index) => {
@@ -18,7 +29,7 @@ const DataTable = ({ titleColumns, dataColumns }) => {
         </div>
 
         {dataColumns.map((_item, _index) => {
-          return <div key={_index} className='flex justify-between items-center border-b border-word-gray'>
+          return <div key={_index} className='flex justify-between items-center border-b border-word-gray item-hover'>
             {titleColumns.map((item, index) => {
               return <div
                 key={index} className={['flex text-select-color justify-between items-center h-16', titleColumns[index].colWidth ? titleColumns[index].colWidth : 'flex-1', index !== 0 ? 'border-l border-word-gray' : ''].join(" ")}>

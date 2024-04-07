@@ -4,7 +4,7 @@ const Layout = lazy(() => import('@/components/Layout'))
 const Home = lazy(() => import('@/pages/Home'))
 const Details = lazy(() => import('@/pages/Details'))
 const LastestBlock = lazy(() => import('@/pages/LastestBlock'))
-
+const LastestTransactions = lazy(() => import('@/pages/LastestTransactions'))
 const router = createBrowserRouter([
     {
         path: '/',
@@ -17,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/latest-block',
                 element: <Suspense><LastestBlock></LastestBlock></Suspense>
+            },
+            {
+                path: '/latest-transactions',
+                element: <Suspense><LastestTransactions></LastestTransactions></Suspense>
             },
             {
                 path: 'details/:id',
