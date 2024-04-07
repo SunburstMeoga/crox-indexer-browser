@@ -1,3 +1,7 @@
+* {
+    font-family: PoppinsRegular;
+}
+
 .pointer-hover:hover {
     color: rgba(0, 0, 0, 0.2);
 }
