@@ -32,7 +32,7 @@ const PageSize = () => {
                         </div>
                     </div>
                     <div className='bg-line-gray h-5 mx-3 w-0.5'></div>
-                    <div className='flex cursor-pointer'>
+                    <div className='flex cursor-pointer '>
                         <div className='icon iconfont icon-down'></div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ const PageSize = () => {
                                 onMouseEnter={() => changeMouseEnterItem(index)}
                                 key={index}
                                 className={[
-                                    'text-center py-1.5 cursor-pointer w-11/12',
+                                    'text-center py-1.5 cursor-pointer w-11/12 ',
                                     pageSize === item.value ? 'text-white font-bold' : 'text-select-color',
                                     mouseEnterItem === index ? 'text-white font-bold' : 'text-select-color',
                                 ].join(" ")} >

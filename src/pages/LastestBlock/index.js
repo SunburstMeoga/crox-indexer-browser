@@ -12,7 +12,7 @@ const LastestBlock = () => {
     { title: 'Block Hash', titleWidth: '', colWidth: 'w-44', canCopy: true, filterAddress: true, flag: 'hash' },
     { title: 'Verify address', titleWidth: '', colWidth: 'w-64', canCopy: true, flag: 'mintaddress' },
     { title: 'Block reward', titleWidth: '', colWidth: '', canCopy: false, flag: 'reward' },
-    { title: 'Number of transactions', titleWidth: '', colWidth: '', canCopy: false, flag: 'txcount' },
+    { title: 'Number of transactions', titleWidth: '', colWidth: 'w-28', canCopy: false, flag: 'txcount' },
     { title: 'Time', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])
   useEffect(() => {
