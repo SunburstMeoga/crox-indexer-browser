@@ -2,6 +2,10 @@
     font-family: PoppinsRegular;
 }
 
+.pop-bold {
+    font-family: PoppinsBold;
+}
+
 .pointer-hover:hover {
     color: rgba(0, 0, 0, 0.2);
 }

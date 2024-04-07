@@ -5,21 +5,24 @@ import { getListTransactions } from '@/api/homeApi';
 
 const LastestTransactions = () => {
     const titleColumnsData = [
-        { title: 'Block number', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'number' },
-        { title: 'Block height', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'height' },
-        { title: 'Block timeslot', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'slot' },
-        { title: 'Block Hash', titleWidth: '', colWidth: 'w-44', canCopy: true, filterAddress: true, flag: 'hash' },
-        { title: 'Verify address', titleWidth: '', colWidth: 'w-64', canCopy: true, flag: 'mintaddress' },
-        { title: 'Block reward', titleWidth: '', colWidth: '', canCopy: false, flag: 'reward', showSymbol: true },
-        { title: 'Number of transactions', titleWidth: '', colWidth: '', canCopy: false, flag: 'txcount' },
-        { title: 'Time', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' }]
+        { title: 'Transaction Hash', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'number' },
+        { title: 'Transaction Type', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'height' },
+        { title: 'Block Height', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'slot' },
+        { title: 'Time Cost', titleWidth: '', colWidth: 'w-44', canCopy: true, filterAddress: true, flag: 'hash' },
+        { title: 'From', titleWidth: '', colWidth: 'w-64', canCopy: true, flag: 'mintaddress' },
+        { title: 'To', titleWidth: '', colWidth: '', canCopy: false, flag: 'reward', showSymbol: true },
+        { title: 'Execution Status', titleWidth: '', colWidth: '', canCopy: false, flag: 'txcount' },
+        { title: 'Quantity', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' },
+        { title: 'Time', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' }
+    ]
+
     let [dataColumns, changeDataColumns] = useState([])
     useEffect(() => {
         fetchListTransations()
     }, [])
     const fetchListTransations = async () => {
         try {
-            const listTransactions = await getListTransactions({ "jsonrpc": "2.0", "method": "listtx", "params": { "fork": "202" }, "id": 83 })
+            const listTransactions = await getListTransactions({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "fork": "202" }, "id": 83 })
             console.log(listTransactions)
             // changeDataColumns(dataColumns = listblock.data.result)
         } catch (err) {
@@ -29,8 +32,8 @@ const LastestTransactions = () => {
     return (
         <div className='bg-primary-green w-full min-h-svh'>
             <div className='w-full flex flex-col justify-start items-center'>
-                <div className='py-6 font-black text-6xl w-10/12 text-module-title'>
-                    Latest transactions
+                <div className='pt-10 text-6xl w-10/12 text-module-title font-bold pop-bold'>
+                    Latest Transactions
                 </div>
                 <div className='w-10/12 flex justify-end mb-2'>
                     <PageSize />

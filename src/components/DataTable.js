@@ -23,7 +23,7 @@ const DataTable = ({ titleColumns, dataColumns }) => {
             return <div
               key={index}
               className={['', item.colWidth ? item.colWidth : 'flex-1', index !== 0 ? 'border-l border-word-gray' : ''].join(" ")}>
-              <div className={['pl-2 text-left h-14 font-bold pt-2', item.titleWidth ? item.titleWidth : ''].join(" ")}>{item.title}</div>
+              <div className={['pl-2 text-left h-12 font-bold pt-3 leading-4', item.titleWidth ? item.titleWidth : ''].join(" ")}>{item.title}</div>
             </div>
           })}
         </div>

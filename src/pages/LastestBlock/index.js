@@ -6,13 +6,13 @@ import { getListBlock } from '@/api/homeApi';
 
 const LastestBlock = () => {
   const titleColumnsData = [
-    { title: 'Block number', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'number' },
-    { title: 'Block height', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'height' },
-    { title: 'Block timeslot', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'slot' },
+    { title: 'Block Number', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'number' },
+    { title: 'Block Height', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'height' },
+    { title: 'Block Timeslot', titleWidth: 'w-24', colWidth: 'w-32', canCopy: false, flag: 'slot' },
     { title: 'Block Hash', titleWidth: '', colWidth: 'w-44', canCopy: true, filterAddress: true, flag: 'hash' },
-    { title: 'Verify address', titleWidth: '', colWidth: 'w-64', canCopy: true, flag: 'mintaddress' },
-    { title: 'Block reward', titleWidth: '', colWidth: '', canCopy: false, flag: 'reward' },
-    { title: 'Number of transactions', titleWidth: '', colWidth: 'w-28', canCopy: false, flag: 'txcount' },
+    { title: 'Verify Address', titleWidth: '', colWidth: 'w-64', canCopy: true, flag: 'mintaddress' },
+    { title: 'Block Teward', titleWidth: '', colWidth: '', canCopy: false, flag: 'reward' },
+    { title: 'Number Of Transactions', titleWidth: '', colWidth: 'w-28', canCopy: false, flag: 'txcount' },
     { title: 'Time', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])
   useEffect(() => {
@@ -30,8 +30,8 @@ const LastestBlock = () => {
   return (
     <div className='bg-primary-green w-full min-h-svh'>
       <div className='w-full flex flex-col justify-start items-center'>
-        <div className='py-6 font-black text-6xl w-10/12 text-module-title'>
-          Latest block
+        <div className='pt-10 text-6xl w-10/12 text-module-title font-bold pop-bold'>
+          Latest Block
         </div>
         <div className='w-10/12 flex justify-end mb-2'>
           <PageSize />
