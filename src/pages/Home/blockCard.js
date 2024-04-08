@@ -8,12 +8,12 @@ const BlockCard = () => {
                     {/* <img src='/images/link.png' alt=''></img> */}
                     <div className='icon iconfont icon-link' style={{ fontSize: '200px' }}></div>
                 </div>
-                <div className='flex justify-start items-baseline mb-12'>
+                <div className='flex justify-start items-baseline mb-8'>
                     <div className='text-white text-4xl'>#7486735</div>
-                    <div className='text-line-gray text-xl ml-2'>6 minute age</div>
+                    <div className='text-line-gray text-xl ml-4'>6 minute age</div>
                 </div>
-                <div className='flex justify-start items-end mb-8'>
-                    <div className='text-title-green text-6xl'>365</div>
+                <div className='flex justify-start items-end mb-6'>
+                    <div className='text-title-green text-6xl font-bold'>365</div>
                     <div className='text-white text-xl ml-2'>pens trade</div>
                 </div>
                 <div className='flex justify-start text-lg items-center mb-4 text-line-gray'>

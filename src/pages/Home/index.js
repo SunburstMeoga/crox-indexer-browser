@@ -27,7 +27,6 @@ const Home = () => {
             console.log(err)
         }
     }
-
     return (
         <div>
             <div className='w-full bg-primary-green flex flex-col items-center py-4'>
@@ -38,7 +37,7 @@ const Home = () => {
                     <Brc20list titleColumnsData={titleColumnsData} dataColumns={dataColumns} />
                 </div>
             </div>
-            <div className='w-full bg-module-title flex flex-col justify-start items-center py-4'>
+            <div className='w-full bg-module-title flex flex-col justify-start items-center pt-4 pb-32'>
                 <div className='w-11/12 flex flex-col justify-start items-start my-2'>
                     <div className='flex flex-col justify-start items-start text-line-gray  cursor-pointer transform ease-in-out duration-500 hover:text-white'>
                         <div className='font-bold pop-bold module-title'>Latest Block</div>
