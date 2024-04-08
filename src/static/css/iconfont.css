@@ -1,10 +1,10 @@
 @font-face {
     font-family: "iconfont";
     /* Project id 4475476 */
-    src: url('//at.alicdn.com/t/c/font_4475476_fmnj83kpzhd.woff2?t=1712410005352') format('woff2'),
-        url('//at.alicdn.com/t/c/font_4475476_fmnj83kpzhd.woff?t=1712410005352') format('woff'),
-        url('//at.alicdn.com/t/c/font_4475476_fmnj83kpzhd.ttf?t=1712410005352') format('truetype'),
-        url('//at.alicdn.com/t/c/font_4475476_fmnj83kpzhd.svg?t=1712410005352#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/c/font_4475476_kv49bf29fy.woff2?t=1712568227668') format('woff2'),
+        url('//at.alicdn.com/t/c/font_4475476_kv49bf29fy.woff?t=1712568227668') format('woff'),
+        url('//at.alicdn.com/t/c/font_4475476_kv49bf29fy.ttf?t=1712568227668') format('truetype'),
+        url('//at.alicdn.com/t/c/font_4475476_kv49bf29fy.svg?t=1712568227668#iconfont') format('svg');
 }
 
 .iconfont {
@@ -13,6 +13,10 @@
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-link:before {
+    content: "\e83d";
 }
 
 .icon-copy2:before {

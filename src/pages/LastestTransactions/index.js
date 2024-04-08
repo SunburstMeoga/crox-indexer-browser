@@ -22,9 +22,9 @@ const LastestTransactions = () => {
     }, [])
     const fetchListTransations = async () => {
         try {
-            const listTransactions = await getListTransactions({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "fork": "202" }, "id": 83 })
+            const listTransactions = await getListTransactions({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": "aisi", "gettype": "all", "fork": "202" }, "id": 83 })
             console.log(listTransactions)
-            // changeDataColumns(dataColumns = listblock.data.result)
+            changeDataColumns([])
         } catch (err) {
             console.log(err)
         }
@@ -32,7 +32,7 @@ const LastestTransactions = () => {
     return (
         <div className='bg-primary-green w-full min-h-svh'>
             <div className='w-full flex flex-col justify-start items-center'>
-                <div className='pt-10 text-6xl w-10/12 text-module-title font-bold pop-bold'>
+                <div className='pt-10 w-10/12 text-module-title font-bold pop-bold module-title'>
                     Latest Transactions
                 </div>
                 <div className='w-10/12 flex justify-end mb-2'>

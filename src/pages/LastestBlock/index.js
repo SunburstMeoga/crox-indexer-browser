@@ -30,7 +30,7 @@ const LastestBlock = () => {
   return (
     <div className='bg-primary-green w-full min-h-svh'>
       <div className='w-full flex flex-col justify-start items-center'>
-        <div className='pt-10 text-6xl w-10/12 text-module-title font-bold pop-bold'>
+        <div className='pt-10 w-10/12 text-module-title font-bold pop-bold module-title'>
           Latest Block
         </div>
         <div className='w-10/12 flex justify-end mb-2'>

@@ -15,7 +15,14 @@ module.exports = {
         'black-0.78': 'rgba(0,0,0,0.78)',
         'select-color': '#808080',
         'module-title': '#242424',
-        'copy-icon': '#717FFF'
+        'copy-icon': '#717FFF',
+        'card-green': '#5ED600',
+        'title-blue': '#003CFF',
+        'card-gray': '#1D1D1D',
+        'card-line': '#3A3A3A'
+      },
+      scale: {
+        '111': '1.02',
       }
     },
   },

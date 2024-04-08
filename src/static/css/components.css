@@ -2,12 +2,27 @@
     font-family: PoppinsRegular;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .pop-bold {
     font-family: PoppinsBold;
 }
 
+.module-title {
+    font-size: 100px;
+}
+
 .pointer-hover:hover {
     color: rgba(0, 0, 0, 0.2);
+}
+
+.hover-text-white:hover {
+    color: #e5e7eb;
+    @apply underline hover:underline-offset-4;
 }
 
 .item-hover:hover {
