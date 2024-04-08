@@ -29,3 +29,7 @@ img {
     background-color: rgba(241, 245, 249, 0.6);
     border-radius: 4px;
 }
+
+.duration-hover {
+    @apply cursor-pointer transform ease-linear duration-100;
+}
