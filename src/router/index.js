@@ -5,6 +5,7 @@ const Home = lazy(() => import('@/pages/Home'))
 const Details = lazy(() => import('@/pages/Details'))
 const LastestBlock = lazy(() => import('@/pages/LastestBlock'))
 const LastestTransactions = lazy(() => import('@/pages/LastestTransactions'))
+const BRC20Details = lazy(() => import('@/pages/BRC20Details'))
 const router = createBrowserRouter([
     {
         path: '/',
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: 'details/:id',
                 element: <Suspense><Details></Details></Suspense>,
+            },
+            {
+                path: '/brc20-details',
+                element: <Suspense><BRC20Details></BRC20Details></Suspense>
             }
         ]
     }

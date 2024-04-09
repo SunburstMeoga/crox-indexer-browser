@@ -16,7 +16,7 @@ module.exports = {
         'select-color': '#808080',
         'module-title': '#242424',
         'copy-icon': '#717FFF',
-        'card-green': '#5ED600',
+        'card-green': 'rgba(94,214,0,0.43)',
         'title-blue': '#003CFF',
         'card-gray': '#1D1D1D',
         'card-line': '#3A3A3A'

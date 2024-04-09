@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Brc20list = ({ titleColumnsData, dataColumns }) => {
+    const navigate = useNavigate()
     return (
         <div className='w-full'>
             <div className=''>
@@ -15,7 +17,7 @@ const Brc20list = ({ titleColumnsData, dataColumns }) => {
                 </div>
 
                 {dataColumns.map((_item, _index) => {
-                    return <div key={_index} className='flex justify-between items-center item-hover'>
+                    return <div key={_index} className='flex justify-between items-center item-hover cursor-pointer' onClick={() => { navigate('/brc20-details', { replace: true }) }}>
                         {titleColumnsData.map((item, index) => {
                             return <div
                                 key={index} className={[
