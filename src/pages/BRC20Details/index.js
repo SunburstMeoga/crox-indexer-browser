@@ -31,11 +31,11 @@ const BRC20Details = () => {
                         </div>
                     })}
                 </div>
-                <div className='w-11/12 rounded-xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2'>
+                <div className='w-11/12 rounded-xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-1'>
                     {detailsList.map((item, index) => {
                         return <div className={['pl-6 py-4 text-select-color flex justify-start items-center', index !== detailsList.length - 1 ? 'border-b border-select-color' : ''].join(" ")} style={{ width: '97%' }} >
                             <div className='bg-select-color w-2 h-2'></div>
-                            <div className='pl-2'>{item.title} {item.content}</div>
+                            <div className='pl-6'>{item.title} {item.content}</div>
                         </div>
                     })}
 
