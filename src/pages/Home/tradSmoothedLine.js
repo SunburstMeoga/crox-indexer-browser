@@ -32,17 +32,26 @@ const TradSmoothedLine = () => {
             },
             series: [
                 {
-                    data: [100, 200, 300, 400, 500, 200, 42],
+                    data: [400, 200, 300, 400, 500, 234, 42],
                     type: 'line',
                     smooth: true,
                     symbolSize: 12,   // 圆点大小
                     lineStyle: {
-                        width: 6, // 线条宽度
+                        width: 0, // 线条宽度
                         color: '#0ea5e9',
                     },
+                    areaStyle: {
+                        gradient: {
+                            colorStops: [
+                                { offset: 0, color: 'rgba(14, 165, 233, 1)' },  // 渐变起始颜色和透明度
+                                { offset: 1, color: 'rgba(14, 165, 233, 0)' }     // 渐变结束颜色和透明度
+                            ],
+                            globalCoord: true  // 是否使用全局坐标系，默认为 false
+                        }
+                    }
                 },
                 {
-                    data: [200, 300, 400, 500, 600, 190, 232],
+                    data: [200, 432, 234, 81, 600, 712, 232],
                     type: 'line',
                     smooth: true,
                     symbolSize: 12,   // 圆点大小

@@ -42,7 +42,7 @@ const Home = () => {
     }
     return (
         <div>
-            <div className='w-full bg-menu-black flex flex-col items-center py-4 pt-8'>
+            <div className='w-full bg-menu-black flex flex-col items-center pb-20 pt-8'>
                 <div className='w-11/12 grid grid-cols-2 gap-5'>
                     <div className=''>
                         <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
