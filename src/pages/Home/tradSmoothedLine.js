@@ -13,17 +13,18 @@ const TradSmoothedLine = () => {
             },
             yAxis: {
                 type: 'value',
-                // splitNumber: 7,
-                // boundaryGap: [2, 10]
+                // splitNumber: 6,
+                // boundaryGap: [0.4, 0.2]
+                interval: 100,
             },
             series: [
                 {
-                    data: [100, 200, 300, 400, 500, 600, 700],
+                    data: [100, 200, 300, 400, 500, 200, 42],
                     type: 'line',
                     smooth: true
                 },
                 {
-                    data: [105, 205, 305, 405, 505, 605, 705],
+                    data: [200, 300, 400, 500, 600, 190, 232],
                     type: 'line',
                     smooth: true
                 }
@@ -60,7 +61,7 @@ const TradSmoothedLine = () => {
                         </div>
                     </div>
                 </div>
-                <div id='chart2' className='' style={{ width: '150%', height: '' }}></div>
+                <div id='chart2' className='' style={{ width: '100%', height: '400px' }}></div>
             </div>
 
         </div>
