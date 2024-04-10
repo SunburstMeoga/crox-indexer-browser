@@ -28,7 +28,7 @@ const router = createBrowserRouter([
                 element: <Suspense><Details></Details></Suspense>,
             },
             {
-                path: '/brc20-details',
+                path: '/brc20-details/:name',
                 element: <Suspense><BRC20Details></BRC20Details></Suspense>
             }
         ]

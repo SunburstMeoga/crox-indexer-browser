@@ -14,3 +14,8 @@ export const getListTransactions = (data) => {
 export const getBrc20List = (data) => {
     return post('', data)
 }
+
+//brc20详情
+export const getBrc20Details = (data) => {
+    return post('', data)
+}
