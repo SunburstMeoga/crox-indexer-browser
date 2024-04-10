@@ -56,7 +56,7 @@ const TradSmoothedLine = () => {
                 top: 35,
                 left: 30,
                 right: 0,
-                bottom: '35px',
+                bottom: '50px',
                 width: 'auto',
                 height: 'auto'
             },
