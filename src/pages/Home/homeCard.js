@@ -5,7 +5,7 @@ const HomeCard = ({ cardInfo }) => {
         <div>
             <div className='px-6 py-2 pt-5'>
                 <div className='text-line-gray flex justify-between items-center mb-8 font-bold text-xl'>
-                    <div className=''>{cardInfo.title}</div>
+                    <div className='font-bold'>{cardInfo.title}</div>
                     <div className=''>{cardInfo.time}</div>
                 </div>
                 <div className='flex justify-between items-center'>
