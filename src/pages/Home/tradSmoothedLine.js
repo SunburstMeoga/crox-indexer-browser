@@ -35,9 +35,9 @@ const TradSmoothedLine = () => {
                     data: [400, 200, 300, 400, 500, 234, 42],
                     type: 'line',
                     smooth: true,
-                    symbolSize: 12,   // 圆点大小
+                    symbolSize: 8,   // 圆点大小
                     lineStyle: {
-                        width: 0, // 线条宽度
+                        width: 2, // 线条宽度
                         color: '#0ea5e9',
                     },
                     areaStyle: {
@@ -54,9 +54,9 @@ const TradSmoothedLine = () => {
                     data: [200, 432, 234, 81, 600, 712, 232],
                     type: 'line',
                     smooth: true,
-                    symbolSize: 12,   // 圆点大小
+                    symbolSize: 8,   // 圆点大小
                     lineStyle: {
-                        width: 6, // 线条宽度
+                        width: 4, // 线条宽度
                         color: '#BDFF00'
                     },
                 },
