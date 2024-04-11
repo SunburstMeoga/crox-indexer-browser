@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DataCard from './dataCard'
-import { getBrc20Details } from '@/api/homeApi'
+import HolderDataTable from './holderDataTable';
+import { getBrc20Details, getBrc20List, getListBlock } from '@/api/homeApi'
 import { useParams } from 'react-router-dom';
 
 const BRC20Details = () => {
@@ -40,12 +41,46 @@ const BRC20Details = () => {
         console.log(details)
         getBrc20Details()
     }
+    const titleColumnsData = [
+        { title: 'Number', titleWidth: '', colWidth: '', flag: 'name' },
+        { title: 'Holder Address', titleWidth: '', colWidth: '', flag: 'deploytime' },
+        { title: 'Holdding Ratio', titleWidth: '', colWidth: '', flag: 'mintprogress' },
+        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: '', flag: 'addresscount' },
+    ]
+    const supplyCards = [
+        { title: 'Market Cap', content: '$10.8b', unit: 'b' },
+        { title: 'Volume(24h)', content: '$301.7', unit: 'm' },
+        { title: 'Supply', content: '87,679,108,751', unit: false },
+        { title: 'Staked', content: '45,711,791,430', unit: false },
+
+    ]
+    let [dataColumns, upDataColumns] = useState([])
+    let [blockList, fetchBlockList] = useState([])
     const { name } = useParams()
     useEffect(() => {
         let data = { "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].title }, "id": 83 }
         fetchBRC20Details(data)
-
+        fetchBRC20List()
+        fetchListBlock()
     }, [])
+    const fetchBRC20List = async () => {
+        try {
+            const BRC20Data = await getBrc20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202" }, "id": 83 })
+            console.log(BRC20Data)
+            upDataColumns(dataColumns = BRC20Data.data.result)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const fetchListBlock = async () => {
+        try {
+            const blockListData = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 6 }, "id": 83 })
+            console.log(blockListData)
+            fetchBlockList(blockList = blockListData.data.result)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <div>
@@ -74,7 +109,7 @@ const BRC20Details = () => {
                     })}
 
                 </div>
-                <div className='w-11/12 rounded-xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2'>
+                <div className='w-11/12 rounded-xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2 pt-12 mb-6'>
                     <div className='flex justify-start items-center w-full pl-12 pt-4 mb-6'>
                         {dataTypes.map((item, index) => {
                             return <div
@@ -86,7 +121,7 @@ const BRC20Details = () => {
                             </div>
                         })}
                     </div>
-                    <div className='flex justify-start items-start ml-16 w-full'>
+                    <div className='flex justify-start items-start ml-16 w-full mb-6'>
                         {dataFilter.map((item, index) => {
                             return <div
                                 onClick={() => handleDataFilter(item, index)}
@@ -97,6 +132,9 @@ const BRC20Details = () => {
                                     currentFilter === index ? "bg-title-green text-black" : "bg-black text-line-gray"
                                 ].join(" ")}>{item.title}</div>
                         })}
+                    </div>
+                    <div className='w-full px-12'>
+                        <HolderDataTable titleColumnsData={titleColumnsData} dataColumns={dataColumns}></HolderDataTable>
                     </div>
                 </div>
             </div>

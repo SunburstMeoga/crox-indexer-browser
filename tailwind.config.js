@@ -26,7 +26,8 @@ module.exports = {
         'line-blue': 'rgba(133,142,161,0.37)',
         'line-transction': '#3B3B3B',
         'trans-gray': '#5E5E5E',
-        'trans-line': '#C9C9C9'
+        'trans-line': '#C9C9C9',
+        'trans-hover': '#202020'
       },
       scale: {
         '111': '1.02',
