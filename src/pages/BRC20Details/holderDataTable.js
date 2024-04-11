@@ -6,11 +6,11 @@ const HolderDataTable = ({ titleColumnsData, dataColumns }) => {
     return (
         <div className='w-full'>
             <div className=''>
-                <div className='flex justify-between items-center border-b border-black'>
+                <div className='flex justify-between items-center'>
                     {titleColumnsData.map((item, index) => {
                         return <div
                             key={index}
-                            className={['text-trans-gray', item.colWidth ? item.colWidth : 'flex-1'].join(" ")}>
+                            className={['text-trans-gray text-xl', item.colWidth ? item.colWidth : 'flex-1'].join(" ")}>
                             <div className={['pl-2 h-14 text-left font-semibold flex justify-start items-center pop-bold', item.titleWidth ? item.titleWidth : ''].join(" ")}>{item.title}</div>
                         </div>
                     })}
