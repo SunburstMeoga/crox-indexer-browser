@@ -6,6 +6,7 @@ const Details = lazy(() => import('@/pages/Details'))
 const LastestBlock = lazy(() => import('@/pages/LastestBlock'))
 const LastestTransactions = lazy(() => import('@/pages/LastestTransactions'))
 const BRC20Details = lazy(() => import('@/pages/BRC20Details'))
+const BlockDetails = lazy(() => import('@/pages/LastestBlock/blockDetails'))
 const router = createBrowserRouter([
     {
         path: '/',
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/brc20-details/:name',
                 element: <Suspense><BRC20Details></BRC20Details></Suspense>
+            },
+            {
+                path: '/block-details/:height',
+                element: <Suspense><BlockDetails></BlockDetails></Suspense>
             }
         ]
     }

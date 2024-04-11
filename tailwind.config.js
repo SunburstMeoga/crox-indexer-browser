@@ -24,6 +24,9 @@ module.exports = {
         'black-line': '#4a4a4a',
         'decline-red': '#FF1C7B',
         'line-blue': 'rgba(133,142,161,0.37)',
+        'line-transction': '#3B3B3B',
+        'trans-gray': '#5E5E5E',
+        'trans-line': '#C9C9C9'
       },
       scale: {
         '111': '1.02',

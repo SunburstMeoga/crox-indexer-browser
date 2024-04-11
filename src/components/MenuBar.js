@@ -8,7 +8,7 @@ const MenuBar = () => {
     }
 
     return (
-        <div className='w-full bg-menu-black flex justify-center items-center py-3 pt-6'>
+        <div className='w-full bg-menu-black flex justify-center items-center py-4'>
             <div className='w-11/12 flex justify-between items-center'>
                 <div className='flex justify-start items-center'>
                     <div className='w-40'>
