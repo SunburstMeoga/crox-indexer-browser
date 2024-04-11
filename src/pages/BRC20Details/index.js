@@ -116,7 +116,7 @@ const BRC20Details = () => {
                                 onClick={() => handleDataType(item, index)}
                                 key={index}
                                 className={['text-select-color', index === 0 ? 'mr-20' : ''].join(" ")}>
-                                <div className={['font-bold text-6xl mb-1 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
+                                <div className={['font-black text-4xl mb-1 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
                                 <div className={['h-0.5  ease-in-out duration-300', cuerrentType === index ? "bg-title-green w-full" : "bg-transparent w-0"].join(" ")}></div>
                             </div>
                         })}
