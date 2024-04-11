@@ -4,6 +4,8 @@ import Brc20list from './brc20list';
 import BlockCard from './blockCard';
 import HomeCard from './homeCard';
 import TradSmoothedLine from './tradSmoothedLine'
+import SupplyTrendLine from './supplyTrendLine';
+import SupplyCard from './supplyCard';
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
@@ -14,6 +16,13 @@ const Home = () => {
         { title: 'Casting Quantity', titleWidth: '', colWidth: '', flag: 'mintprogress' },
         { title: 'Number Of Address Held', titleWidth: 'w-32', colWidth: '', flag: 'addresscount' },
         { title: 'Trading Volume', titleWidth: '', colWidth: '', flag: 'txcount' }
+    ]
+    const supplyCards = [
+        { title: 'Market Cap', content: '$10.8b', unit: 'b' },
+        { title: 'Volume(24h)', content: '$301.7', unit: 'm' },
+        { title: 'Supply', content: '87,679,108,751', unit: false },
+        { title: 'Staked', content: '45,711,791,430', unit: false },
+
     ]
     let [dataColumns, upDataColumns] = useState([])
     let [blockList, fetchBlockList] = useState([])
@@ -59,8 +68,19 @@ const Home = () => {
                         <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
                             <HomeCard cardInfo={{ title: 'Total Value', time: '24h', amount: '$24,437,340,581', tide: '', trading: '194,587' }} />
                         </div>
-                        <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
                             <HomeCard cardInfo={{ title: 'Transaction Value', time: '24h', amount: '$11,535,729,084,338', tide: 'up', trading: '194,587' }} />
+                        </div>
+                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                            <SupplyTrendLine />
+                        </div>
+                        <div className='grid grid-cols-2 gap-5'>
+                            {supplyCards.map((item, index) => {
+                                return <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                                    <SupplyCard cardInfo={item} />
+                                </div>
+                            })}
+
                         </div>
                     </div>
 

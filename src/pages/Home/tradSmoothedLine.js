@@ -12,7 +12,7 @@ const TradSmoothedLine = () => {
                 data: ['4.1', '4.2', '4.3', '4.4', '4.5', '4.6', '4.7',],
                 axisLine: {
                     lineStyle: {
-                        color: '#FD7900' // 横坐标刻度线的颜色
+                        color: '#E4A132' // 横坐标刻度线的颜色
                     }
                 },
             },
@@ -101,7 +101,7 @@ const TradSmoothedLine = () => {
                         </div>
                     </div>
                 </div>
-                <div id='chart2' className='' style={{ width: '100%', height: '360px', margin: '0', padding: '0' }}></div>
+                <div id='chart2' style={{ width: '100%', height: '360px', margin: '0', padding: '0' }}></div>
             </div>
 
         </div>
