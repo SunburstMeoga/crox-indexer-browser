@@ -110,24 +110,24 @@ const BRC20Details = () => {
 
                 </div>
                 <div className='w-11/12 rounded-xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2 pt-12 mb-6'>
-                    <div className='flex justify-start items-center w-full pl-12 pt-4 mb-6'>
+                    <div className='flex justify-start items-center w-full pl-12 pt-4 mb-8'>
                         {dataTypes.map((item, index) => {
                             return <div
                                 onClick={() => handleDataType(item, index)}
                                 key={index}
                                 className={['text-select-color', index === 0 ? 'mr-20' : ''].join(" ")}>
-                                <div className={['font-bold text-3xl mb-1 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
+                                <div className={['font-bold text-6xl mb-1 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
                                 <div className={['h-0.5  ease-in-out duration-300', cuerrentType === index ? "bg-title-green w-full" : "bg-transparent w-0"].join(" ")}></div>
                             </div>
                         })}
                     </div>
-                    <div className='flex justify-start items-start ml-16 w-full mb-6'>
+                    <div className='flex justify-start items-start ml-16 w-full mb-8'>
                         {dataFilter.map((item, index) => {
                             return <div
                                 onClick={() => handleDataFilter(item, index)}
                                 key={index}
                                 className={[
-                                    'px-5 py-1  rounded-xl font-bold cursor-pointer',
+                                    'px-5 py-1  rounded-xl font-bold cursor-pointer text-2xl',
                                     index !== 0 ? "ml-4" : "",
                                     currentFilter === index ? "bg-title-green text-black" : "bg-black text-line-gray"
                                 ].join(" ")}>{item.title}</div>
