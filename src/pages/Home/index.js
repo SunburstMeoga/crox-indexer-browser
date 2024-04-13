@@ -76,7 +76,9 @@ const Home = () => {
                         </div>
                         <div className='grid grid-cols-2 gap-5'>
                             {supplyCards.map((item, index) => {
-                                return <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                                return <div
+                                    key={index}
+                                    className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
                                     <SupplyCard cardInfo={item} />
                                 </div>
                             })}

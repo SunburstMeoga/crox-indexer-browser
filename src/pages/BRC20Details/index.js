@@ -1,48 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import DataCard from './dataCard'
 import HolderDataTable from './holderDataTable';
-import { getBrc20Details, getBrc20List, getListBlock } from '@/api/homeApi'
+import { getBrc20Details, getBrc20TransList, getBrc20HolderList } from '@/api/homeApi'
 import { useParams } from 'react-router-dom';
 
 const BRC20Details = () => {
-    const cardList = [
-        { title: 'Total Amount', quantities: '21' },
-        { title: 'Casting Quantity', quantities: '30,000' },
-        { title: 'Single Casting Limit', quantities: '1,000' },
-        { title: 'Decimal Precision', quantities: '18' },
-        { title: 'Number Of Holders', quantities: '9132' },
-        { title: 'Total Transaction Volume', quantities: '12588' },
-    ]
-    const detailsList = [
-        { title: 'Deployed by:', content: 'bc1qh4jesszps4g5gjfw5aayv0sf4pekc4pu8s762e' },
-        { title: 'Inscription Starting Nunber:', content: '#15676132' },
-        { title: 'End Number Of Inscription:', content: '#15676132' }
-    ]
+    let [cardList, setCardList] = useState([])
+    let [detailsList, setDetailsList] = useState([])
     const dataTypes = [
         { title: 'Holder', vlaue: 0 },
         { title: 'Transfer', vlaue: 1 }
     ]
     const dataFilter = [
-        { title: 'All', vlaue: 0 },
-        { title: 'Engraved casting', vlaue: 1 },
-        { title: 'Engraved transfer', vlaue: 2 },
-        { title: 'Transfer', vlaue: 3 },
+        { title: 'All', value: 0 },
+        { title: 'Engraved casting', value: 1 },
+        { title: 'Engraved transfer', value: 2 },
+        { title: 'Transfer', value: 3 },
     ]
     let [cuerrentType, changeType] = useState(0)
     let [currentFilter, changeFilter] = useState(0)
+
     const handleDataType = (item, index) => {
         changeType(cuerrentType = index)
     }
     const handleDataFilter = (item, index) => {
         changeFilter(currentFilter = index)
     }
-    const fetchBRC20Details = async (data) => {
-        const details = await getBrc20Details(data)
-        console.log(details)
-        getBrc20Details()
-    }
+
     const titleColumnsData = [
-        { title: 'Number', titleWidth: '', colWidth: '', flag: 'name' },
+        { title: 'Number', titleWidth: '', colWidth: '', flag: 'id' },
         { title: 'Holder Address', titleWidth: '', colWidth: '', flag: 'deploytime' },
         { title: 'Holdding Ratio', titleWidth: '', colWidth: '', flag: 'mintprogress' },
         { title: 'Quantity Held', titleWidth: 'w-32', colWidth: '', flag: 'addresscount' },
@@ -55,31 +41,44 @@ const BRC20Details = () => {
 
     ]
     let [dataColumns, upDataColumns] = useState([])
-    let [blockList, fetchBlockList] = useState([])
     const { name } = useParams()
     useEffect(() => {
-        let data = { "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].title }, "id": 83 }
+        let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "id": 83 }
         fetchBRC20Details(data)
-        fetchBRC20List()
-        fetchListBlock()
+        featchBrc20HolderList()
+        fetchBrc20TransferList()
+
     }, [])
-    const fetchBRC20List = async () => {
-        try {
-            const BRC20Data = await getBrc20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202" }, "id": 83 })
-            console.log(BRC20Data)
-            upDataColumns(dataColumns = BRC20Data.data.result)
-        } catch (err) {
-            console.log(err)
-        }
+    //brc20信息
+    const fetchBRC20Details = async (data) => {
+        const details = await getBrc20Details(data)
+        setCardList(cardList = [
+            { title: 'Total Amount', quantities: details.data.result.supply },
+            { title: 'Casting Quantity', quantities: details.data.result.minted },
+            { title: 'Single Casting Limit', quantities: details.data.result.limitpermint },
+            { title: 'Decimal Precision', quantities: details.data.result.decimal },
+            { title: 'Number Of Holders', quantities: details.data.result.addresscount },
+            { title: 'Total Transaction Volume', quantities: details.data.result.txcount },
+        ])
+        setDetailsList(detailsList = [
+            { title: 'Deployed by:', content: details.data.result.deployaddress },
+            { title: 'Inscription Starting Nunber:', content: details.data.result.numberstart },
+            { title: 'End Number Of Inscription:', content: details.data.result.numberend }
+        ])
+
+        console.log('brc20详情', details)
     }
-    const fetchListBlock = async () => {
-        try {
-            const blockListData = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 6 }, "id": 83 })
-            console.log(blockListData)
-            fetchBlockList(blockList = blockListData.data.result)
-        } catch (err) {
-            console.log(err)
-        }
+    //brc20交易列表
+    const fetchBrc20TransferList = async () => {
+        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": 0, "fork": "202" }, "id": 83 })
+        console.log('brc20交易列表', brc20TransList.data.result)
+
+        upDataColumns(dataColumns = brc20TransList.data.result)
+    }
+    //brc20持有量列表
+    const featchBrc20HolderList = async () => {
+        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": "CNBI", "pagenumber": 0, "pagesize": 100, "fork": "202" }, "id": 83 })
+        console.log('brc20持有量列表', brc20HolderList)
     }
 
     return (

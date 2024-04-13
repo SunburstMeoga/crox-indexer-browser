@@ -19,3 +19,12 @@ export const getBrc20List = (data) => {
 export const getBrc20Details = (data) => {
     return post('', data)
 }
+//brc20交易列表
+export const getBrc20TransList = (data) => {
+    return post('', data)
+}
+
+//brc20持有量列表
+export const getBrc20HolderList = (data) => {
+    return post('', data)
+}
