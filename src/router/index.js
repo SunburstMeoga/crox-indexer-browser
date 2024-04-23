@@ -15,26 +15,50 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Suspense><Home></Home></Suspense>,
+                meta: {
+                    title: 'page title',
+                    footerBg: 'blue'
+                }
             },
             {
                 path: '/latest-block',
-                element: <Suspense><LastestBlock></LastestBlock></Suspense>
+                element: <Suspense><LastestBlock></LastestBlock></Suspense>,
+                meta: {
+                    title: 'page title',
+                    footerBg: 'blue'
+                }
             },
             {
                 path: '/latest-transactions',
-                element: <Suspense><LastestTransactions></LastestTransactions></Suspense>
+                element: <Suspense><LastestTransactions></LastestTransactions></Suspense>,
+                meta: {
+                    title: 'page title',
+                    footerBg: 'blue'
+                }
             },
             {
                 path: 'details/:id',
                 element: <Suspense><Details></Details></Suspense>,
+                meta: {
+                    title: 'page title',
+                    footerBg: 'blue'
+                }
             },
             {
                 path: '/brc20-details/:name',
-                element: <Suspense><BRC20Details></BRC20Details></Suspense>
+                element: <Suspense><BRC20Details></BRC20Details></Suspense>,
+                meta: {
+                    title: 'page title',
+                    footerBg: 'blue'
+                }
             },
             {
                 path: '/block-details/:height',
-                element: <Suspense><BlockDetails></BlockDetails></Suspense>
+                element: <Suspense><BlockDetails></BlockDetails></Suspense>,
+                meta: {
+                    title: 'page title',
+                    footerBg: 'blue'
+                }
             }
         ]
     }

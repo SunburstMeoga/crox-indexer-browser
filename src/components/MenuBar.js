@@ -15,7 +15,11 @@ const MenuBar = () => {
                         <img className='' alt='' src='/images/word-logo.png'></img>
                     </div>
                     <div className='bg-line-gray h-5 ml-4 w-0.5 mt-2'></div>
-                    <div className='ml-4 text-title-green  text-xl mt-2'>Indexer </div>
+                    <div className='flex justify-start items-baseline'>
+                        <div className='ml-4 text-title-green  text-xl mt-2'>Indexer </div>
+                        <div className='text-red-500 text-xs font-extralight ml-1'>(Test Net)</div>
+                    </div>
+
                 </div>
 
                 <div className='flex justify-end items-center '>

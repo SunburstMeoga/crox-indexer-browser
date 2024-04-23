@@ -98,7 +98,7 @@ const Home = () => {
             </div>
             <div className='w-full bg-module-title flex flex-col justify-start items-center pt-4 pb-32'>
                 <div className='w-11/12 flex flex-col justify-start items-start my-2'>
-                    <div className='flex flex-col justify-start items-start text-line-gray  cursor-pointer transform ease-in-out duration-500 hover:text-white' onClick={() => { navigate('/latest-block') }}>
+                    <div className='flex flex-col justify-start items-start text-line-gray  cursor-pointer transform ease-in-out duration-500 hover:text-white' onClick={() => { navigate('/latest-block', { state: { meta: { footerColor: 'blue' } } }) }}>
                         <div className='font-bold pop-bold module-title'>Latest Block</div>
                         {/* <div className='border border-500-red h-2 w-0 bg-transparent transform ease-in-out duration-300 hover:w-full hover:h-2 hover:bg-white'></div> */}
                     </div>
