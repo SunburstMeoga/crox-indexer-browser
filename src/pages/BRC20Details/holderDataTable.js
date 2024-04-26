@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { FilterAddress } from '@/utils/format'
 const HolderDataTable = ({ titleColumnsData, dataColumns }) => {
     const navigate = useNavigate()
     return (
@@ -26,8 +26,9 @@ const HolderDataTable = ({ titleColumnsData, dataColumns }) => {
                                     index !== dataColumns.lenght - 1 ? "border-b border-line-gray" : ''
                                 ].join(" ")}>
                                 <div className={['pl-2 flex justify-start items-center text-lg', titleColumnsData[index].colWidth ? titleColumnsData[index].colWidth : 'flex-1'].join(" ")}>
-                                    {(item.flag ? _item[item.flag] : '')}
-                                    {item.flag === 'mintprogress' && <div className='flex p-1 bg-black flex-1 rounded-full ml-3 mr-6'>
+                                    {/* {(item.flag ? (_item[item.filterAddress] ? FilterAddress(_item[item.flag]) : _item[item.flag]) : '')} */}
+                                    {item.flag ? (item.filterAddress ? FilterAddress(_item[item.flag]) : _item[item.flag]) : ''}
+                                    {item.flag === 'percentage' && <div className='flex p-1 bg-black flex-1 rounded-full ml-3 mr-6'>
                                         <div className='bg-title-green rounded-full h-3' style={{ width: _item[item.flag] }}></div>
                                     </div>}
                                 </div>

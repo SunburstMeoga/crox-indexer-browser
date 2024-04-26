@@ -33,7 +33,7 @@ const Home = () => {
 
     const fetchBRC20List = async () => {
         try {
-            const BRC20Data = await getBrc20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202" }, "id": 83 })
+            const BRC20Data = await getBrc20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202" }, "pagesize": 100, "id": 83 })
             console.log(BRC20Data)
             upDataColumns(dataColumns = BRC20Data.data.result)
         } catch (err) {
@@ -42,7 +42,7 @@ const Home = () => {
     }
     const fetchListBlock = async () => {
         try {
-            const blockListData = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 6 }, "id": 83 })
+            const blockListData = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 6 }, "pagesize": 100, "id": 83 })
             console.log(blockListData)
             fetchBlockList(blockList = blockListData.data.result)
         } catch (err) {

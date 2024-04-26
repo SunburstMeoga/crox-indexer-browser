@@ -29,9 +29,9 @@ const BRC20Details = () => {
 
     const titleColumnsData = [
         { title: 'Number', titleWidth: '', colWidth: '', flag: 'id' },
-        { title: 'Holder Address', titleWidth: '', colWidth: '', flag: 'deploytime' },
-        { title: 'Holdding Ratio', titleWidth: '', colWidth: '', flag: 'mintprogress' },
-        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: '', flag: 'addresscount' },
+        { title: 'Holder Address', titleWidth: '', colWidth: '', flag: 'address', filterAddress: true },
+        { title: 'Holdding Ratio', titleWidth: '', colWidth: '', flag: 'percentage', },
+        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: '', flag: 'balance' },
     ]
     const supplyCards = [
         { title: 'Market Cap', content: '$10.8b', unit: 'b' },
@@ -43,7 +43,7 @@ const BRC20Details = () => {
     let [dataColumns, upDataColumns] = useState([])
     const { name } = useParams()
     useEffect(() => {
-        let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "id": 83 }
+        let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "pagesize": 100, "id": 83 }
         fetchBRC20Details(data)
         featchBrc20HolderList()
         fetchBrc20TransferList()
@@ -70,15 +70,16 @@ const BRC20Details = () => {
     }
     //brc20交易列表
     const fetchBrc20TransferList = async () => {
-        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": 0, "fork": "202" }, "id": 83 })
+        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": dataFilter[currentFilter].value, "fork": "202" }, "id": 83 })
         console.log('brc20交易列表', brc20TransList.data.result)
 
-        upDataColumns(dataColumns = brc20TransList.data.result)
+        // upDataColumns(dataColumns = brc20TransList.data.result)
     }
     //brc20持有量列表
     const featchBrc20HolderList = async () => {
-        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": "CNBI", "pagenumber": 0, "pagesize": 100, "fork": "202" }, "id": 83 })
+        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": name, "pagenumber": 0, "pagesize": 100, "fork": "202" }, "id": 83 })
         console.log('brc20持有量列表', brc20HolderList)
+        upDataColumns(dataColumns = brc20HolderList.data.result)
     }
 
     return (

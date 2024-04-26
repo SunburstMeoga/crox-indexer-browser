@@ -20,7 +20,7 @@ const LastestBlock = () => {
   }, [])
   const fetchListBlock = async () => {
     try {
-      const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202" }, "id": 83 })
+      const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202" }, "pagesize": 100, "id": 83 })
       console.log(listblock)
       changeDataColumns(dataColumns = listblock.data.result)
     } catch (err) {
