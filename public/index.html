@@ -40,5 +40,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
+<script>
+
+  !function () {
+    var e = document.documentElement.clientWidth;
+    document.getElementsByTagName("html")[0].style["font-size"] = e > 1024 ? "0.8vw" : "16px"
+  }()
+</script>
 
 </html>
