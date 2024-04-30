@@ -52,12 +52,46 @@ const Home = () => {
     return (
         <div>
             <div className='w-full bg-menu-black flex flex-col items-center lg:pt-1-4'>
-                <div className='w-full lg:px-4-3'>
-                    <div className=''>
-                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                <div className='w-full lg:px-4-3 '>
+                    <div className='w-full flex-wrap lg:flex lg:justify-between lg:items-center lg:mb-1-7'>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9 lg:mb-1-7'>
                             <HomeCard cardInfo={{ title: 'Number Of Address', time: '24h', amount: '222,925,642', tide: 'up', trading: '194,587' }} />
                         </div>
-                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9 lg:mb-1-7'>
+                            <HomeCard cardInfo={{ title: 'Number Of Transactions', time: '24h', amount: '7,416,381,440', tide: 'up', trading: '194,587' }} />
+                        </div>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9'>
+                            <HomeCard cardInfo={{ title: 'Total Value', time: '24h', amount: '$24,437,340,581', tide: '', trading: '194,587' }} />
+                        </div>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9'>
+                            <HomeCard cardInfo={{ title: 'Transaction Value', time: '24h', amount: '$11,535,729,084,338', tide: 'up', trading: '194,587' }} />
+                        </div>
+                    </div>
+                    <div className='w-full flex-wrap lg:flex lg:justify-between lg:items-center lg:mb-1-7'>
+                        <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9 lg:px-2-4 lg:py-2-0 lg:h-34-0'>
+                            <TradSmoothedLine />
+                        </div>
+                        <div className=''>
+                            <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9'>
+                                <SupplyTrendLine />
+                            </div>
+                            <div className='grid grid-cols-2 gap-5'>
+                                {supplyCards.map((item, index) => {
+                                    return <div
+                                        key={index}
+                                        className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                                        <SupplyCard cardInfo={item} />
+                                    </div>
+                                })}
+
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className=''>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                            <HomeCard cardInfo={{ title: 'Number Of Address', time: '24h', amount: '222,925,642', tide: 'up', trading: '194,587' }} />
+                        </div>
+                        <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
                             <HomeCard cardInfo={{ title: 'Number Of Transactions', time: '24h', amount: '7,416,381,440', tide: 'up', trading: '194,587' }} />
                         </div>
                         <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
@@ -65,13 +99,13 @@ const Home = () => {
                         </div>
                     </div>
                     <div className=''>
-                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9'>
                             <HomeCard cardInfo={{ title: 'Total Value', time: '24h', amount: '$24,437,340,581', tide: '', trading: '194,587' }} />
                         </div>
-                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9'>
                             <HomeCard cardInfo={{ title: 'Transaction Value', time: '24h', amount: '$11,535,729,084,338', tide: 'up', trading: '194,587' }} />
                         </div>
-                        <div className='mb-5 overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl'>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-56-9'>
                             <SupplyTrendLine />
                         </div>
                         <div className='grid grid-cols-2 gap-5'>
@@ -84,7 +118,7 @@ const Home = () => {
                             })}
 
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>

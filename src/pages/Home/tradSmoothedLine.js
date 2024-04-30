@@ -7,9 +7,11 @@ const TradSmoothedLine = () => {
         myChart.clear()
         let option;
         option = {
+
             xAxis: {
                 type: 'category',
                 data: ['4.1', '4.2', '4.3', '4.4', '4.5', '4.6', '4.7',],
+                boundaryGap: false,
                 axisLine: {
                     lineStyle: {
                         color: '#E4A132' // 横坐标刻度线的颜色
@@ -19,6 +21,7 @@ const TradSmoothedLine = () => {
             yAxis: {
                 type: 'value',
                 interval: 100,
+                // boundaryGap: false,
                 axisLine: {
                     lineStyle: {
                         color: '#fff'
@@ -64,8 +67,8 @@ const TradSmoothedLine = () => {
             grid: {
                 top: 35,
                 left: 30,
-                right: 0,
-                bottom: '50px',
+                right: 30,
+                bottom: '100px',
                 width: 'auto',
                 height: 'auto'
             },
@@ -78,30 +81,30 @@ const TradSmoothedLine = () => {
         initChart()
     }, [])
     return (
-        <div>
-            <div className='px-6 py-2 pt-5'>
+        <div className='h-full'>
+            <div className='h-full'>
                 <div className='text-white flex justify-between items-center font-bold text-xl'>
-                    <div className='text-4xl font-bold'>Number Of Transactions</div>
+                    <div className='text-2-5 font-semibold'>Number Of Transactions</div>
                     <div className=''>
                         <div className='flex justify-start items-center'>
                             <div className='flex justify-start items-center'>
-                                <div className='bg-title-green w-3 h-0.5'></div>
-                                <div className='bg-title-green w-2 h-2 rounded-full'></div>
-                                <div className='bg-title-green w-3 h-0.5'></div>
+                                <div className='bg-title-green w-0-7 h-0-2'></div>
+                                <div className='bg-title-green w-1-0 h-1-0 rounded-full'></div>
+                                <div className='bg-title-green w-0-7 h-0-2'></div>
                             </div>
-                            <div className='text-line-gray text-base ml-4'>Brc20 Trading</div>
+                            <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Brc20 Trading</div>
                         </div>
                         <div className='flex justify-start items-center'>
                             <div className='flex justify-start items-center'>
-                                <div className='bg-blue-500 w-3 h-0.5'></div>
-                                <div className='bg-blue-500 w-2 h-2 rounded-full'></div>
-                                <div className='bg-blue-500 w-3 h-0.5'></div>
+                                <div className='bg-blue-500 w-0-7 h-0-2'></div>
+                                <div className='bg-blue-500 w-1-0 h-1-0 rounded-full'></div>
+                                <div className='bg-blue-500 w-0-7 h-0-2'></div>
                             </div>
-                            <div className='text-line-gray text-base ml-4'>Trade</div>
+                            <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Trade</div>
                         </div>
                     </div>
                 </div>
-                <div id='chart2' style={{ width: '100%', height: '360px', margin: '0', padding: '0' }}></div>
+                <div id='chart2' style={{ width: '100%', height: '100%', margin: '0', padding: '0' }}></div>
             </div>
 
         </div>
