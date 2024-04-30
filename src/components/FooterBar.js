@@ -17,16 +17,16 @@ const FooterBar = () => {
     ]
     return (
         <div>
-            <div className='w-full flex flex-col items-center text-black'>
-                <div className='w-11/12 flex justify-end items-center mb-10'>
+            <div className='w-full flex flex-col items-center text-black py-3-0'>
+                <div className='w-11/12 flex justify-end items-center mb-2-4'>
                     {mediaList.map((item, index) => {
                         return <div
                             key={index}
                             className={[
-                                'flex flex-col items-center border border-transparent px-2 rounded-lg justify-start duration-hover duration-300 hover:text-primary-green hover:bg-black',
-                                index === 0 ? '' : 'ml-10'
+                                'flex flex-col items-center border border-transparent p-0-3 rounded-lg justify-start duration-hover duration-300 hover:text-primary-green hover:bg-black',
+                                index === 0 ? '' : 'ml-3-1'
                             ].join(" ")}>
-                            <div className={['icon iconfont', item.icon].join(" ")} style={{ fontSize: '34px' }}></div>
+                            <div className={['icon iconfont mb-0-6', item.icon].join(" ")} style={{ fontSize: '34px' }}></div>
                             <div className=''>{item.title}</div>
                         </div>
                     })}
@@ -35,7 +35,7 @@ const FooterBar = () => {
                     {documentList.map((item, index) => {
                         return <div
                             key={index}
-                            className='px-2 py-0.1 rounded-md mx-1 duration-hover hover:text-slate-500'>
+                            className='px-1-0 py-0-6 rounded-md mx-0-6 duration-hover hover:bg-card-green hover:text-white'>
                             {item.title}
                         </div>
                     })}

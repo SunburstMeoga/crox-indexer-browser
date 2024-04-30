@@ -21,18 +21,18 @@ const PageSize = () => {
     return (
         <div>
             <div className='relative'>
-                <div className='flex justify-center items-center px-3 py-2 bg-black rounded-lg text-white'
+                <div className='flex justify-center items-center px-1-4 py-0-9 bg-black rounded-lg text-white'
                     onClick={() => handleTogglePageSize()}>
-                    <div className='flex justify-end items-center'>
-                        <div>
+                    <div className='flex justify-end items-center text-1-5'>
+                        <div className=''>
                             显示数量：
                         </div>
                         <div className='text-right'>
                             {pageSize}
                         </div>
                     </div>
-                    <div className='bg-line-gray h-5 mx-3 w-0.5'></div>
-                    <div className='flex cursor-pointer '>
+                    <div className='bg-line-gray h-1-7 mx-1-0 w-0-1'></div>
+                    <div className='flex cursor-pointer'>
                         <div className='icon iconfont icon-down'></div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ const PageSize = () => {
                                 onMouseEnter={() => changeMouseEnterItem(index)}
                                 key={index}
                                 className={[
-                                    'text-center py-1.5 cursor-pointer w-11/12 ',
+                                    'text-center py-0-9 cursor-pointer w-11/12 ',
                                     pageSize === item.value ? 'text-white font-bold' : 'text-select-color',
                                     mouseEnterItem === index ? 'text-white font-bold' : 'text-select-color',
                                 ].join(" ")} >

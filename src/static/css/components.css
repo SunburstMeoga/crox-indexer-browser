@@ -13,7 +13,7 @@ img {
 }
 
 .module-title {
-    font-size: 100px;
+    @apply h-9-6;
 }
 
 .pointer-hover:hover {
@@ -32,4 +32,20 @@ img {
 
 .duration-hover {
     @apply cursor-pointer transform ease-linear duration-100;
+}
+
+div {
+    line-height: 1;
+}
+
+.leading-point-128 {
+    line-height: 128%;
+}
+
+.leading-point-86 {
+    line-height: 86%;
+}
+
+.leading-num-78 {
+    line-height: 78;
 }

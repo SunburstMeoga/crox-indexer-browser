@@ -86,7 +86,7 @@ const TradSmoothedLine = () => {
                 <div className='text-white flex justify-between items-center font-bold text-xl'>
                     <div className='text-2-5 font-semibold'>Number Of Transactions</div>
                     <div className=''>
-                        <div className='flex justify-start items-center'>
+                        <div className='flex justify-start items-center mb-0-6'>
                             <div className='flex justify-start items-center'>
                                 <div className='bg-title-green w-0-7 h-0-2'></div>
                                 <div className='bg-title-green w-1-0 h-1-0 rounded-full'></div>

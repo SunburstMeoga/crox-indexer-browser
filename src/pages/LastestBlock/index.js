@@ -28,12 +28,12 @@ const LastestBlock = () => {
     }
   }
   return (
-    <div className='bg-primary-green w-full min-h-svh'>
-      <div className='w-full flex flex-col justify-start items-center'>
-        <div className='pt-10 w-10/12 text-module-title font-bold pop-bold module-title'>
+    <div className='bg-primary-green w-full min-h-svh '>
+      <div className='w-full flex flex-col justify-start items-center '>
+        <div className='font-bold  module-title cursor-pointer pl-5-9 w-full mt-5-5 text-8-0'>
           Latest Block
         </div>
-        <div className='w-10/12 flex justify-end mb-2'>
+        <div className='w-10/12 flex justify-end mb-0-7'>
           <PageSize />
         </div>
         <div className='bg-white w-10/12 rounded-3xl p-4 mb-2 shadow-2xl'>

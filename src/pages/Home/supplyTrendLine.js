@@ -39,10 +39,10 @@ const SupplyTrendLine = () => {
             },
             series: [
                 {
-                    data: [400, 200, 300, 400, 500, 234, 42, 400, 200, 300, 400, 500, 234, 42, 234],
+                    data: [0, 200, 300, 400, 500, 234, 42, 400, 200, 300, 400, 500, 234, 42, 234],
                     type: 'line',
                     smooth: true,
-                    symbolSize: 8,   // 圆点大小
+                    symbolSize: 0,   // 圆点大小
                     lineStyle: {
                         width: 4, // 线条宽度
                         color: {
@@ -83,7 +83,7 @@ const SupplyTrendLine = () => {
                 top: 5,
                 left: -20,
                 right: -20,
-                bottom: '10px',
+                bottom: '4px',
             },
         };
         option && myChart.setOption(option);
@@ -94,21 +94,22 @@ const SupplyTrendLine = () => {
     }, [])
     return (
         <div>
-            <div className='px-6 py-2 pt-5'>
+            <div className='h-full'>
                 <div className='flex justify-between items-center'>
                     <div className='flex justify-start items-center'>
-                        <div className='w-20'>
+                        <div className='w-6-2'>
                             <img src='/images/logo.png' alt=''></img>
                         </div>
-                        <div className='flex flex-col items-start justify-start text-white ml-3'>
-                            <div className=''>Crox</div>
-                            <div className='font-bold text-2xl'>$0.1228</div>
+                        <div className='flex flex-col items-start font-semibold justify-start text-white ml-1-0'>
+                            <div className='text-1-5'>Crox</div>
+                            <div className='text-2-5'>$0.1228</div>
                         </div>
                     </div>
-                    <div className='text-line-gray text-base'>Supply Trend(15 Days)</div>
-                </div>
 
-                <div id='chart1' className='' style={{ width: '100%', height: '200px', margin: '0', padding: '0' }}></div>
+                </div>
+                <div className='text-line-gray text-1-3 text-right mt-1-2 mb-1-1'>Supply Trend(15 Days)</div>
+
+                <div id='chart1' className='' style={{ width: '100%', height: '160%', margin: '0', padding: '0' }}></div>
             </div>
         </div>
     )
