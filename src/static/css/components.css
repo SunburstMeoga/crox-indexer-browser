@@ -49,3 +49,8 @@ div {
 .leading-num-78 {
     line-height: 78;
 }
+
+.footer-bar-bg {
+    background: rgb(112, 195, 47);
+    background: linear-gradient(180deg, rgba(112, 195, 47, 1) 0%, rgba(94, 214, 0, 0) 100%);
+}

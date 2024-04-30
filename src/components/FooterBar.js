@@ -17,7 +17,7 @@ const FooterBar = () => {
     ]
     return (
         <div>
-            <div className='w-full flex flex-col items-center text-black py-3-0'>
+            <div className='w-full flex flex-col items-center text-black py-3-0 footer-bar-bg'>
                 <div className='w-11/12 flex justify-end items-center mb-2-4'>
                     {mediaList.map((item, index) => {
                         return <div
