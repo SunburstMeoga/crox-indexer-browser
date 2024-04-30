@@ -93,7 +93,7 @@ const Home = () => {
                 <div className='px-5-9 w-full text-black font-bold module-title mb-4-6 eading-point-128 text-12-5 '>
                     Brc-20
                 </div>
-                <div className=' w-ful mb-5-2 '>
+                <div className=' w-full mb-5-2 '>
                     <Brc20ListTable titleColumnsData={titleColumnsData} dataColumns={dataColumns} />
                 </div>
             </div>

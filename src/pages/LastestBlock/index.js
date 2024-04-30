@@ -6,14 +6,16 @@ import { getListBlock } from '@/api/homeApi';
 
 const LastestBlock = () => {
   const titleColumnsData = [
-    { title: 'Block Number', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'number' },
-    { title: 'Block Height', titleWidth: 'w-24', colWidth: '', canCopy: false, flag: 'height' },
-    { title: 'Block Timeslot', titleWidth: 'w-24', colWidth: 'w-32', canCopy: false, flag: 'slot' },
-    { title: 'Block Hash', titleWidth: '', colWidth: 'w-44', canCopy: true, filterAddress: true, flag: 'hash' },
-    { title: 'Verify Address', titleWidth: '', colWidth: 'w-64', canCopy: true, flag: 'mintaddress' },
-    { title: 'Block Teward', titleWidth: '', colWidth: '', canCopy: false, flag: 'reward' },
-    { title: 'Number Of Transactions', titleWidth: '', colWidth: 'w-28', canCopy: false, flag: 'txcount' },
-    { title: 'Time', titleWidth: '', colWidth: '', canCopy: false, flag: 'time' }]
+    { title: 'Block Number', titleWidth: 'w-24', colWidth: 'w-8-0', canCopy: false, flag: 'number' },
+    { title: 'Block Height', titleWidth: 'w-24', colWidth: 'w-8-0', canCopy: false, flag: 'height' },
+    { title: 'Block Timeslot', titleWidth: 'w-24', colWidth: 'w-8-0', canCopy: false, flag: 'slot' },
+    { title: 'Block Hash', titleWidth: '', colWidth: 'w-15-2', canCopy: true, filterAddress: true, flag: 'hash' },
+    { title: 'Verify Address', titleWidth: '', colWidth: 'w-24-1', canCopy: true, flag: 'mintaddress' },
+    { title: 'Block Teward', titleWidth: '', colWidth: 'w-14-4', canCopy: false, flag: 'reward' },
+    { title: 'Number Of Transactions', titleWidth: '', colWidth: 'w-9-6', canCopy: false, flag: 'txcount' },
+    { title: 'Inscription Trading', titleWidth: '', colWidth: 'w-9-9', canCopy: false, flag: 'txcount' },
+
+    { title: 'Time', titleWidth: '', colWidth: 'w-12-2', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])
   useEffect(() => {
     fetchListBlock()
@@ -36,9 +38,12 @@ const LastestBlock = () => {
         <div className='w-10/12 flex justify-end mb-0-7'>
           <PageSize />
         </div>
-        <div className='bg-white w-10/12 rounded-3xl p-4 mb-2 shadow-2xl'>
-          <DataTable titleColumns={titleColumnsData} dataColumns={dataColumns} />
+        <div className='px-3-0 w-full'>
+          <div className='bg-white w-full rounded-3xl pt-1-7 mb-2 shadow-2xl'>
+            <DataTable titleColumns={titleColumnsData} dataColumns={dataColumns} />
+          </div>
         </div>
+
         <div className='w-10/12 flex justify-end mb-10'>
           <Pagination />
         </div>
