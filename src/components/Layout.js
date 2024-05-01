@@ -5,7 +5,7 @@ import FooterBar from "./FooterBar";
 
 const Layout = () => {
     const location = useLocation()
-    console.log(location)
+    // console.log(location)
     return <div>
         <MenuBar></MenuBar>
         <Outlet></Outlet>

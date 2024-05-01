@@ -23,7 +23,7 @@ const FooterBar = () => {
                         return <div
                             key={index}
                             className={[
-                                'flex flex-col items-center border border-transparent p-0-3 rounded-lg justify-start duration-hover duration-300 hover:text-primary-green hover:bg-black',
+                                'flex flex-col items-center border border-transparent p-0-3 rounded-lg justify-start duration-hover duration-500 hover:text-primary-green hover:bg-black',
                                 index === 0 ? '' : 'ml-3-1'
                             ].join(" ")}>
                             <div className={['icon iconfont mb-0-6', item.icon].join(" ")} style={{ fontSize: '34px' }}></div>

@@ -10,7 +10,7 @@ const Brc20ListTable = ({ titleColumnsData, dataColumns }) => {
                     {titleColumnsData.map((item, index) => {
                         return <div
                             key={index}
-                            className={['', item.colWidth ? item.colWidth : 'flex-1'].join(" ")}>
+                            className={['', item.colWidth ? item.colWidth : 'flex-1 '].join(" ")}>
                             <div className={['leading-point-128 text-left font-semibold flex justify-start items-center text-2-0', item.titleWidth ? item.titleWidth : ''].join(" ")}>{item.title}</div>
                         </div>
                     })}
@@ -21,11 +21,11 @@ const Brc20ListTable = ({ titleColumnsData, dataColumns }) => {
                         {titleColumnsData.map((item, index) => {
                             return <div
                                 key={index} className={[
-                                    'flex text-black justify-start items-center',
+                                    'flex text-black justify-start items-center ',
                                     titleColumnsData[index].colWidth ? titleColumnsData[index].colWidth : 'flex-1'
                                 ].join(" ")}>
                                 <div className={['flex justify-start items-center text-2-0 font-normal', titleColumnsData[index].colWidth ? titleColumnsData[index].colWidth : 'flex-1'].join(" ")}>
-                                    <div className={[item.flag === 'mintprogress' ? 'w-4-9' : 'w-full']}>
+                                    <div className={[item.flag === 'mintprogress' ? 'w-4-9' : titleColumnsData[index].colWidth]}>
                                         {(item.flag ? _item[item.flag] : '')}
                                     </div>
                                     {item.flag === 'mintprogress' && <div className='flex bg-black w-24-8 h-2-0 rounded-full justify-start items-center p-0-2'>

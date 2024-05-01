@@ -16,25 +16,25 @@ const TransactionsCard = ({ detailsInfo }) => {
     return (
         <div>
             {contextHolder}
-            <div className='pl-6 py-3'>
+            <div className='pl-3-3 py-1-1 overflow-hidden rounded-2xl bg-card-black shadow-2xl'>
                 <div className='flex justify-start items-center'>
-                    <div className='text-title-green pr-12 pt-2'>
-                        <div className='text-5xl font-bold mb-8'>
+                    <div className='text-title-green pr-2-9 pt-1-5'>
+                        <div className='text-4-0 font-medium mb-1-0 '>
                             Transactions
                         </div>
                         <div className='flex justify-start items-baseline'>
-                            <div className='pop-bold text-6xl' style={{ fontSize: '170px' }}>10</div>
-                            <div className='flex justify-start items-baseline font-bold text-3xl'>(5<div className='text-base pl-1.5'>brc20</div>)</div>
+                            <div className='text-12-5 font-bold' >10</div>
+                            <div className='flex justify-start items-baseline font-medium text-3-2'>(5<div className='text-1-5 pl-0-5'>brc20</div>)</div>
                         </div>
                     </div>
-                    <div className='border-l border-line-transction flex-1 text-xl'>
+                    <div className='border-l border-line-transction flex-1 font-bold'>
                         {detailsInfo.map((item, index) => {
                             return <div key={index}
-                                className={['flex justify-start items-center', index !== detailsInfo.length - 1 ? "border-b border-line-transction" : ""].join(" ")}>
-                                <div className='pl-4 py-3 w-80 font-bold text-trans-gray border-r border-line-transction'>{item.title}</div>
+                                className={['flex justify-start items-center h-4-9 text-1-5', index !== detailsInfo.length - 1 ? "border-b border-line-transction" : ""].join(" ")}>
+                                <div className='pl-1-4 text-trans-gray border-r border-line-transction w-21-3 h-4-9 flex  items-center'>{item.title}</div>
                                 <div className='flex justify-start items-end'>
-                                    <div className='pl-4 text-white'>{item.content}</div>
-                                    {item.canCopy && <div onClick={() => handleCopyText(item.content)} className='text-title-green ml-12 cursor-pointer'>
+                                    <div className='pl-1-4 text-white font-medium'>{item.content}</div>
+                                    {item.canCopy && <div onClick={() => handleCopyText(item.content)} className='text-title-green ml-7-8 cursor-pointer'>
                                         <div className='icon iconfont icon-copy2' style={{ fontSize: '22px' }}></div>
                                     </div>}
                                 </div>

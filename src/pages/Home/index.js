@@ -11,11 +11,11 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const navigate = useNavigate()
     const titleColumnsData = [
-        { title: 'Name', titleWidth: '', colWidth: 'w-14-0 ', flag: 'name' },
-        { title: 'Deployment Time', titleWidth: '', colWidth: 'w-26-0 ', flag: 'deploytime' },
+        { title: 'Name', titleWidth: '', colWidth: 'w-9-0', flag: 'name' },
+        { title: 'Deployment Time', titleWidth: '', colWidth: 'w-26-0', flag: 'deploytime' },
         { title: 'Casting Quantity', titleWidth: '', colWidth: 'w-36-8 ', flag: 'mintprogress' },
-        { title: 'Number Of Address Held', titleWidth: '', colWidth: 'w-17-8 ', flag: 'addresscount' },
-        { title: 'Trading Volume', titleWidth: '', colWidth: 'w-16-2 ', flag: 'txcount' }
+        { title: 'Number Of Address Held', titleWidth: '', colWidth: 'w-15-8 ', flag: 'addresscount' },
+        { title: 'Trading Volume', titleWidth: '', colWidth: 'w-14-2 ', flag: 'txcount' }
     ]
     const supplyCards = [
         { title: 'Market Cap', content: '$10.8b', unit: 'b' },
@@ -93,13 +93,13 @@ const Home = () => {
                 <div className='px-5-9 w-full text-black font-bold module-title mb-4-6 eading-point-128 text-12-5 '>
                     Brc-20
                 </div>
-                <div className=' w-full mb-5-2 '>
+                <div className=' w-full mb-5-2 px-6-9'>
                     <Brc20ListTable titleColumnsData={titleColumnsData} dataColumns={dataColumns} />
                 </div>
             </div>
             <div className='w-full bg-module-title flex flex-col justify-start items-center py-8-1'>
                 <div className='px-5-9 w-full flex flex-col justify-start items-start'>
-                    <div className='flex flex-col justify-start items-start text-line-gray  cursor-pointer transform ease-in-out duration-500 hover:text-white' onClick={() => { navigate('/latest-block', { state: { meta: { footerColor: 'blue' } } }) }}>
+                    <div className='flex flex-col justify-start items-start text-line-gray  cursor-pointer transform ease-in-out duration-500 hover:text-white' onClick={() => { navigate('/latest-block') }}>
                         <div className='font-bold leading-point-86 module-title cursor-pointer text-12-5 '>Latest Block</div>
                         {/* <div className='border border-500-red h-2 w-0 bg-transparent transform ease-in-out duration-300 hover:w-full hover:h-2 hover:bg-white'></div> */}
                     </div>
@@ -108,7 +108,8 @@ const Home = () => {
                     {blockList.map((item, index) => {
                         return <div
                             key={index}
-                            className="rounded-xl overflow-hidden shadow-2xl shadow-zinc-900  text-module-title cursor-pointer transform ease-in-out duration-300 hover:scale-111 hover:text-white w-50-4 mb-2-5">
+                            className="rounded-xl overflow-hidden shadow-2xl shadow-zinc-900  text-module-title cursor-pointer transform ease-in-out duration-300 hover:scale-111 hover:text-white w-50-4 mb-2-5"
+                            onClick={() => { navigate('/block-details/' + item.height) }}>
                             <BlockCard blockInfo={item} />
                         </div>
                     })}

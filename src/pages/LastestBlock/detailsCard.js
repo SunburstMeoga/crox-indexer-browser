@@ -12,20 +12,19 @@ const DetailsCard = () => {
     ]
     return (
         <div>
-            <div className='px-16 py-8'>
-                <div className='flex justify-start items-end mb-2'>
+            <div className='pb-2-8 pt-3-6 px-6-9 overflow-hidden rounded-2xl bg-white shadow-2xl'>
+                <div className='flex justify-start items-end mb-1-4'>
                     <div className='flex justify-start items-start text-title-blue '>
-                        <div className='text-xl'>#</div>
-                        <div className='text-6xl ml-2 border-b border-title-blue cursor-pointer hover:text-blue-500 hover:border-blue-500'>1123112</div>
+                        <div className='text-2-0 font-semibold'>#</div>
+                        <div className='text-4-0 ml-0-5 font-medium cursor-pointer hover:text-blue-500 hover:border-blue-500'>1123112</div>
                     </div>
-                    <div className='ml-2 font-bold pop-bold text-3xl'>HAH</div>
+                    <div className='ml-0-5 font-extrabold text-3-0'>HAH</div>
                 </div>
                 <div className=''>
                     {detailsItem.map((item, index) => {
-                        return <div className='flex justify-start items-center py-2.5 pl-1 text-black border-b border-trans-line'>
-                            <div className='w-80'>{item.title}</div>
-                            <div className={[item.isLink ? 'underline text-title-blue cursor-pointer hover:text-blue-500 hover:border-blue-500' : ''].join(" ")}>{item.content}</div>
-
+                        return <div key={index} className='flex justify-start items-center h-3-7 text-black border-b border-trans-line text-1-5'>
+                            <div className='w-28-9'>{item.title}</div>
+                            <div className={['', item.isLink ? 'underline text-title-blue cursor-pointer hover:text-blue-500 hover:border-blue-500' : ''].join(" ")}>{item.content}</div>
                         </div>
                     })}
                 </div>
