@@ -38,13 +38,13 @@ const LastestBlock = () => {
         <div className='w-10/12 flex justify-end mb-0-7'>
           <PageSize />
         </div>
-        <div className='px-3-0 w-full'>
-          <div className='bg-white w-full rounded-3xl pt-1-7 mb-2 shadow-2xl'>
+        <div className='px-3-0 w-full mb-3-3'>
+          <div className='bg-white w-full rounded-3xl pt-1-7 shadow-2xl'>
             <DataTable titleColumns={titleColumnsData} dataColumns={dataColumns} />
           </div>
         </div>
 
-        <div className='w-10/12 flex justify-end mb-10'>
+        <div className='w-full flex justify-end mb-7-0 pr-7-8'>
           <Pagination />
         </div>
       </div>
