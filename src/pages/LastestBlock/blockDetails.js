@@ -2,6 +2,7 @@ import React from 'react'
 import TransactionsCard from './transactionsCard'
 import PageSize from '@/components/PageSize'
 import DetailsCard from './detailsCard'
+import Pagination from '@/components/Pagination'
 import { useParams } from 'react-router-dom'
 
 const BlockDetails = () => {
@@ -34,11 +35,11 @@ const BlockDetails = () => {
                     <div className='w-full px-7-7'>
                         <TransactionsCard detailsInfo={detailsInfo}></TransactionsCard>
                     </div>
-                    <div className='w-full pl-7-7 text-module-title mt-3-2 font-bold'>
-                        <div className='text-6-8'>
+                    <div className='w-full pl-7-7 text-module-title mt-3-2 '>
+                        <div className='text-6-8 font-bold'>
                             Brc20
                         </div>
-                        <div className='text-5-2'>
+                        <div className='text-5-2 font-bold'>
                             Transaction Details
                         </div>
                     </div>
@@ -47,10 +48,13 @@ const BlockDetails = () => {
                     </div>
                     <div className='w-full'>
                         {transactionsList.map((item, index) => {
-                            return <div className='w-full mb-2-1  px-7-7'>
+                            return <div className='w-full mb-1-2  px-7-7'>
                                 <DetailsCard></DetailsCard>
                             </div>
                         })}
+                    </div>
+                    <div className='w-full flex justify-end mb-7-0 pr-7-8'>
+                        <Pagination />
                     </div>
                 </div>
 

@@ -35,7 +35,7 @@ const LastestBlock = () => {
         <div className='font-bold  module-title cursor-pointer pl-5-9 w-full mt-5-5 text-8-0'>
           Latest Block
         </div>
-        <div className='w-10/12 flex justify-end mb-0-7'>
+        <div className='w-full flex justify-end pr-7-8'>
           <PageSize />
         </div>
         <div className='px-3-0 w-full mb-3-3'>
