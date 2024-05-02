@@ -18,7 +18,7 @@ const TransDataTable = ({ titleColumnsData, dataColumns }) => {
                 </div>
 
                 {dataColumns.map((_item, _index) => {
-                    return <div key={_index} className='flex justify-between items-center cursor-pointer hover:bg-trans-hover' onClick={() => { navigate('/brc20-details/' + _item.name) }}>
+                    return <div key={_index} className='flex justify-between items-center cursor-pointer hover:bg-trans-hover' onClick={() => { navigate('/transfer-details/' + _item.id) }}>
                         {titleColumnsData.map((item, index) => {
                             return <div
                                 key={index} className={[
