@@ -27,6 +27,7 @@ const BRC20Details = () => {
     }
     const handleDataFilter = (item, index) => {
         changeFilter(currentFilter = index)
+        fetchBrc20TransferList()
     }
 
     const holderTitleColumnsData = [
@@ -36,13 +37,13 @@ const BRC20Details = () => {
         { title: 'Quantity Held', titleWidth: 'w-32', colWidth: '', flag: 'balance' },
     ]
     const transferTitleaColumusData = [
-        { title: 'Number', titleWidth: '', colWidth: 'w-12-5', flag: 'id' },
-        { title: 'Method', titleWidth: '', colWidth: 'w-17-0', flag: 'address', filterAddress: true },
-        { title: 'Quantity', titleWidth: '', colWidth: 'w-11-0', flag: 'percentage', },
+        { title: 'Number', titleWidth: '', colWidth: 'w-8-5', flag: 'id' },
+        { title: 'Method', titleWidth: '', colWidth: 'w-20-0', flag: 'method', },
+        { title: 'Quantity', titleWidth: '', colWidth: 'w-11-0', flag: 'amount', },
         { title: 'Balance', titleWidth: 'w-32', colWidth: 'w-12-5', flag: 'balance' },
-        { title: 'From', titleWidth: '', colWidth: 'w-15-0', flag: 'address', filterAddress: true },
-        { title: 'Arrive', titleWidth: '', colWidth: 'w-15-3', flag: 'percentage', },
-        { title: 'Time', titleWidth: 'w-32', colWidth: '', flag: 'balance' },
+        { title: 'From', titleWidth: '', colWidth: 'w-15-0', flag: 'from', filterAddress: true },
+        { title: 'Arrive', titleWidth: '', colWidth: 'w-12-3', flag: 'to', filterAddress: true },
+        { title: 'Time', titleWidth: 'w-32', colWidth: '', flag: 'txtime' },
     ]
     const supplyCards = [
         { title: 'Market Cap', content: '$10.8b', unit: 'b' },
@@ -51,7 +52,8 @@ const BRC20Details = () => {
         { title: 'Staked', content: '45,711,791,430', unit: false },
 
     ]
-    let [dataColumns, upDataColumns] = useState([])
+    let [holderDataColumns, upHolderDataColumns] = useState([])
+    let [transferDataColumns, upTransferDataColumns] = useState([])
     const { name } = useParams()
     useEffect(() => {
         let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "pagesize": 100, "id": 83 }
@@ -84,13 +86,13 @@ const BRC20Details = () => {
         let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": dataFilter[currentFilter].value, "fork": "202" }, "id": 83 })
         console.log('brc20交易列表', brc20TransList.data.result)
 
-        // upDataColumns(dataColumns = brc20TransList.data.result)
+        upTransferDataColumns(transferDataColumns = brc20TransList.data.result)
     }
     //brc20持有量列表
     const featchBrc20HolderList = async () => {
         let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": name, "pagenumber": 0, "pagesize": 100, "fork": "202" }, "id": 83 })
         console.log('brc20持有量列表', brc20HolderList)
-        upDataColumns(dataColumns = brc20HolderList.data.result)
+        upHolderDataColumns(holderDataColumns = brc20HolderList.data.result)
     }
 
     return (
@@ -130,7 +132,7 @@ const BRC20Details = () => {
                                     onClick={() => handleDataType(item, index)}
                                     key={index}
                                     className={['text-select-color', index === 0 ? 'mr-8-8' : ''].join(" ")}>
-                                    <div className={['font-black text-4xl mb-1-0 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
+                                    <div className={['font-black text-4xl mb-0-3 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
                                     <div className={['h-0-2  ease-in-out duration-300', cuerrentType === index ? "bg-title-green w-full" : "bg-transparent w-0-1"].join(" ")}></div>
                                 </div>
                             })}
@@ -149,11 +151,11 @@ const BRC20Details = () => {
                         </div>}
                         <div className='w-full'>
                             {cuerrentType === 0 && <div>
-                                <HolderDataTable titleColumnsData={holderTitleColumnsData} dataColumns={dataColumns}></HolderDataTable>
+                                <HolderDataTable titleColumnsData={holderTitleColumnsData} dataColumns={holderDataColumns}></HolderDataTable>
                             </div>}
 
                             {cuerrentType === 1 && <div>
-                                <TransDataTable titleColumnsData={transferTitleaColumusData} dataColumns={dataColumns}></TransDataTable>
+                                <TransDataTable titleColumnsData={transferTitleaColumusData} dataColumns={transferDataColumns}></TransDataTable>
                             </div>}
 
                             <div className='w-full flex justify-end mt-1-3'>
