@@ -9,6 +9,7 @@ const BRC20Details = lazy(() => import('@/pages/BRC20Details'))
 const BlockDetails = lazy(() => import('@/pages/LastestBlock/blockDetails'))
 const Search = lazy(() => import('@/pages/Search'))
 const TransferDataDetails = lazy(() => import('@/pages/BRC20Details/transferDataDetails'))
+const InscriptionDetails = lazy(() => import('@/pages/BRC20Details/inscriptionDetails'))
 const router = createBrowserRouter([
     {
         path: '/',
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: '/transfer-details/:id',
                 element: <Suspense><TransferDataDetails></TransferDataDetails></Suspense>
+            },
+            {
+                path: '/inscription-details/:id',
+                element: <Suspense><InscriptionDetails></InscriptionDetails></Suspense>
             },
             {
                 path: '/search',
