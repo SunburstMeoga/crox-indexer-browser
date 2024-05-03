@@ -56,7 +56,7 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: '/block-details/:height',
+                path: '/block-details/:hash',
                 element: <Suspense><BlockDetails></BlockDetails></Suspense>,
                 meta: {
                     title: 'page title',
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: '/transfer-details/:id',
+                path: '/transfer-details/:btctxId',
                 element: <Suspense><TransferDataDetails></TransferDataDetails></Suspense>
             },
             {

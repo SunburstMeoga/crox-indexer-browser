@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 const MenuBar = () => {
+    const navigate = useNavigate()
     let languages = [{ title: 'Eng' }, { title: '繁体' }]
     let [currentLange, setLanguage] = useState(0)
 
@@ -11,7 +13,7 @@ const MenuBar = () => {
         <div className='w-full bg-menu-black flex justify-center items-center lg:pt-1-4 lg:pb-1-0 lg:px-2-7'>
             <div className='w-full flex justify-between items-center'>
                 <div className='flex justify-start items-center'>
-                    <div className='lg:w-12-0'>
+                    <div className='lg:w-12-0 cursor-pointer' onClick={() => { navigate('/') }}>
                         <img className='' alt='' src='/images/word-logo.png'></img>
                     </div>
                     <div className='bg-line-gray lg:h-2-0 lg:ml-1-2 w-0-1'></div>

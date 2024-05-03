@@ -107,7 +107,7 @@ const BRC20Details = () => {
                 <div className='w-full px-6-9 flex justify-between items-center flex-wrap'>
                     {cardList.map((item, index) => {
                         return <div key={index} className="w-34-4 py-2-6 pl-2-9 mb-1-3 font-medium rounded-2xl overflow-hidden ease-in-out cursor-pointer bg-card-green duration-300 hover:text-primary-green hover:bg-black hover:shadow-2xl">
-                            <DataCard title={item.title} unit={index === 0 ? 'million' : ''} quantities={item.quantities} />
+                            <DataCard title={item.title} unit={item.unit} quantities={item.quantities} />
                         </div>
                     })}
                 </div>

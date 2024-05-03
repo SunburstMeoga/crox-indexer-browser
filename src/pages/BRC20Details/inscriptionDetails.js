@@ -46,7 +46,7 @@ function InscriptionDetails() {
                         <div className='py-2-0 px-3-4 bg-module-title rounded-2xl w-52-0'>
                             {inforList.map((item, index) => {
                                 return <div className={['h-4-9 w-full pl-1-1 flex justify-start items-center', index != inforList.length - 1 ? 'border-b  border-trans-gray' : ''].join(' ')}>
-                                    <div className='font-semibold text-select-color w-22-8'>{item.title}</div>
+                                    <div className='font-semibold text-select-color w-19-7'>{item.title}</div>
                                     <div className='font-medium text-white pl-2-5 h-full flex justify-start items-center border-l border-trans-gray'>{item.content}</div>
                                 </div>
                             })}

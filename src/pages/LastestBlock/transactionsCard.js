@@ -16,7 +16,7 @@ const TransactionsCard = ({ detailsInfo }) => {
     return (
         <div>
             {contextHolder}
-            <div className='pl-3-3 py-1-1 overflow-hidden rounded-2xl bg-card-black shadow-2xl'>
+            <div className='pl-3-3 py-1-1 overflow-hidden rounded-2xl bg-card-black'>
                 <div className='flex justify-start items-center'>
                     <div className='text-title-green pr-2-9 pt-1-5'>
                         <div className='text-4-0 font-medium mb-1-0 '>

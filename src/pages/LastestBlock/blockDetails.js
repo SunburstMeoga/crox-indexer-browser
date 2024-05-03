@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TransactionsCard from './transactionsCard'
 import PageSize from '@/components/PageSize'
 import DetailsCard from './detailsCard'
 import Pagination from '@/components/Pagination'
 import { useParams } from 'react-router-dom'
+import { getBlockDetails } from '@/api/homeApi'
 
 const BlockDetails = () => {
     const params = useParams()
-    console.log(params.height)
-    const detailsInfo = [
-        { title: 'Block Height', content: '143002' },
-        { title: 'Verification Address', content: '0xb4dd66d7c2c7e57f628210187192fb89d4b99dd4', canCopy: true },
-        { title: 'Block Reward', content: '0.00059371 HAH' },
-        { title: 'Gas Used', content: '27,559,829' },
-        { title: 'Gas Limit', content: '39,997,863' },
-    ]
+    const { hash } = params
+    let [detailsCard, getDetailsCard] = useState([])
+    let [blockDetails, changeBlockDetails] = useState([])
     const transactionsList = ['', '', '']
+    const fetchBlockDetails = async () => {
+        let res = await getBlockDetails({ "jsonrpc": "2.0", "method": "getblockbrcinfo", "params": { "blockhash": hash, "fork": "202" }, "id": 83 })
+        const { height, txmint, reward } = res.data.result.header
+        getDetailsCard(detailsCard = [
+            { title: 'Block Height', content: height },
+            { title: 'Verification Address', content: txmint, canCopy: true },
+            { title: 'Block Reward', content: `${reward} HAH` },
+            { title: 'Gas Used', content: 'null' },
+            { title: 'Gas Limit', content: 'null' },
+        ])
+        changeBlockDetails(blockDetails = res.data.result.header)
+        console.log(res)
+    }
+    useEffect(() => {
+        fetchBlockDetails()
+    }, [])
     return (
         <div>
             <div className='flex flex-col justify-start items-center'>
@@ -26,14 +38,14 @@ const BlockDetails = () => {
                     <div className='absolute  top-0-1 w-full flex justify-center items-center h-full'>
                         <div className='pl-9-9 w-full text-white font-medium'>
                             <div className='mb-1-8 text-3-0'>Blockchain</div>
-                            <div className='mb-1-8 text-6-0'>#1413002</div>
-                            <div className='text-2-3'>2024-03-26 17:37:18</div>
+                            <div className='mb-1-8 text-6-0'>#{blockDetails.height}</div>
+                            <div className='text-2-3'>{blockDetails.time}</div>
                         </div>
                     </div>
                 </div>
                 <div className='flex flex-col justify-start items-center min-h-svh bg-primary-green w-full pt-4-4'>
                     <div className='w-full px-7-7'>
-                        <TransactionsCard detailsInfo={detailsInfo}></TransactionsCard>
+                        <TransactionsCard detailsInfo={detailsCard}></TransactionsCard>
                     </div>
                     <div className='w-full pl-7-7 text-module-title mt-3-2 '>
                         <div className='text-6-8 font-bold'>
@@ -48,7 +60,7 @@ const BlockDetails = () => {
                     </div>
                     <div className='w-full'>
                         {transactionsList.map((item, index) => {
-                            return <div className='w-full mb-1-2  px-7-7'>
+                            return <div className='w-full mb-1-2  px-7-7' key={index}>
                                 <DetailsCard></DetailsCard>
                             </div>
                         })}

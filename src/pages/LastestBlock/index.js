@@ -5,6 +5,7 @@ import DataTable from '@/components/DataTable'
 import { getListBlock } from '@/api/homeApi';
 
 const LastestBlock = () => {
+
   const titleColumnsData = [
     { title: 'Block Number', titleWidth: 'w-24', colWidth: 'w-8-0', canCopy: false, flag: 'number' },
     { title: 'Block Height', titleWidth: 'w-24', colWidth: 'w-8-0', canCopy: false, flag: 'height' },
@@ -22,7 +23,7 @@ const LastestBlock = () => {
   }, [])
   const fetchListBlock = async () => {
     try {
-      const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202" }, "pagesize": 100, "id": 83 })
+      const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 10, }, "id": 83 })
       console.log(listblock)
       changeDataColumns(dataColumns = listblock.data.result)
     } catch (err) {
@@ -35,7 +36,7 @@ const LastestBlock = () => {
         <div className='font-bold  module-title cursor-pointer pl-5-9 w-full mt-5-5 text-8-0'>
           Latest Block
         </div>
-        <div className='w-full flex justify-end pr-7-8'>
+        <div className='w-full flex justify-end pr-7-8 mb-0-7'>
           <PageSize />
         </div>
         <div className='px-3-0 w-full mb-3-3'>
@@ -45,7 +46,7 @@ const LastestBlock = () => {
         </div>
 
         <div className='w-full flex justify-end mb-7-0 pr-7-8'>
-          <Pagination />
+          <Pagination showJump={true} />
         </div>
       </div>
     </div>

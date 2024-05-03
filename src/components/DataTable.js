@@ -1,10 +1,12 @@
 import React from 'react'
 import { FilterAddress } from '../utils/format'
 import { notification } from "antd";
+import { useNavigate } from 'react-router-dom';
 const Context = React.createContext({
   name: 'Default',
 });
 const DataTable = ({ titleColumns, dataColumns }) => {
+  const navigate = useNavigate()
   const [api, contextHolder] = notification.useNotification();
   const handleCopyText = (value) => {
     console.log(value)
@@ -29,7 +31,8 @@ const DataTable = ({ titleColumns, dataColumns }) => {
         </div>
 
         {dataColumns.map((_item, _index) => {
-          return <div key={_index} className='flex justify-between items-center border-b border-word-gray item-hover'>
+          return <div key={_index} className='flex justify-between items-center border-b border-word-gray item-hover cursor-pointer'
+            onClick={() => { navigate('/block-details/' + _item.hash) }}>
             {titleColumns.map((item, index) => {
               return <div
                 key={index} className={['flex text-select-color justify-between items-center h-6-4', titleColumns[index].colWidth ? titleColumns[index].colWidth : 'flex-1', index !== 0 ? 'border-l border-word-gray' : ''].join(" ")}>

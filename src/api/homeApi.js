@@ -33,3 +33,11 @@ export const getBrc20HolderList = (data) => {
 export const getBrc20TransferDetails = (data) => {
     return post('', data)
 }
+//区块数据详情
+export const getBlockDetails = (data) => {
+    return post('', data)
+}
+//交易哈希详情
+export const getHashDetails = (data) => {
+    return post('', data)
+}
