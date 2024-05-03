@@ -109,7 +109,7 @@ const Home = () => {
                         return <div
                             key={index}
                             className="rounded-xl overflow-hidden shadow-2xl shadow-zinc-900  text-module-title cursor-pointer transform ease-in-out duration-300 hover:scale-111 hover:text-white w-50-4 mb-2-5"
-                            onClick={() => { navigate('/block-details/' + item.height) }}>
+                            onClick={() => { navigate('/block-details/' + item.hash) }}>
                             <BlockCard blockInfo={item} />
                         </div>
                     })}
