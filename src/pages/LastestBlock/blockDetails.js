@@ -66,7 +66,7 @@ const BlockDetails = () => {
                         })}
                     </div>
                     <div className='w-full flex justify-end mb-7-0 pr-7-8'>
-                        <Pagination />
+                        <Pagination showJump />
                     </div>
                 </div>
 
