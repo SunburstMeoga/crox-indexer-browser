@@ -40,7 +40,10 @@ const LastestBlock = () => {
           <PageSize />
         </div>
         <div className='lg:px-3-0 w-full lg:mb-3-3'>
-          <div className='bg-white w-full lg:rounded-3xl lg:pt-1-7 shadow-2xl'>
+          <div className='bg-white w-full lg:rounded-3xl lg:pt-1-7 shadow-2xl relative overflow-x-hidden'>
+            <div className='absolute -right-1-5 top-1-6 more-arrow h-3-0 w-3-0 rounded-full flex justify-start items-center text-white z-10 lg:hidden'>
+              <div className='icon iconfont icon-right ml-0-5' style={{ fontSize: '20px' }}></div>
+            </div>
             <DataTable titleColumns={titleColumnsData} dataColumns={dataColumns} />
           </div>
         </div>
