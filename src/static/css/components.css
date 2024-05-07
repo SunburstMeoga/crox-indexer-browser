@@ -13,7 +13,7 @@ img {
 }
 
 .module-title {
-    @apply h-9-6;
+    /* @apply lg:h-9-6; */
 }
 
 .pointer-hover:hover {
