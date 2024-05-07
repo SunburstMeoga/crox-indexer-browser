@@ -35,7 +35,11 @@ module.exports = {
         'line-transction': '#3B3B3B',
         'trans-gray': '#5E5E5E',
         'trans-line': '#C9C9C9',
-        'trans-hover': '#202020'
+        'trans-hover': '#202020',
+        'down-icon': '#D9D9D9',
+        'search-border': 'rgba(169,169,169,0.6)',
+        'select-item': '#A9A9A9',
+        'home-line': '#2C2C2C'
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

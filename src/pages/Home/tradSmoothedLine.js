@@ -67,8 +67,8 @@ const TradSmoothedLine = () => {
             grid: {
                 top: 35,
                 left: 30,
-                right: 30,
-                bottom: '100px',
+                right: 10,
+                bottom: '40px',
                 width: 'auto',
                 height: 'auto'
             },
@@ -81,11 +81,11 @@ const TradSmoothedLine = () => {
         initChart()
     }, [])
     return (
-        <div className='h-full'>
+        <div className='h-full '>
             <div className='h-full'>
-                <div className='text-white flex justify-between items-center font-bold text-xl'>
-                    <div className='text-2-5 font-semibold'>Number Of Transactions</div>
-                    <div className=''>
+                <div className='text-white flex justify-between items-center font-medium lg:font-bold'>
+                    <div className='text-2-0 lg:text-2-5 font-semibold'>Number Of Transactions</div>
+                    <div className='hidden lg:block'>
                         <div className='flex justify-start items-center mb-0-6'>
                             <div className='flex justify-start items-center'>
                                 <div className='bg-title-green w-0-7 h-0-2'></div>
@@ -104,7 +104,25 @@ const TradSmoothedLine = () => {
                         </div>
                     </div>
                 </div>
-                <div id='chart2' style={{ width: '100%', height: '100%', margin: '0', padding: '0' }}></div>
+                <div id='chart2' style={{ width: '100%', height: '10.9rem', margin: '0', padding: '0' }}></div>
+                <div className='block lg:hidden'>
+                    <div className='flex justify-start items-center mb-0-6'>
+                        <div className='flex justify-start items-center'>
+                            <div className='bg-title-green w-0-7 h-0-2'></div>
+                            <div className='bg-title-green w-0-9 h-0-9 rounded-full'></div>
+                            <div className='bg-title-green w-0-7 h-0-2'></div>
+                        </div>
+                        <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Brc20 Trading</div>
+                    </div>
+                    <div className='flex justify-start items-center'>
+                        <div className='flex justify-start items-center'>
+                            <div className='bg-blue-500 w-0-7 h-0-2'></div>
+                            <div className='bg-blue-500 w-0-9 h-0-9 rounded-full'></div>
+                            <div className='bg-blue-500 w-0-7 h-0-2'></div>
+                        </div>
+                        <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Trade</div>
+                    </div>
+                </div>
             </div>
 
         </div>

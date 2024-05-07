@@ -6,7 +6,7 @@ import FooterBar from "./FooterBar";
 const Layout = () => {
     const location = useLocation()
     // console.log(location)
-    return <div>
+    return <div className="bg-black">
         <MenuBar></MenuBar>
         <Outlet></Outlet>
         <div className="w-full py-6  bg-primary-green">

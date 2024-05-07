@@ -11,11 +11,11 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const navigate = useNavigate()
     const titleColumnsData = [
-        { title: 'Name', titleWidth: '', colWidth: 'w-9-0', flag: 'name' },
-        { title: 'Deployment Time', titleWidth: '', colWidth: 'w-26-0', flag: 'deploytime' },
-        { title: 'Casting Quantity', titleWidth: '', colWidth: 'w-36-8 ', flag: 'mintprogress' },
-        { title: 'Number Of Address Held', titleWidth: '', colWidth: 'w-15-8 ', flag: 'addresscount' },
-        { title: 'Trading Volume', titleWidth: '', colWidth: 'w-14-2 ', flag: 'txcount' }
+        { title: 'Name', titleWidth: '', colWidth: 'w-5-0 lg:w-9-0', flag: 'name' },
+        { title: 'Deployment Time', titleWidth: '', colWidth: 'w-8-0 lg:w-26-0', flag: 'deploytime' },
+        { title: 'Casting Quantity', titleWidth: '', colWidth: 'w-7-8 lg:w-36-8', flag: 'mintprogress' },
+        { title: 'Number Of Address Held', titleWidth: '', colWidth: 'w-8-9 lg:w-15-8', flag: 'addresscount' },
+        { title: 'Trading Volume', titleWidth: '', colWidth: 'w- lg:w-14-2', flag: 'txcount' }
     ]
     const supplyCards = [
         { title: 'Market Cap', content: '$10.8b', unit: 'b' },
@@ -51,27 +51,27 @@ const Home = () => {
     }
     return (
         <div>
-            <div className='w-full bg-menu-black flex flex-col items-center lg:pt-1-4'>
-                <div className='w-full lg:px-4-3'>
-                    <div className='w-full flex-wrap lg:flex lg:justify-between lg:items-center lg:mb-1-7'>
-                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:mb-1-7'>
+            <div className='w-full bg-menu-black flex flex-col items-center pb-2-6 lg:pb-0-1 lg:pt-1-4'>
+                <div className='w-full px-1-0 lg:px-4-3'>
+                    <div className='flex-wrap mb-1-0 lg:w-full lg:flex lg:justify-between lg:items-center'>
+                        <div className='overflow-hidden rounded-2xl mb-1-0  border border-line-gray  bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:mb-1-7'>
                             <HomeCard cardInfo={{ title: 'Number Of Address', time: '24h', amount: '222,925,642', tide: 'up', trading: '194,587' }} />
                         </div>
-                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:mb-1-7'>
+                        <div className='overflow-hidden rounded-2xl border border-line-gray  bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:mb-1-7'>
                             <HomeCard cardInfo={{ title: 'Number Of Transactions', time: '24h', amount: '7,416,381,440', tide: 'up', trading: '194,587' }} />
                         </div>
-                        <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3'>
+                        {/* <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3'>
                             <HomeCard cardInfo={{ title: 'Total Value', time: '24h', amount: '$24,437,340,581', tide: '', trading: '194,587' }} />
                         </div>
                         <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3'>
                             <HomeCard cardInfo={{ title: 'Transaction Value', time: '24h', amount: '$11,535,729,084,338', tide: 'up', trading: '194,587' }} />
-                        </div>
+                        </div> */}
                     </div>
                     <div className='w-full flex-wrap lg:flex lg:justify-between lg:items-center lg:mb-1-7'>
-                        <div className='overflow-hidden rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:px-2-4 lg:py-2-0 lg:h-34-0'>
+                        <div className='overflow-hidden px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl  lg:px-2-4 lg:py-2-0 lg:h-34-0'>
                             <TradSmoothedLine />
                         </div>
-                        <div className='flex flex-col justify-start items-center lg:h-34-0 lg:w-54-3'>
+                        {/* <div className='flex flex-col justify-start items-center lg:h-34-0 lg:w-54-3'>
                             <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:h-22-2 lg:px-2-4 lg:py-2-0'>
                                 <SupplyTrendLine />
                             </div>
@@ -85,30 +85,32 @@ const Home = () => {
                                 })}
 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
             <div className='w-full bg-primary-green flex flex-col items-center pt-2-7'>
-                <div className='px-5-9 w-full text-black font-bold module-title mb-4-6 eading-point-128 text-12-5 '>
+                <div className='px-1-3 lg:px-5-9 w-full text-title-blue text-4-0 lg:text-black font-medium lg:font-bold module-title lg:mb-4-6 eading-point-128 lg:text-12-5 '>
                     Brc-20
                 </div>
-                <div className=' w-full mb-5-2 px-6-9'>
+                <div className='w-full -mt-3-0  px-1-3 lg:mt-auto lg:mb-5-2 lg:px-6-9 relative overflow-x-hidden'>
+                    <div className='absolute -right-1-5 top-1-6 more-arrow h-3-0 w-3-0 rounded-full flex justify-start items-center text-white z-10 lg:hidden'>
+                        <div className='icon iconfont icon-right ml-0-5' style={{ fontSize: '20px' }}></div>
+                    </div>
                     <Brc20ListTable titleColumnsData={titleColumnsData} dataColumns={dataColumns} />
                 </div>
             </div>
-            <div className='w-full bg-module-title flex flex-col justify-start items-center py-8-1'>
-                <div className='px-5-9 w-full flex flex-col justify-start items-start'>
+            <div className='w-full bg-module-title flex flex-col justify-start items-center py-2-2 lg:py-8-1'>
+                <div className='px-1-3 lg:px-5-9 w-full flex flex-col justify-start items-start'>
                     <div className='flex flex-col justify-start items-start text-line-gray  cursor-pointer transform ease-in-out duration-500 hover:text-white' onClick={() => { navigate('/latest-block') }}>
-                        <div className='font-bold leading-point-86 module-title cursor-pointer text-12-5 '>Latest Block</div>
-                        {/* <div className='border border-500-red h-2 w-0 bg-transparent transform ease-in-out duration-300 hover:w-full hover:h-2 hover:bg-white'></div> */}
+                        <div className='lg:font-bold font-medium leading-point-86 module-title cursor-pointer text-4-0 lg:text-12-5 '>Latest <br className="block lg:hidden"></br> Block</div>
                     </div>
                 </div>
-                <div className='px-6-9 w-full flex justify-between items-center flex-wrap mt-5-9'>
+                <div className='px-1-3 lg:px-6-9 w-full flex justify-between items-center flex-wrap lg:mt-5-9'>
                     {blockList.map((item, index) => {
                         return <div
                             key={index}
-                            className="rounded-xl overflow-hidden shadow-2xl shadow-zinc-900  text-module-title cursor-pointer transform ease-in-out duration-300 hover:scale-111 hover:text-white w-50-4 mb-2-5"
+                            className="rounded-xl mb-0-9 border border-home-line overflow-hidden shadow-2xl shadow-zinc-900  text-module-title cursor-pointer transform ease-in-out duration-300 hover:scale-111 hover:text-white lg:w-50-4 lg:mb-2-5"
                             onClick={() => { navigate('/block-details/' + item.hash) }}>
                             <BlockCard blockInfo={item} />
                         </div>
