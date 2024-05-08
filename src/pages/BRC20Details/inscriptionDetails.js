@@ -62,15 +62,13 @@ function InscriptionDetails() {
                         </div>
                         <div className='flex flex-col justify-between items-center'>
                             {detailsCard.map((item, index) => {
-                                return <div className={['px-2-8 -mt-0-1 pt-1-6 lg:py-2-1 bg-module-title w-full lg:w-49-0 h-9-2 lg:h-12-1 lg:rounded-2xl', index !== detailsCard.length - 1 ? ' lg:mb-1-0' : ''].join(" ")}>
+                                return <div className={['px-2-8 -mt-0-1 pt-1-6 lg:py-2-1 bg-module-title w-full lg:w-49-0 h-9-2 lg:h-12-1 lg:rounded-2xl', index !== detailsCard.length - 1 ? 'lg:mb-1-0' : ''].join(" ")}>
                                     <div className='flex justify-between items-center w-full'>
                                         <div className='text-1-0 lg:text-1-5 font-semibold text-select-color'>{item.title}</div>
                                         {item.canCopy && <div className=''>
                                             <div className='icon iconfont icon-copy2 text-primary-green cursor-pointer' style={{ fontSize: '2.4rem' }}></div>
                                         </div>}
-
                                     </div>
-                                    
                                     <div className='w-full text-white mt-1-2 break-words pb-1-6 lg:pb-0-1 text-1-0 lg:text-1-5 font-medium'>
                                         {item.content}
                                     </div>
