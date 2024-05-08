@@ -1,6 +1,6 @@
 
 
-export function FilterAddress(value, startIndex = 6, endIndex = 4) {
+export function FilterAddress(value, startIndex = 3, endIndex = 4) {
     // //console.log("value", value);
     if (value === undefined || value === null) return
     let arr = value.split('')

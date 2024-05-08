@@ -5,14 +5,14 @@ import { FilterAddress } from '@/utils/format'
 const TransDataTable = ({ titleColumnsData, dataColumns }) => {
     const navigate = useNavigate()
     return (
-        <div className='w-full '>
+        <div className='w-full overflow-x-scroll lg:overflow-auto'>
             <div className=''>
                 <div className='flex justify-between items-center mb-0-3'>
                     {titleColumnsData.map((item, index) => {
                         return <div
                             key={index}
                             className={['text-trans-gray text-1-5 ', item.colWidth ? item.colWidth : 'flex-1'].join(" ")}>
-                            <div className={['pl-2-4 text-left font-semibold flex justify-start items-center ', item.titleWidth ? item.titleWidth : ''].join(" ")}>{item.title}</div>
+                            <div className={['pl-2-4 text-left font-semibold flex justify-start items-center ', item.colWidth ? item.colWidth : ''].join(" ")}>{item.title}</div>
                         </div>
                     })}
                 </div>

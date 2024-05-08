@@ -3,11 +3,11 @@ import React from 'react'
 const DataCard = ({ title, quantities, unit, cardStatus }) => {
 
     return (
-        <div className='w-full h-10-0'>
+        <div className='w-full lg:h-10-0'>
             <div className=''>
-                <div className='mb-2-8 text-1-5 '>{title}</div>
+                <div className='mb-1-6 lg:mb-2-8 text-1-0 lg:text-1-5 '>{title}</div>
                 <div className='flex justify-start items-baseline'>
-                    {!cardStatus && <div className='text-6-0 font-bold'>
+                    {!cardStatus && <div className='text-3-0 lg:text-6-0 font-light lg:font-bold'>
                         {quantities}
                     </div>}
 

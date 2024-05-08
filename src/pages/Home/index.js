@@ -35,7 +35,7 @@ const Home = () => {
         try {
             const BRC20Data = await getBrc20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202", "pagesize": 5, }, "id": 83 })
             console.log(BRC20Data)
-            upDataColumns(dataColumns = BRC20Data.data.result)
+            upDataColumns(dataColumns = BRC20Data.data.result.datalist)
         } catch (err) {
             console.log(err)
         }

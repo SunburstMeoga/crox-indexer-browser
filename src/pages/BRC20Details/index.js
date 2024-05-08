@@ -31,19 +31,19 @@ const BRC20Details = () => {
     }
 
     const holderTitleColumnsData = [
-        { title: 'Number', titleWidth: '', colWidth: '', flag: 'id' },
-        { title: 'Holder Address', titleWidth: '', colWidth: '', flag: 'address', filterAddress: true },
-        { title: 'Holdding Ratio', titleWidth: '', colWidth: 'w-32-0', flag: 'percentage', },
-        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: '', flag: 'balance' },
+        { title: 'Number', titleWidth: '', colWidth: 'w-10-0 lg:w-20-0', flag: 'id' },
+        { title: 'Holder Address', titleWidth: '', colWidth: 'w-13-0  lg:w-30-0', flag: 'address', filterAddress: true },
+        { title: 'Holdding Ratio', titleWidth: '', colWidth: 'w-10-0  lg:w-32-0', flag: 'percentage', },
+        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: 'w-10-0  lg:w-20-0', flag: 'balance' },
     ]
     const transferTitleaColumusData = [
-        { title: 'Number', titleWidth: '', colWidth: 'w-8-5', flag: 'id' },
-        { title: 'Method', titleWidth: '', colWidth: 'w-20-0', flag: 'method', },
-        { title: 'Quantity', titleWidth: '', colWidth: 'w-11-0', flag: 'amount', },
-        { title: 'Balance', titleWidth: 'w-32', colWidth: 'w-12-5', flag: 'balance' },
-        { title: 'From', titleWidth: '', colWidth: 'w-15-0', flag: 'from', filterAddress: true },
-        { title: 'Arrive', titleWidth: '', colWidth: 'w-12-3', flag: 'to', filterAddress: true },
-        { title: 'Time', titleWidth: 'w-32', colWidth: '', flag: 'txtime' },
+        { title: 'Number', titleWidth: '', colWidth: 'w-10-0 lg:w-10-6', flag: 'id' },
+        { title: 'Method', titleWidth: '', colWidth: 'w-10-0 lg:w-18-0', flag: 'method', },
+        { title: 'Quantity', titleWidth: '', colWidth: 'w-10-0 lg:w-11-0', flag: 'amount', },
+        { title: 'Balance', titleWidth: 'w-32', colWidth: 'w-10-0  lg:w-10-5', flag: 'balance' },
+        { title: 'From', titleWidth: '', colWidth: 'w-13-0  lg:w-15-0', flag: 'from', filterAddress: true },
+        { title: 'Arrive', titleWidth: '', colWidth: 'w-13-0  lg:w-15-3', flag: 'to', filterAddress: true },
+        { title: 'Time', titleWidth: 'w-32', colWidth: 'w-20-0 lg:flex-1', flag: 'txtime' },
     ]
     const supplyCards = [
         { title: 'Market Cap', content: '$10.8b', unit: 'b' },
@@ -86,7 +86,7 @@ const BRC20Details = () => {
         let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": dataFilter[currentFilter].value, "fork": "202" }, "id": 83 })
         console.log('brc20交易列表', brc20TransList.data.result)
 
-        upTransferDataColumns(transferDataColumns = brc20TransList.data.result)
+        upTransferDataColumns(transferDataColumns = brc20TransList.data.result.datalist)
     }
     //brc20持有量列表
     const featchBrc20HolderList = async () => {
@@ -98,67 +98,73 @@ const BRC20Details = () => {
     return (
         <div>
             <div className='bg-primary-green w-full flex flex-col items-center justify-start min-h-svh'>
-                <div className='w-full flex justify-start items-baseline text-module-title mb-3-4'>
-                    <div className='font-bold  pl-6-3 text-12-5 h-8-4 mt-6-9'>
+                <div className='w-full lg:flex justify-start items-baseline text-module-title mb-2-2 lg:mb-3-4'>
+                    <div className='lg:font-bold font-medium pl-1-5 lg:pl-6-3 text-4-0 lg:text-12-5 lg:h-8-4 mt-3-0 lg:mt-6-9'>
                         HAH
                     </div>
-                    <div className='ml-1-8 text-2-0'>2023-4-30 23:45:02</div>
+                    <div className='ml-1-8 text-1-0 lg:text-2-0'>2023-4-30 23:45:02</div>
                 </div>
-                <div className='w-full px-6-9 flex justify-between items-center flex-wrap'>
+                <div className='w-full px-1-3 lg:px-6-9 flex justify-between items-center flex-wrap'>
                     {cardList.map((item, index) => {
-                        return <div key={index} className="w-34-4 py-2-6 pl-2-9 mb-1-3 font-medium rounded-2xl overflow-hidden ease-in-out cursor-pointer bg-card-green duration-300 hover:text-primary-green hover:bg-black hover:shadow-2xl">
+                        return <div key={index} className="w-34-4 pl-1-3 py-1-3 lg:py-2-6 lg:pl-2-9 mb-1-3 font-medium rounded-2xl overflow-hidden ease-in-out cursor-pointer bg-card-green duration-300 hover:text-primary-green hover:bg-black hover:shadow-2xl">
                             <DataCard title={item.title} unit={item.unit} quantities={item.quantities} />
                         </div>
                     })}
                 </div>
-                <div className='px-6-9  w-full mb-1-3'>
-                    <div className='rounded-2xl overflow-hidden bg-module-title px-2-3'>
+                <div className='lg:px-6-9 w-full mb-1-3'>
+                    <div className='lg:rounded-2xl overflow-hidden bg-module-title px-1-0 lg:px-2-3'>
                         {detailsList.map((item, index) => {
                             return <div
                                 key={index}
-                                className={['pl-2-3 h-6-4 text-select-color flex justify-start items-center', index !== detailsList.length - 1 ? 'border-b border-select-color' : ''].join(" ")} >
-                                <div className='bg-select-color w-0-7 h-0-7 ml-2-4'></div>
-                                <div className='pl-2-3 text-1-5 font-semibold'>{item.title} {item.content}</div>
+                                className={['px-0-5 py-2-8 lg:py-0-1 lg:px-0-1 lg:pl-2-3 lg:h-6-4 text-select-color flex justify-start items-center', index !== detailsList.length - 1 ? 'border-b border-select-color' : ''].join(" ")} >
+                                <div className='bg-select-color w-0-7 h-0-7 ml-2-4 hidden lg:block'></div>
+                                <div className='lg:pl-2-3 w-21-1 lg:w-auto text-1-0 break-words text-wrap lg:text-1-5 font-semibold lg:font-light lg:flex lg:items-center lg:justify-start '><div className='mb-3-0 lg:mb-auto'>{item.title}</div> <div className='text-word-gray lg:text-select-color '>{item.content}</div> </div>
                             </div>
                         })}
 
                     </div>
                 </div>
-                <div className='px-6-9 w-full mb-3-7'>
-                    <div className='px-2-3 pb-2-0 rounded-2xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2 pt-12 mb-6'>
-                        <div className='flex justify-start items-center w-full pl-2-4 pt-4-7 mb-1-9'>
+                <div className='lg:px-6-9 w-full lg:mb-3-7'>
+                    <div className='lg:px-2-3 pb-2-0 lg:rounded-2xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2 pt-12 mb-6'>
+                        <div className='flex justify-start items-center w-full pl-1-8 lg:pl-2-4 pt-2-4 lg:pt-4-7 mb-1-9'>
                             {dataTypes.map((item, index) => {
                                 return <div
                                     onClick={() => handleDataType(item, index)}
                                     key={index}
-                                    className={['text-select-color', index === 0 ? 'mr-8-8' : ''].join(" ")}>
-                                    <div className={['font-black text-4xl mb-0-3 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
+                                    className={['text-select-color', index === 0 ? 'mr-4-0 lg:mr-8-8' : ''].join(" ")}>
+                                    <div className={['lg:font-black font-light text-2-0 lg:text-2-3  mb-0-3 cursor-pointer ease-in-out duration-300 hover:text-title-green', cuerrentType === index ? "text-title-green" : ""].join(" ")}>{item.title}</div>
                                     <div className={['h-0-2  ease-in-out duration-300', cuerrentType === index ? "bg-title-green w-full" : "bg-transparent w-0-1"].join(" ")}></div>
                                 </div>
                             })}
                         </div>
-                        {cuerrentType === 1 && <div className='flex justify-start items-start ml-1-4 w-full mb-3-0 '>
+                        {cuerrentType === 1 && <div className='flex flex-wrap justify-between lg:justify-start items-start lg:ml-1-4 w-22-4 lg:w-full mb-3-0 gap-2'>
                             {dataFilter.map((item, index) => {
                                 return <div
                                     onClick={() => handleDataFilter(item, index)}
                                     key={index}
                                     className={[
-                                        'px-1-3 py-0-7 rounded-2xl font-semibold cursor-pointer text-1-5',
-                                        index !== 0 ? "ml-1-3" : "",
+                                        'px-1-5 lg:px-1-3 py-0-7 rounded-xl lg:rounded-2xl font-semibold cursor-pointer text-1-2 lg:text-1-5 mb-1-0 lg:mb-auto',
+                                        index !== 0 ? "lg:ml-1-3" : "",
                                         currentFilter === index ? "bg-title-green text-black" : "bg-black text-line-gray"
                                     ].join(" ")}>{item.title}</div>
                             })}
                         </div>}
                         <div className='w-full'>
-                            {cuerrentType === 0 && <div>
+                            {cuerrentType === 0 && <div className='text relative'>
+                                <div className='absolute -right-1-5 top-0-6 more-arrow h-3-0 w-3-0 rounded-full flex justify-start items-center text-white z-10 lg:hidden'>
+                                    <div className='icon iconfont icon-right ml-0-5' style={{ fontSize: '20px' }}></div>
+                                </div>
                                 <HolderDataTable titleColumnsData={holderTitleColumnsData} dataColumns={holderDataColumns}></HolderDataTable>
                             </div>}
 
-                            {cuerrentType === 1 && <div>
+                            {cuerrentType === 1 && <div className='text relative'>
+                                <div className='absolute -right-1-5 top-0-6 more-arrow h-3-0 w-3-0 rounded-full flex justify-start items-center text-white z-10 lg:hidden'>
+                                    <div className='icon iconfont icon-right ml-0-5' style={{ fontSize: '20px' }}></div>
+                                </div>
                                 <TransDataTable titleColumnsData={transferTitleaColumusData} dataColumns={transferDataColumns}></TransDataTable>
                             </div>}
 
-                            <div className='w-full flex justify-end mt-1-3'>
+                            <div className='w-full lg:flex justify-end mt-1-3 hidden'>
                                 <Pagination showJump={false} />
                             </div>
                         </div>
