@@ -93,7 +93,7 @@ const Home = () => {
                 <div className='px-1-3 lg:px-5-9 w-full text-title-blue text-4-0 lg:text-black font-medium lg:font-bold module-title lg:mb-4-6 eading-point-128 lg:text-12-5 '>
                     Brc-20
                 </div>
-                <div className='w-full -mt-3-0  px-1-3 lg:mt-auto lg:mb-5-2 lg:px-6-9 relative overflow-x-hidden'>
+                <div className='w-full mt-2-0  px-1-3 lg:mt-auto lg:mb-5-2 lg:px-6-9 relative overflow-x-hidden'>
                     <div className='absolute -right-1-5 top-1-6 more-arrow h-3-0 w-3-0 rounded-full flex justify-start items-center text-white z-10 lg:hidden'>
                         <div className='icon iconfont icon-right ml-0-5' style={{ fontSize: '20px' }}></div>
                     </div>

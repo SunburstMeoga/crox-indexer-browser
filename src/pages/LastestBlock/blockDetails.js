@@ -31,41 +31,42 @@ const BlockDetails = () => {
     return (
         <div>
             <div className='flex flex-col justify-start items-center'>
-                <div className='w-full relative '>
+                <div className='w-full relative'>
                     <div className=''>
-                        <img src='/images/block-details.png' alt=''></img>
+                        <img src='/images/block-details.png' className='hidden lg:block' alt=''></img>
+                        <img src='/images/mobile/block-details.png' className='block lg:hidden' alt=''></img>
                     </div>
-                    <div className='absolute  top-0-1 w-full flex justify-center items-center h-full'>
-                        <div className='pl-9-9 w-full text-white font-medium'>
-                            <div className='mb-1-8 text-3-0'>Blockchain</div>
-                            <div className='mb-1-8 text-6-0'>#{blockDetails.height}</div>
-                            <div className='text-2-3'>{blockDetails.time}</div>
+                    <div className='absolute top-0-1 w-full flex justify-center items-center h-full'>
+                        <div className='pl-2-5 lg:pl-9-9 w-full text-white font-light lg:font-medium'>
+                            <div className='mb-1-8 text-3-0 hidden lg:block'>Blockchain</div>
+                            <div className='mb-1-0 mt-2-0 lg:mt-0-1 text-3-0 lg:mb-1-8 lg:text-6-0'>#{blockDetails.height}</div>
+                            <div className='text-1-2 lg:text-2-3'>{blockDetails.time} common</div>
                         </div>
                     </div>
                 </div>
                 <div className='flex flex-col justify-start items-center min-h-svh bg-primary-green w-full pt-4-4'>
-                    <div className='w-full px-7-7'>
+                    <div className='w-full px-7-7 hidden lg:block'>
                         <TransactionsCard detailsInfo={detailsCard}></TransactionsCard>
                     </div>
-                    <div className='w-full pl-7-7 text-module-title mt-3-2 '>
-                        <div className='text-6-8 font-bold'>
+                    <div className='w-full pl-0-6 lg:pl-7-7 text-module-title mt-0-1 lg:mt-3-2 '>
+                        <div className='text-5-2 lg:text-6-8 font-bold'>
                             Brc20
                         </div>
-                        <div className='text-5-2 font-bold'>
+                        <div className='text-3-8 lg:text-5-2 font-bold'>
                             Transaction Details
                         </div>
                     </div>
-                    <div className='w-full flex justify-end pr-7-7 mb-0-7'>
+                    <div className='w-full  justify-end pr-7-7 mb-0-7 hidden lg:flex'>
                         <PageSize />
                     </div>
                     <div className='w-full'>
                         {transactionsList.map((item, index) => {
-                            return <div className='w-full mb-1-2  px-7-7' key={index}>
+                            return <div className='w-full mt-1-5 lg:mt-auto lg:mb-1-2 lg:px-7-7' key={index}>
                                 <DetailsCard></DetailsCard>
                             </div>
                         })}
                     </div>
-                    <div className='w-full flex justify-end mb-7-0 pr-7-8'>
+                    <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
                         <Pagination showJump />
                     </div>
                 </div>
