@@ -17,7 +17,7 @@ const FooterBar = () => {
     ]
     return (
         <div>
-            <div className='w-full  flex-col items-center text-black py-3-0 footer-bar-bg hidden lg:flex'>
+            <div className='w-full  flex-col items-center text-black py-3-0 footer-bar-bg hidden xl:flex'>
                 <div className='w-11/12 flex justify-end items-center mb-2-4'>
                     {mediaList.map((item, index) => {
                         return <div
@@ -41,25 +41,31 @@ const FooterBar = () => {
                     })}
                 </div>
             </div>
-            <div className='flex flex-col justify-start items-center lg:hidden px-1-5'>
+            <div className='flex flex-col justify-start items-center xl:hidden px-1-5'>
                 {documentList.map((item, index) => {
-                    return <div className='w-full h-4-0 flex justify-between items-center text-black'>
-                        <div className='text-1-3'>{item.title}</div>
+                    return <div className='w-full h-4-0 lg:h-8-0 flex justify-between items-center text-black'>
+                        <div className='text-1-3 lg:text-2-5'>{item.title}</div>
                         <div className='flex justify-center items-center'>
-                            <div className='icon iconfont icon-down'></div>
+                            <div className='icon iconfont icon-down lg:hidden'></div>
+                            <div className='icon iconfont icon-down hidden lg:block' style={{fontSize: '30px'}}></div>
+
                         </div>
                     </div>
                 })}
                 <div className='flex justify-start items-center w-full py-2-3'>
-                    <div className='w-0-5 h-0-5 bg-black mr-1-0'></div>
-                    <div className='font-bold text-1-3'>Follow us</div>
+                    <div className='w-0-5 h-0-5 bg-black mr-1-0 lg:hidden'></div>
+                    <div className='font-bold lg:font-black text-1-3 lg:text-2-5'>Follow us</div>
                 </div>
+                <div className='w-full lg:flex lg:justify-between lg:items-center lg:my-2-0 '>
                 {mediaList.map((item, index) => {
-                    return <div className='w-full h-6-0 flex justify-between items-center text-black'>
-                        <div className={['icon iconfont mb-0-6', item.icon].join(" ")} style={{ fontSize: '34px' }}></div>
+                    return <div className='w-full h-6-0 flex lg:flex-col justify-between items-center text-black lg:w-5-4'>
+                        <div className={['icon iconfont mb-0-6 lg:hidden', item.icon].join(" ")} style={{ fontSize: '34px' }}></div>
+                        <div className={['icon iconfont mb-0-6 hidden lg:block', item.icon].join(" ")} style={{ fontSize: '54px' }}></div>
+
                         <div className='font-bold text-1-3'>{item.title}</div>
                     </div>
                 })}
+                </div>
             </div>
         </div>
     )
