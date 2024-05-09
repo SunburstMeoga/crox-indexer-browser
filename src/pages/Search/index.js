@@ -10,10 +10,10 @@ function Search() {
             <div className='text relative'>
                 <div className='xl:min-h-screen  absolute z-10'>
                     <img src='/images/pc/search-bg.png' alt='' className='hidden xl:block'></img>
-                    <img src='/images/mobile/search-bg.png' alt='' className='xl:hidden'></img>
-                    {/* <img src='/images/pc/search-bg.png' alt='' ></img> */}
+                    <img src='/images/mobile/search-bg.png' alt='' className='lg:hidden xl:hidden'></img>
+                    <img src='/images/pad/search-bg.png' alt='' className='hidden lg:block xl:hidden'></img>
                 </div>
-                <div className='flex flex-col w-full xl:min-h-screen justify-start items-center relative z-20'>
+                <div className='flex flex-col w-full xl:min-h-screen justify-start items-center relative z-20 lg:pb-2-0 xl:pb-0-1'>
                     <div className='w-10-5 mt-3-9 lg:w-16-4 xl:w-23-0 xl:mt-11-4'>
                         <img src='/images/pc/logo-black.png' alt=''></img>
                     </div>
