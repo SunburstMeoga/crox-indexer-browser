@@ -68,9 +68,9 @@ const BRC20Details = () => {
     const { name } = useParams()
     useEffect(() => {
         let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "pagesize": 100, "id": 83 }
-        // fetchBRC20Details(data)
-        // featchBrc20HolderList()
-        // fetchBrc20TransferList()
+        fetchBRC20Details(data)
+        featchBrc20HolderList()
+        fetchBrc20TransferList()
 
     }, [])
     //brc20信息
