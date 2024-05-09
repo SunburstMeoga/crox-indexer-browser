@@ -7,8 +7,19 @@ import { getBrc20Details, getBrc20TransList, getBrc20HolderList } from '@/api/ho
 import { useParams } from 'react-router-dom';
 
 const BRC20Details = () => {
-    let [cardList, setCardList] = useState([])
-    let [detailsList, setDetailsList] = useState([])
+    let [cardList, setCardList] = useState([
+        { title: 'Total Amount', quantities: 23223 },
+        { title: 'Casting Quantity', quantities: 23223 },
+        { title: 'Single Casting Limit', quantities: 23223 },
+        { title: 'Decimal Precision', quantities: 23223 },
+        { title: 'Number Of Holders', quantities: 23223 },
+        { title: 'Total Transaction Volume', quantities: 23223 },
+    ])
+    let [detailsList, setDetailsList] = useState([
+        { title: 'Deployed by:', content: 34234 },
+        { title: 'Inscription Starting Nunber:', content: 'asdfsdfsdfa' },
+        { title: 'End Number Of Inscription:', content: 'asdfsdfsdfa' }
+    ])
     const dataTypes = [
         { title: 'Holder', vlaue: 0 },
         { title: 'Transfer', vlaue: 1 }
@@ -57,9 +68,9 @@ const BRC20Details = () => {
     const { name } = useParams()
     useEffect(() => {
         let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "pagesize": 100, "id": 83 }
-        fetchBRC20Details(data)
-        featchBrc20HolderList()
-        fetchBrc20TransferList()
+        // fetchBRC20Details(data)
+        // featchBrc20HolderList()
+        // fetchBrc20TransferList()
 
     }, [])
     //brc20信息
@@ -98,35 +109,35 @@ const BRC20Details = () => {
     return (
         <div>
             <div className='bg-primary-green w-full flex flex-col items-center justify-start min-h-svh'>
-                <div className='w-full lg:flex justify-start items-baseline text-module-title mb-2-2 lg:mb-3-4'>
-                    <div className='lg:font-bold font-medium pl-1-5 lg:pl-6-3 text-4-0 lg:text-12-5 lg:h-8-4 mt-3-0 lg:mt-6-9'>
+                <div className='w-full lg:flex justify-start items-baseline text-module-title mb-2-2 lg:mb-1-3 xl:mb-3-4'>
+                    <div className='lg:font-bold font-medium pl-1-5 lg:pl-2-2 xl:pl-6-3 text-4-0 lg:text-12-5 xl:h-8-4 mt-3-0 lg:mt-2-8 xl:mt-6-9'>
                         HAH
                     </div>
                     <div className='ml-1-8 text-1-0 lg:text-2-0'>2023-4-30 23:45:02</div>
                 </div>
-                <div className='w-full px-1-3 lg:px-6-9 flex justify-between items-center flex-wrap'>
+                <div className='w-full px-1-3 lg:px-2-2 xl:px-6-9 flex justify-between items-center flex-wrap'>
                     {cardList.map((item, index) => {
-                        return <div key={index} className="w-34-4 pl-1-3 py-1-3 lg:py-2-6 lg:pl-2-9 mb-1-3 font-medium rounded-2xl overflow-hidden ease-in-out cursor-pointer bg-card-green duration-300 hover:text-primary-green hover:bg-black hover:shadow-2xl">
+                        return <div key={index} className="w-34-4 lg:w-29-2 xl:w-34-4 pl-1-3 py-1-3 lg:py-2-6 lg:pl-2-9 mb-1-3 font-medium rounded-2xl overflow-hidden ease-in-out cursor-pointer bg-card-green duration-300 hover:text-primary-green hover:bg-black hover:shadow-2xl">
                             <DataCard title={item.title} unit={item.unit} quantities={item.quantities} />
                         </div>
                     })}
                 </div>
-                <div className='lg:px-6-9 w-full mb-1-3'>
-                    <div className='lg:rounded-2xl overflow-hidden bg-module-title px-1-0 lg:px-2-3'>
+                <div className='lg:px-2-2 xl:px-6-9 w-full mb-1-3'>
+                    <div className='lg:rounded-2xl overflow-hidden bg-module-title px-1-0 lg:px-1-2 xl:px-2-3'>
                         {detailsList.map((item, index) => {
                             return <div
                                 key={index}
-                                className={['px-0-5 py-2-8 lg:py-0-1 lg:px-0-1 lg:pl-2-3 lg:h-6-4 text-select-color flex justify-start items-center', index !== detailsList.length - 1 ? 'border-b border-select-color' : ''].join(" ")} >
-                                <div className='bg-select-color w-0-7 h-0-7 ml-2-4 hidden lg:block'></div>
+                                className={['px-0-5 py-2-8 lg:py-0-1 xl:px-0-1 lg:pl-2-3 lg:h-6-4 text-select-color flex justify-start items-center', index !== detailsList.length - 1 ? 'border-b border-select-color' : ''].join(" ")} >
+                                <div className='bg-select-color w-0-7 h-0-7 ml-2-4 lg:ml-1-0 xl:ml-2-4 hidden lg:block'></div>
                                 <div className='lg:pl-2-3 w-21-1 lg:w-auto text-1-0 break-words text-wrap lg:text-1-5 font-semibold lg:font-light lg:flex lg:items-center lg:justify-start '><div className='mb-3-0 lg:mb-auto'>{item.title}</div> <div className='text-word-gray lg:text-select-color '>{item.content}</div> </div>
                             </div>
                         })}
 
                     </div>
                 </div>
-                <div className='lg:px-6-9 w-full lg:mb-3-7'>
-                    <div className='lg:px-2-3 pb-2-0 lg:rounded-2xl overflow-hidden bg-module-title flex flex-col justify-start items-center py-2 pt-12 mb-6'>
-                        <div className='flex justify-start items-center w-full pl-1-8 lg:pl-2-4 pt-2-4 lg:pt-4-7 mb-1-9'>
+                <div className='lg:px-2-2 xl:px-6-9 w-full lg:mb-3-7'>
+                    <div className='lg:px-2-3 pb-2-0 lg:rounded-2xl overflow-hidden bg-module-title flex flex-col justify-start items-center pt-12 mb-6'>
+                        <div className='flex justify-start items-center w-full pl-1-8 lg:pl-1-3 xl:pl-2-4 pt-2-4 lg:pt-4-7 mb-1-9'>
                             {dataTypes.map((item, index) => {
                                 return <div
                                     onClick={() => handleDataType(item, index)}

@@ -4,7 +4,7 @@ import { FilterAddress } from '@/utils/format'
 const HolderDataTable = ({ titleColumnsData, dataColumns }) => {
     const navigate = useNavigate()
     return (
-        <div className='w-full overflow-x-scroll lg:overflow-auto'>
+        <div className='w-full overflow-x-scroll xl:overflow-auto'>
             <div className=''>
                 <div className='flex justify-between items-center mb-0-3'>
                     {titleColumnsData.map((item, index) => {

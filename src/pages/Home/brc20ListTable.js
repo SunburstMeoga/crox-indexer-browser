@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const Brc20ListTable = ({ titleColumnsData, dataColumns }) => {
     const navigate = useNavigate()
     return (
-        <div className='lg:w-full overflow-x-scroll lg:overflow-auto bg-primary-green '>
+        <div className='xl:w-full overflow-x-scroll lg:overflow-auto bg-primary-green '>
             <div className=''>
 
                 <div className='flex justify-between items-start lg:items-center pb-1-6 lg:w-full '>
@@ -16,7 +16,7 @@ const Brc20ListTable = ({ titleColumnsData, dataColumns }) => {
                         </div>
                     })}
                 </div>
-                <div className='w-34-4 lg:w-full bg-black h-0-1'></div>
+                <div className='w-34-4 lg:w-98-8 xl:w-full bg-black h-0-1'></div>
 
                 {dataColumns.map((_item, _index) => {
                     return <div key={_index} className='flex justify-between items-start lg:items-center item-hover cursor-pointer py-2-6' onClick={() => { navigate('/brc20-details/' + _item.name) }}>

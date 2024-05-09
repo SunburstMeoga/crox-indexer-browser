@@ -33,8 +33,9 @@ const BlockDetails = () => {
             <div className='flex flex-col justify-start items-center'>
                 <div className='w-full relative'>
                     <div className=''>
-                        <img src='/images/block-details.png' className='hidden lg:block' alt=''></img>
-                        <img src='/images/mobile/block-details.png' className='block lg:hidden' alt=''></img>
+                        <img src='/images/block-details.png' className='hidden lg:hidden xl:block' alt=''></img>
+                        <img src='/images/mobile/block-details.png' className='block xl:hidden lg:hidden' alt=''></img>
+                        <img src='/images/pad/block-details.png' className='hidden lg:block xl:hidden' alt=''></img>
                     </div>
                     <div className='absolute top-0-1 w-full flex justify-center items-center h-full'>
                         <div className='pl-2-5 lg:pl-9-9 w-full text-white font-light lg:font-medium'>
@@ -44,11 +45,11 @@ const BlockDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col justify-start items-center min-h-svh bg-primary-green w-full pt-4-4'>
-                    <div className='w-full px-7-7 hidden lg:block'>
+                <div className='flex flex-col justify-start items-center min-h-svh bg-primary-green w-full pt-2-0 lg:pt-0-1 xl:pt-4-4'>
+                    <div className='w-full xl:px-7-7 hidden lg:block'>
                         <TransactionsCard detailsInfo={detailsCard}></TransactionsCard>
                     </div>
-                    <div className='w-full pl-0-6 lg:pl-7-7 text-module-title mt-0-1 lg:mt-3-2 '>
+                    <div className='w-full pl-0-6 lg:pl-2-9 xl:pl-7-7 text-module-title mt-0-1 lg:mt-3-2 '>
                         <div className='text-5-2 lg:text-6-8 font-bold'>
                             Brc20
                         </div>
@@ -56,12 +57,12 @@ const BlockDetails = () => {
                             Transaction Details
                         </div>
                     </div>
-                    <div className='w-full  justify-end pr-7-7 mb-0-7 hidden lg:flex'>
+                    <div className='w-full  justify-end pr-7-7 mb-0-7 hidden xl:flex'>
                         <PageSize />
                     </div>
                     <div className='w-full'>
                         {transactionsList.map((item, index) => {
-                            return <div className='w-full mt-1-5 lg:mt-auto lg:mb-1-2 lg:px-7-7' key={index}>
+                            return <div className='w-full mt-1-5 xl:mt-auto lg:mb-1-2 lg:px-2-9 xl:px-7-7' key={index}>
                                 <DetailsCard></DetailsCard>
                             </div>
                         })}
