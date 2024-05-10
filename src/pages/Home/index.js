@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getBrc20List, getListBlock } from '@/api/homeApi';
+import { getBrc20List, getListBlock,homeStatisticsData } from '@/api/homeApi';
 import Brc20ListTable from './brc20ListTable';
 import BlockCard from './blockCard';
 import HomeCard from './homeCard';
 import TradSmoothedLine from './tradSmoothedLine'
+import Brc20TradLine from './brc20TradLine';
 import SupplyTrendLine from './supplyTrendLine';
 import SupplyCard from './supplyCard';
 import { useNavigate } from 'react-router-dom'
@@ -25,25 +26,54 @@ const Home = () => {
     ]
     let [dataColumns, upDataColumns] = useState([])
     let [blockList, fetchBlockList] = useState([])
+    let [tradeLineData, getTradeLineData] = useState(null)
+
     useEffect(() => {
+        getStatisticsData()
         fetchBRC20List()
         fetchListBlock()
     }, [])
-
+    //brc20列表
     const fetchBRC20List = async () => {
         try {
             const BRC20Data = await getBrc20List({ "jsonrpc": "2.0", "method": "listbrc20info", "params": { "fork": "202", "pagesize": 5, }, "id": 83 })
-            console.log(BRC20Data)
+            console.log('brc20列表',BRC20Data)
             upDataColumns(dataColumns = BRC20Data.data.result.datalist)
         } catch (err) {
             console.log(err)
         }
     }
+    //区块列表
     const fetchListBlock = async () => {
         try {
             const blockListData = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 6 }, "pagesize": 100, "id": 83 })
-            console.log(blockListData)
+            console.log('列表',blockListData)
             fetchBlockList(blockList = blockListData.data.result)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    //交易数统计图表
+    const getStatisticsData = async () => {
+        try {
+            let statisticsData = await homeStatisticsData({"jsonrpc":"2.0","method":"listbtcdatestat","params":{"fork":"202",getdatecount:7},"id":83})
+            console.log('统计图表', statisticsData)
+            let xData = []
+            let yData = []
+            let yData2 = []
+            let lineData = {}
+            statisticsData.data.result.map(item => {
+                xData.push(item.btcblockdate)
+                yData.push(item.brc20recordcount)
+                yData2.push(item.btctxcount)
+            })
+            lineData['xData'] = xData
+            lineData['yData'] = yData
+            lineData['yData2'] = yData2
+
+            getTradeLineData(tradeLineData = lineData)
+            console.log(lineData,tradeLineData)
+
         } catch (err) {
             console.log(err)
         }
@@ -52,9 +82,12 @@ const Home = () => {
         <div>
             <div className='w-full bg-menu-black flex flex-col items-center pb-2-6 lg:pb-0-1 lg:pt-1-4'>
                 <div className='w-full px-1-0 lg:px-4-3'>
-                    <div className='w-full flex-wrap lg:flex lg:justify-between lg:items-center lg:mb-1-7 mb-1-0'>
-                        <div className='overflow-hidden  px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl  lg:px-2-4 lg:py-2-0 xl:h-34-0'>
-                            <TradSmoothedLine />
+                    <div className='w-full flex-wrap lg:flex  lg:justify-between lg:items-center lg:mb-1-7 mb-1-0'>
+                        <div className='overflow-hidden  px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:px-2-4 lg:py-2-0 xl:h-34-0'>
+                            {tradeLineData && <TradSmoothedLine tradeLineData={tradeLineData} />}
+                        </div>
+                        <div className='overflow-hidden  px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:px-2-4 lg:py-2-0 xl:h-34-0'>
+                            {tradeLineData && <Brc20TradLine tradeLineData={tradeLineData} />}
                         </div>
                         {/* <div className='flex flex-col justify-start items-center lg:h-34-0 lg:w-54-3'>
                             <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3 lg:h-22-2 lg:px-2-4 lg:py-2-0'>

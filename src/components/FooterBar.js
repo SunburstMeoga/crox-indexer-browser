@@ -43,7 +43,7 @@ const FooterBar = () => {
             </div>
             <div className='flex flex-col justify-start items-center xl:hidden px-1-5'>
                 {documentList.map((item, index) => {
-                    return <div className='w-full h-4-0 lg:h-8-0 flex justify-between items-center text-black'>
+                    return <div key={index} className='w-full h-4-0 lg:h-8-0 flex justify-between items-center text-black'>
                         <div className='text-1-3 lg:text-2-5'>{item.title}</div>
                         <div className='flex justify-center items-center'>
                             <div className='icon iconfont icon-down lg:hidden'></div>
@@ -58,7 +58,7 @@ const FooterBar = () => {
                 </div>
                 <div className='w-full lg:flex lg:justify-between lg:items-center lg:my-2-0 '>
                 {mediaList.map((item, index) => {
-                    return <div className='w-full h-6-0 flex lg:flex-col justify-between items-center text-black lg:w-5-4'>
+                    return <div key={index} className='w-full h-6-0 flex lg:flex-col justify-between items-center text-black lg:w-5-4'>
                         <div className={['icon iconfont mb-0-6 lg:hidden', item.icon].join(" ")} style={{ fontSize: '34px' }}></div>
                         <div className={['icon iconfont mb-0-6 hidden lg:block', item.icon].join(" ")} style={{ fontSize: '54px' }}></div>
 

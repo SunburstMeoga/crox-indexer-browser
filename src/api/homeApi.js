@@ -41,3 +41,7 @@ export const getBlockDetails = (data) => {
 export const getHashDetails = (data) => {
     return post('', data)
 }
+//首页交易数据统计图表
+export const homeStatisticsData = (data) => {
+    return post('', data)
+} 
