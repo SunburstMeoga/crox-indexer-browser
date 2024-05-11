@@ -6,14 +6,9 @@ function InscriptionDetails() {
     const { inscriptionid } = params
     let [insDetailsInfo, changeDetailsInfo] = useState({})
     let [inforList, changeInforList] = useState([])
+    let [detailsCard, changeDetailsCard] = useState([])
     console.log(inscriptionid)
-    let detailsCard = [{
-        title: 'Holder address:', content: 'bc1ppszqn2mh6vm4wu2e83qjrtfwm3wfe6zp94ph259s54dnkg3sr9xs27pqj3', canCopy: true
-    }, {
-        title: 'Hash:', content: 'f71fa5ab25f763c51b85c5852e31b94d6cd36897278982b209dd3154d9cdde45'
-    }, {
-        title: 'ID:', content: 'f71fa5ab25f763c51b85c5852e31b94d6cd36897278982b20:0'
-        }]
+    // let detailsCard = []
     const getInsTionsDetails = async () => {
         let detailsInfo = await insTionDetails({ "jsonrpc": "2.0", "method": "getinscriptiondetails", "params": { "inscriptionid": inscriptionid, "fork": "202" }, "id": 83 })
 
@@ -35,6 +30,13 @@ function InscriptionDetails() {
                 title: 'offset:', content: insDetailsInfo.offset
             }
         ])
+        changeDetailsCard(detailsCard = [{
+            title: 'Holder address:', content: insDetailsInfo.address, canCopy: true
+        }, {
+            title: 'Hash:', content: insDetailsInfo.revealtxid
+        }, {
+            title: 'ID:', content: inscriptionid
+            }])
         console.log('查询铭文详情',insDetailsInfo)
 
     }
