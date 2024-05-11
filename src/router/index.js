@@ -68,7 +68,7 @@ const router = createBrowserRouter([
                 element: <Suspense><TransferDataDetails></TransferDataDetails></Suspense>
             },
             {
-                path: '/inscription-details/:id',
+                path: '/inscription-details/:inscriptionid',
                 element: <Suspense><InscriptionDetails></InscriptionDetails></Suspense>
             },
             {

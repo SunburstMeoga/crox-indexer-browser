@@ -45,3 +45,11 @@ export const getHashDetails = (data) => {
 export const homeStatisticsData = (data) => {
     return post('', data)
 } 
+//查看交易数量
+export const getbrc20syncinfo = (data) => {
+    return post('', data)
+}
+//铭文详情
+export const insTionDetails = (data) => {
+    return post('', data)
+}

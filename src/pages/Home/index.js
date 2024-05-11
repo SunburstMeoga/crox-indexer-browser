@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getBrc20List, getListBlock,homeStatisticsData } from '@/api/homeApi';
+import { getBrc20List, getListBlock,homeStatisticsData,getbrc20syncinfo } from '@/api/homeApi';
 import Brc20ListTable from './brc20ListTable';
 import BlockCard from './blockCard';
 import HomeCard from './homeCard';
@@ -27,11 +27,13 @@ const Home = () => {
     let [dataColumns, upDataColumns] = useState([])
     let [blockList, fetchBlockList] = useState([])
     let [tradeLineData, getTradeLineData] = useState(null)
+    let [btcInfor, changeBtcInfor] = useState({})
 
     useEffect(() => {
         getStatisticsData()
         fetchBRC20List()
         fetchListBlock()
+        fetchBrc20syncinfo()
     }, [])
     //brc20列表
     const fetchBRC20List = async () => {
@@ -72,8 +74,18 @@ const Home = () => {
             lineData['yData2'] = yData2
 
             getTradeLineData(tradeLineData = lineData)
-            console.log(lineData,tradeLineData)
+            // console.log(lineData,tradeLineData)
 
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    //查询btc上链信息
+    const fetchBrc20syncinfo = async () => {
+        try {
+            let info = await getbrc20syncinfo({ "jsonrpc": "2.0", "method": "getbrc20syncinfo", "params": { "fork": "202" }, "id": 83 })
+            console.log('btc上链信息', info)
+            changeBtcInfor(changeBtcInfor = info.data.result)
         } catch (err) {
             console.log(err)
         }
@@ -107,10 +119,10 @@ const Home = () => {
                     </div>
                     <div className='flex-wrap  lg:w-full lg:flex lg:justify-between lg:items-center'>
                         <div className='overflow-hidden rounded-2xl mb-1-0  border border-line-gray  bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:mb-1-7'>
-                            <HomeCard cardInfo={{ title: 'Number Of Address', time: '24h', amount: '222,925,642', tide: 'up', trading: '194,587' }} />
+                            <HomeCard cardInfo={{ title: 'Number Of Address', time: '24h', amount: btcInfor.brc20addresscount, tide: 'up', trading: btcInfor.h24brc20addresscount }} />
                         </div>
                         <div className='overflow-hidden rounded-2xl border border-line-gray  bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:mb-1-7'>
-                            <HomeCard cardInfo={{ title: 'Number Of Transactions', time: '24h', amount: '7,416,381,440', tide: 'up', trading: '194,587' }} />
+                            <HomeCard cardInfo={{ title: 'Number Of Transactions', time: '24h', amount: btcInfor.btctxcount, tide: 'up', trading: btcInfor.h24brc20recordcount }} />
                         </div>
                         {/* <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3'>
                             <HomeCard cardInfo={{ title: 'Total Value', time: '24h', amount: '$24,437,340,581', tide: '', trading: '194,587' }} />

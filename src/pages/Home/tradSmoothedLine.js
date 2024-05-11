@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import * as echarts from 'echarts';
 const TradSmoothedLine = ({ tradeLineData }) => {
-    console.log(tradeLineData)
+    // console.log(tradeLineData)
     const initChart = () => {
         let element = document.getElementById('chart2');
         let myChart = echarts.init(element);
