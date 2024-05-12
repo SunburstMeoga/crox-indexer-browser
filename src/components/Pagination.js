@@ -1,6 +1,19 @@
 import React from 'react'
 
-const Pagination = ({ showJump }) => {
+const Pagination = ({ showJump, getPageNumber, paginatioInfo }) => {
+    console.log('paginatioInfo', paginatioInfo)
+    const handlePrevPage = () => {
+        console.log('点击上一页')
+        console.log(paginatioInfo)
+    }
+    const handleNextPage = () => {
+        console.log('点击下一页')
+        console.log(paginatioInfo)
+    }
+    const handlePageNumber = (pageNumber) => {
+        getPageNumber(pageNumber)
+    }
+    // let pageNumbers = [1,2,3]
     return (
         <div>
             <div className='flex justify-start items-center'>
@@ -9,13 +22,15 @@ const Pagination = ({ showJump }) => {
                         <div className='pr-1-0'>
                             <div className='icon iconfont icon-left1' style={{ fontSize: '30px' }}></div>
                         </div>
-                        <div className=''>Prev</div>
+                        <div className='' onClick={() => handlePrevPage()}>Prev</div>
                     </div>
-                    <div className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>1</div>
-                    <div className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>2</div>
-                    <div className='border-x  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>3</div>
+                    {paginatioInfo.pageNumbers.map((item, index) => {
+                        return <div onClick={() => handlePageNumber(item)} key={index} className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>{ item}</div>
+                    //    <div className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>2</div>
+                    //    <div className='border-x  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>3</div>
+                   })}
                     <div className={[' flex justify-end items-center w-8-7 cursor-pointer', !showJump ? 'bg-primary-green text-menu-black' : 'bg-black text-white'].join(" ")}>
-                        <div className=''>Next</div>
+                        <div className='' onClick={() => handleNextPage()}>Next</div>
                         <div className='rotate-180 pl-1-0'>
                             <div className='icon iconfont icon-left1 ' style={{ fontSize: '30px', }}></div>
                         </div>

@@ -23,7 +23,7 @@ const BlockDetails = () => {
             { title: 'Gas Limit', content: 'null' },
         ])
         changeBlockDetails(blockDetails = res.data.result.header)
-        console.log(res)
+        console.log('区块详情', res)
     }
     useEffect(() => {
         fetchBlockDetails()

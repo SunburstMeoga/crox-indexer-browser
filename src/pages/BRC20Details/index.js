@@ -8,18 +8,19 @@ import { useParams } from 'react-router-dom';
 
 const BRC20Details = () => {
     let [cardList, setCardList] = useState([
-        { title: 'Total Amount', quantities: 23223 },
-        { title: 'Casting Quantity', quantities: 23223 },
-        { title: 'Single Casting Limit', quantities: 23223 },
-        { title: 'Decimal Precision', quantities: 23223 },
-        { title: 'Number Of Holders', quantities: 23223 },
-        { title: 'Total Transaction Volume', quantities: 23223 },
+        { title: 'Total Amount', quantities: '' },
+        { title: 'Casting Quantity', quantities: '' },
+        { title: 'Single Casting Limit', quantities: '' },
+        { title: 'Decimal Precision', quantities: '' },
+        { title: 'Number Of Holders', quantities: '' },
+        { title: 'Total Transaction Volume', quantities: '' },
     ])
     let [detailsList, setDetailsList] = useState([
-        { title: 'Deployed by:', content: 34234 },
-        { title: 'Inscription Starting Nunber:', content: 'asdfsdfsdfa' },
-        { title: 'End Number Of Inscription:', content: 'asdfsdfsdfa' }
+        { title: 'Deployed by:', content: '' },
+        { title: 'Inscription Starting Nunber:', content: '' },
+        { title: 'End Number Of Inscription:', content: '' }
     ])
+    let [transListPagination,changeTransListPagination]  = useState({})
     const dataTypes = [
         { title: 'Holder', vlaue: 0 },
         { title: 'Transfer', vlaue: 1 }
@@ -42,18 +43,18 @@ const BRC20Details = () => {
     }
 
     const holderTitleColumnsData = [
-        { title: 'Number', titleWidth: '', colWidth: 'w-10-0 lg:w-20-0', flag: 'id' },
-        { title: 'Holder Address', titleWidth: '', colWidth: 'w-13-0  lg:w-30-0', flag: 'address', filterAddress: true },
+        { title: 'Number', titleWidth: '', colWidth: 'w-10-0 lg:flex-1', flag: 'id' },
+        { title: 'Holder Address', titleWidth: '', colWidth: 'w-13-0  lg:w-20-0', flag: 'address', filterAddress: true },
         { title: 'Holdding Ratio', titleWidth: '', colWidth: 'w-10-0  lg:w-32-0', flag: 'percentage', },
-        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: 'w-10-0  lg:w-20-0', flag: 'balance' },
+        { title: 'Quantity Held', titleWidth: 'w-32', colWidth: 'w-10-0  lg:w-28-0', flag: 'balance' },
     ]
     const transferTitleaColumusData = [
-        { title: 'Number', titleWidth: '', colWidth: 'w-10-0 lg:w-10-6', flag: 'id' },
+        { title: 'Number', titleWidth: '', colWidth: 'w-10-0 lg:flex-1', flag: 'id' },
         { title: 'Method', titleWidth: '', colWidth: 'w-10-0 lg:w-18-0', flag: 'method', },
-        { title: 'Quantity', titleWidth: '', colWidth: 'w-10-0 lg:w-11-0', flag: 'amount', },
+        { title: 'Quantity', titleWidth: '', colWidth: 'w-10-0 lg:w-14-0', flag: 'amount', },
         { title: 'Balance', titleWidth: 'w-32', colWidth: 'w-10-0  lg:w-10-5', flag: 'balance' },
-        { title: 'From', titleWidth: '', colWidth: 'w-13-0  lg:w-15-0', flag: 'from', filterAddress: true },
-        { title: 'Arrive', titleWidth: '', colWidth: 'w-13-0  lg:w-15-3', flag: 'to', filterAddress: true },
+        { title: 'From', titleWidth: '', colWidth: 'w-13-0  lg:flex-1', flag: 'from', filterAddress: true },
+        { title: 'Arrive', titleWidth: '', colWidth: 'w-13-0  lg:flex-1', flag: 'to', filterAddress: true },
         { title: 'Time', titleWidth: 'w-32', colWidth: 'w-20-0 lg:flex-1', flag: 'txtime' },
     ]
     const supplyCards = [
@@ -65,6 +66,7 @@ const BRC20Details = () => {
     ]
     let [holderDataColumns, upHolderDataColumns] = useState([])
     let [transferDataColumns, upTransferDataColumns] = useState([])
+    
     const { name } = useParams()
     useEffect(() => {
         let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "pagesize": 100, "id": 83 }
@@ -93,17 +95,27 @@ const BRC20Details = () => {
         console.log('brc20详情', details)
     }
     //brc20交易列表
-    const fetchBrc20TransferList = async () => {
-        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": dataFilter[currentFilter].value, "fork": "202" }, "id": 83 })
+    const fetchBrc20TransferList = async (targetPageNumber) => {
+        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": dataFilter[currentFilter].value,pagenumber:targetPageNumber || 0, "fork": "202" }, "id": 83 })
         console.log('brc20交易列表', brc20TransList.data.result)
-
+        const { pagenumber, pagesize, totalpagecount,totalrecordcount } = brc20TransList.data.result
         upTransferDataColumns(transferDataColumns = brc20TransList.data.result.datalist)
+        let obj = {
+            pagenumber,
+            pagesize,totalpagecount,totalrecordcount,pageNumbers:[pagenumber + 1,pagenumber + 2, pagenumber + 3]
+        }
+        changeTransListPagination(transListPagination = obj)
     }
     //brc20持有量列表
     const featchBrc20HolderList = async () => {
-        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": name, "pagenumber": 0, "pagesize": 100, "fork": "202" }, "id": 83 })
+        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": name, "pagenumber": 0, "pagesize": 1000, "fork": "202" }, "id": 83 })
         console.log('brc20持有量列表', brc20HolderList)
         upHolderDataColumns(holderDataColumns = brc20HolderList.data.result)
+    }
+    //点击分页器某个页数
+    const handlePageNumber = (pageNumber) => {
+        console.log('click page numnber', pageNumber)
+        fetchBrc20TransferList(pageNumber - 1)
     }
 
     return (
@@ -176,7 +188,8 @@ const BRC20Details = () => {
                             </div>}
 
                             <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                                <Pagination showJump={false} />
+                                {transferDataColumns.length !== 0 && <Pagination showJump={false} getPageNumber={handlePageNumber} paginatioInfo={transListPagination} />}
+                                
                             </div>
                         </div>
 
