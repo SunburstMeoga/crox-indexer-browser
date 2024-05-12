@@ -117,7 +117,16 @@ const BRC20Details = () => {
         console.log('click page numnber', pageNumber)
         fetchBrc20TransferList(pageNumber - 1)
     }
-
+    //点击上一页
+    const handlePrevPage = () => {
+        if(transListPagination.pagenumber <= 0) return
+        fetchBrc20TransferList(transListPagination.pagenumber - 1)
+    }
+    //点击下一页
+    const handleNextPage = () => {
+        if(transListPagination.pagenumber >= Math.floor(transListPagination.totalrecordcount / transListPagination.totalpagecount)) return
+        fetchBrc20TransferList(transListPagination.pagenumber + 1)
+    }
     return (
         <div>
             <div className='bg-primary-green w-full flex flex-col items-center justify-start min-h-svh'>
@@ -188,7 +197,7 @@ const BRC20Details = () => {
                             </div>}
 
                             <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                                {transferDataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} />}
+                                {transferDataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} />}
                                 
                             </div>
                         </div>

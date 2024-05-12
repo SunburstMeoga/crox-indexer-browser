@@ -49,7 +49,9 @@ const MenuBar = () => {
             </div>
             <div className='px-1-4 mt-2-0 pb-2-0 lg:hidden'>
                 <div className='bg-line-gray rounded-full border border-search-line'>
-                    <div className='flex justify-between items-center bg-line-gray rounded-full text-search-gray' onClick={() => { navigate('/search') }}>
+                    {/* <div className='flex justify-between items-center bg-line-gray rounded-full text-search-gray' onClick={() => { navigate('/search') }}> */}
+                    <div className='flex justify-between items-center bg-line-gray rounded-full text-search-gray' >
+
                         <div className='w-full h-2-5'>
                             <input className='bg-transparent outline-none rounded-full w-full h-full'></input>
                         </div>

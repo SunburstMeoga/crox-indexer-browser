@@ -57,19 +57,19 @@ const BlockDetails = () => {
                             Transaction Details
                         </div>
                     </div>
-                    <div className='w-full  justify-end pr-7-7 mb-0-7 hidden xl:flex'>
+                    {/* <div className='w-full  justify-end pr-7-7 mb-0-7 hidden xl:flex'>
                         <PageSize />
-                    </div>
-                    <div className='w-full'>
+                    </div> */}
+                    {/* <div className='w-full'>
                         {transactionsList.map((item, index) => {
                             return <div className='w-full mt-1-5 xl:mt-auto lg:mb-1-2 lg:px-2-9 xl:px-7-7' key={index}>
                                 <DetailsCard></DetailsCard>
                             </div>
                         })}
-                    </div>
-                    <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
+                    </div> */}
+                    {/* <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
                         <Pagination showJump />
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

@@ -1,14 +1,12 @@
 import React from 'react'
 
-const Pagination = ({ showJump, getPageNumber, paginatioInfo }) => {
+const Pagination = ({ showJump, getPageNumber, paginatioInfo,toPrevPage,toNextPage }) => {
     console.log('paginatioInfo', paginatioInfo)
     const handlePrevPage = () => {
-        console.log('点击上一页')
-        console.log(paginatioInfo)
+       toPrevPage()
     }
     const handleNextPage = () => {
-        console.log('点击下一页')
-        console.log(paginatioInfo)
+        toNextPage()
     }
     const handlePageNumber = (pageNumber) => {
         getPageNumber(pageNumber)
@@ -25,7 +23,7 @@ const Pagination = ({ showJump, getPageNumber, paginatioInfo }) => {
                         <div className='' onClick={() => handlePrevPage()}>Prev</div>
                     </div>
                     {paginatioInfo.pageNumbers.map((item, index) => {
-                        return <div onClick={() => handlePageNumber(item)} key={index} className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>{ item}</div>
+                        return <div onClick={() => handlePageNumber(item)} key={index} className={['border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black', index === paginatioInfo.pageNumbers.length - 1 ? 'border-r' : ''].join(" ")}>{ item}</div>
                     //    <div className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>2</div>
                     //    <div className='border-x  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>3</div>
                    })}
@@ -39,8 +37,8 @@ const Pagination = ({ showJump, getPageNumber, paginatioInfo }) => {
                 {showJump && <div className='flex justify-start items-center text-black text-1-5 font-medium ml-1-2'>
                     <div className=''>page</div>
                     <div className='h-3-2 w-4-1 bg-black  rounded-xl flex justify-center items-center text-white mx-1-0'>
-                        {/* <input className='h-3-0 w-full bg-transparent border-none text-center text-white' placeholder="23"></input> */}
-                        23
+                        {paginatioInfo.pagenumber + 1}
+                        
                     </div>
                     <div>of 100</div>
                     {/* <div className='h-3-2 w-3-2 bg-black  rounded-xl flex justify-center items-center text-primary-green ml-1-0'>Go</div> */}

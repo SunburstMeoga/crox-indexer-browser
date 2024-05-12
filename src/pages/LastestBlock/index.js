@@ -49,7 +49,7 @@ const LastestBlock = () => {
         </div>
 
         <div className='w-full hidden lg:flex justify-end mb-7-0 pr-7-8'>
-          <Pagination showJump />
+          {/* <Pagination showJump /> */}
         </div>
       </div>
     </div>
