@@ -48,13 +48,12 @@ const Brc20TradLine = ({ tradeLineData }) => {
                 },
             ],
             grid: {
-                // top: 20,
+                top: 20,
                 // left: 40,
                 // right: 10,
                 // bottom: ,
                 bottom: 20,
-                // width: 'auto',
-                // height: 'auto'
+                left:60,
             },
         };
         option && myChart.setOption(option);
@@ -98,14 +97,14 @@ const Brc20TradLine = ({ tradeLineData }) => {
                         </div>
                         <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Brc20 Trading</div>
                     </div>
-                    <div className='flex justify-start items-center'>
+                    {/* <div className='flex justify-start items-center'>
                         <div className='flex justify-start items-center'>
                             <div className='bg-blue-500 w-0-7 h-0-2'></div>
                             <div className='bg-blue-500 w-0-9 h-0-9 rounded-full'></div>
                             <div className='bg-blue-500 w-0-7 h-0-2'></div>
                         </div>
                         <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Trade</div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

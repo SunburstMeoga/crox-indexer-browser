@@ -56,11 +56,12 @@ const TradSmoothedLine = ({ tradeLineData }) => {
                 },
             ],
             grid: {
-                // top: 20,
+                top: 20,
                 // left: 40,
                 // right: 10,
                 // bottom: ,
                 bottom: 20,
+                left:40,
                 // width: 'auto',
                 // height: 'auto'
             },
@@ -96,16 +97,16 @@ const TradSmoothedLine = ({ tradeLineData }) => {
                         </div>
                     </div>
                 </div>
-                <div id='chart2' className='h-11-4 lg:h-28-0 ' style={{ width: '106%',margin: '0', padding: '0',}}></div>
+                <div id='chart2' className='h-11-4 lg:h-28-0' style={{ width: '106%',margin: '0', padding: '0',}}></div>
                 <div className='block mt-1-0 lg:hidden xl:hidden'>
-                    <div className='flex justify-start items-center mb-0-6'>
+                    {/* <div className='flex justify-start items-center mb-0-6'>
                         <div className='flex justify-start items-center'>
                             <div className='bg-title-green w-0-7 h-0-2'></div>
                             <div className='bg-title-green w-0-9 h-0-9 rounded-full'></div>
                             <div className='bg-title-green w-0-7 h-0-2'></div>
                         </div>
                         <div className='text-line-gray text-1-0 font-semibold ml-1-2'>Brc20 Trading</div>
-                    </div>
+                    </div> */}
                     <div className='flex justify-start items-center'>
                         <div className='flex justify-start items-center'>
                             <div className='bg-blue-500 w-0-7 h-0-2'></div>

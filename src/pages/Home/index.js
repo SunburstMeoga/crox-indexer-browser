@@ -95,7 +95,7 @@ const Home = () => {
             <div className='w-full bg-menu-black flex flex-col items-center pb-2-6 lg:pb-0-1 lg:pt-1-4'>
                 <div className='w-full px-1-0 lg:px-4-3'>
                     <div className='w-full flex-wrap lg:flex  lg:justify-between lg:items-center lg:mb-1-7 mb-1-0'>
-                        <div className='overflow-hidden  px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:px-2-4 lg:py-2-0 xl:h-34-0'>
+                        <div className='overflow-hidden mb-1-0 px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:px-2-4 lg:py-2-0 xl:h-34-0'>
                             {tradeLineData && <TradSmoothedLine tradeLineData={tradeLineData} />}
                         </div>
                         <div className='overflow-hidden  px-1-8 py-1-2 rounded-2xl border border-black-line w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:px-2-4 lg:py-2-0 xl:h-34-0'>
