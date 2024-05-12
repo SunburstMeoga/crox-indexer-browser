@@ -188,7 +188,7 @@ const BRC20Details = () => {
                             </div>}
 
                             <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                                {transferDataColumns.length !== 0 && <Pagination showJump={false} getPageNumber={handlePageNumber} paginatioInfo={transListPagination} />}
+                                {transferDataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} />}
                                 
                             </div>
                         </div>

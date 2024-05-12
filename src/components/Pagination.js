@@ -39,10 +39,11 @@ const Pagination = ({ showJump, getPageNumber, paginatioInfo }) => {
                 {showJump && <div className='flex justify-start items-center text-black text-1-5 font-medium ml-1-2'>
                     <div className=''>page</div>
                     <div className='h-3-2 w-4-1 bg-black  rounded-xl flex justify-center items-center text-white mx-1-0'>
-                        <input className='h-3-0 w-full bg-transparent border-none text-center text-white' placeholder="23"></input>
+                        {/* <input className='h-3-0 w-full bg-transparent border-none text-center text-white' placeholder="23"></input> */}
+                        23
                     </div>
                     <div>of 100</div>
-                    <div className='h-3-2 w-3-2 bg-black  rounded-xl flex justify-center items-center text-primary-green ml-1-0'>Go</div>
+                    {/* <div className='h-3-2 w-3-2 bg-black  rounded-xl flex justify-center items-center text-primary-green ml-1-0'>Go</div> */}
                 </div>}
 
             </div>
