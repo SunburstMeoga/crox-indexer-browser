@@ -49,8 +49,8 @@ const Home = () => {
     const fetchListBlock = async () => {
         try {
             const blockListData = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 6 }, "pagesize": 100, "id": 83 })
-            console.log('列表',blockListData)
-            fetchBlockList(blockList = blockListData.data.result)
+            console.log('区块列表',blockListData)
+            fetchBlockList(blockList = blockListData.data.result.datalist)
         } catch (err) {
             console.log(err)
         }

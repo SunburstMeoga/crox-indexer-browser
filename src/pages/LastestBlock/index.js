@@ -25,7 +25,7 @@ const LastestBlock = () => {
     try {
       const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 10, }, "id": 83 })
       console.log(listblock)
-      changeDataColumns(dataColumns = listblock.data.result)
+      changeDataColumns(dataColumns = listblock.data.result.datalist)
     } catch (err) {
       console.log(err)
     }
