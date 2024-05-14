@@ -18,17 +18,46 @@ const LastestBlock = () => {
 
     { title: 'Time', titleWidth: '', colWidth: 'w-10-2', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])
+  let [blockListPagination, changeBlockListPagination] = useState({})
   useEffect(() => {
-    fetchListBlock()
+    fetchListBlock(0)
   }, [])
-  const fetchListBlock = async () => {
+  const fetchListBlock = async (targetPageNumber) => {
+    console.log(targetPageNumber)
     try {
-      const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 10, }, "id": 83 })
+      const listblock = await getListBlock({ "jsonrpc": "2.0", "method": "listblock", "params": { "fork": "202", "pagesize": 10, pagenumber: targetPageNumber || 0 }, "id": 83 })
       console.log(listblock)
+      const { pagenumber, pagesize, totalpagecount, totalrecordcount } = listblock.data.result
+
       changeDataColumns(dataColumns = listblock.data.result.datalist)
+      let obj = {
+        pagenumber,
+        pagesize, totalpagecount, totalrecordcount, pageNumbers: [pagenumber + 1, pagenumber + 2, pagenumber + 3]
+      }
+      changeBlockListPagination(blockListPagination = obj)
     } catch (err) {
       console.log(err)
     }
+  }
+  //点击分页器某个页数
+  const handlePageNumber = (pageNumber) => {
+    console.log('click page numnber', pageNumber)
+    fetchListBlock(pageNumber - 1)
+
+  }
+  //点击上一页
+  const handlePrevPage = () => {
+    console.log('上一页',blockListPagination.pagenumber - 1)
+    if (blockListPagination.pagenumber <= 0) return
+    fetchListBlock(blockListPagination.pagenumber - 1)
+
+  }
+  //点击下一页
+  const handleNextPage = () => {
+    console.log('下一页',blockListPagination.pagenumber)
+    if (blockListPagination.pagenumber >= Math.floor(blockListPagination.totalrecordcount / blockListPagination.totalpagecount)) return
+    fetchListBlock(blockListPagination.pagenumber + 1)
+
   }
   return (
     <div className='bg-primary-green w-full min-h-svh '>
@@ -37,7 +66,7 @@ const LastestBlock = () => {
           Latest Block
         </div>
         <div className='w-full hidden lg:flex justify-end pr-7-8 mb-0-7 '>
-          <PageSize />
+          {/* <PageSize /> */}
         </div>
         <div className='lg:px-3-0 w-full lg:mb-3-3'>
           <div className='bg-white w-full lg:rounded-3xl lg:pt-1-7 shadow-2xl relative overflow-x-hidden'>
@@ -49,7 +78,7 @@ const LastestBlock = () => {
         </div>
 
         <div className='w-full hidden lg:flex justify-end mb-7-0 pr-7-8'>
-          {/* <Pagination showJump /> */}
+          {dataColumns.length !==0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} />}
         </div>
       </div>
     </div>
