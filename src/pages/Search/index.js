@@ -26,11 +26,11 @@ function Search() {
                             <div className='w-0-1 h-1-4 lg:h-2-4 xl:h-2-4 bg-search-border'></div>
                         </div>
                         {showSelect && <div className='absolute xl:w-22-5 xl:px-2-4 bg-black-0.58 backdrop-blur-md text-select-item rounded-xl text-1-0 top-14-0 px-1-0 lg:text-1-6 lg:top-18-0 lg:px-2-0 xl:text-2-0 xl:top-28-0 font-bold' onMouseLeave={() => handleSelect()}>
-                            <div className='py-1-2 cursor-pointer hover:text-white'>picture</div>
+                            {/* <div className='py-1-2 cursor-pointer hover:text-white'>picture</div>
                             <div className='py-1-2 cursor-pointer hover:text-white'>text</div>
                             <div className='py-1-2 cursor-pointer hover:text-white'>video</div>
-                            <div className='py-1-2 cursor-pointer hover:text-white'>Audio</div>
-                            <div className='py-1-2 cursor-pointer hover:text-white'>Block Chain</div>
+                            <div className='py-1-2 cursor-pointer hover:text-white'>Audio</div> */}
+                            <div className='py-1-2 cursor-pointer hover:text-white'>Block</div>
                             <div className='py-1-2 cursor-pointer hover:text-white'>Transaction Hash</div>
                         </div>}
                         <div className='flex-1 pl-1-0'>

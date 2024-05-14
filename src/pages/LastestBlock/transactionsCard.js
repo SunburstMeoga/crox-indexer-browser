@@ -32,8 +32,8 @@ const TransactionsCard = ({ detailsInfo }) => {
                             return <div key={index}
                                 className={['flex justify-start items-center  h-4-9 text-1-5', index !== detailsInfo.length - 1 ? "border-b border-line-transction" : ""].join(" ")}>
                                 <div className='pl-1-4 text-trans-gray border-r border-line-transction w-21-3 h-4-9 flex items-center'>{item.title}</div>
-                                <div className='flex justify-start items-end text-wrap break-words'>
-                                    <div className='pl-1-4 text-white font-medium text-wrap break-words'>{item.content}</div>
+                                <div className='flex justify-start items-end xl:items-center'>
+                                    <div className='pl-1-4 text-white font-medium text-wrap break-words xl:w-40-0 '>{item.content}</div>
                                     {item.canCopy && <div onClick={() => handleCopyText(item.content)} className='text-title-green ml-7-8 cursor-pointer'>
                                         <div className='icon iconfont icon-copy2' style={{ fontSize: '22px' }}></div>
                                     </div>}

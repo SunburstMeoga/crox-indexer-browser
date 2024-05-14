@@ -5,13 +5,14 @@ import DetailsCard from './detailsCard'
 import Pagination from '@/components/Pagination'
 import { useParams } from 'react-router-dom'
 import { getBlockDetails } from '@/api/homeApi'
+import { FilterTime } from '../../utils/format'
 
 const BlockDetails = () => {
     const params = useParams()
     const { hash } = params
     let [detailsCard, getDetailsCard] = useState([])
     let [blockDetails, changeBlockDetails] = useState([])
-    const transactionsList = ['', '', '']
+    let [transactionsList, changeTrasactionList] = useState([])
     const fetchBlockDetails = async () => {
         let res = await getBlockDetails({ "jsonrpc": "2.0", "method": "getblockbrcinfo", "params": { "blockhash": hash, "fork": "202" }, "id": 83 })
         const { height, txmint, reward } = res.data.result.header
@@ -23,6 +24,7 @@ const BlockDetails = () => {
             { title: 'Gas Limit', content: 'null' },
         ])
         changeBlockDetails(blockDetails = res.data.result.header)
+        changeTrasactionList(transactionsList = res.data.result.datalist)
         console.log('区块详情', res)
     }
     useEffect(() => {
@@ -41,7 +43,7 @@ const BlockDetails = () => {
                         <div className='pl-2-5 lg:pl-9-9 w-full text-white font-light lg:font-medium'>
                             <div className='mb-1-8 text-3-0 hidden lg:block'>Blockchain</div>
                             <div className='mb-1-0 mt-2-0 lg:mt-0-1 text-3-0 lg:mb-1-8 lg:text-6-0'>#{blockDetails.height}</div>
-                            <div className='text-1-2 lg:text-2-3'>{blockDetails.time} common</div>
+                            <div className='text-1-2 lg:text-2-3'>{FilterTime(blockDetails.time)} common</div>
                         </div>
                     </div>
                 </div>
@@ -60,16 +62,16 @@ const BlockDetails = () => {
                     {/* <div className='w-full  justify-end pr-7-7 mb-0-7 hidden xl:flex'>
                         <PageSize />
                     </div> */}
-                    {/* <div className='w-full'>
+                    <div className='w-full'>
                         {transactionsList.map((item, index) => {
                             return <div className='w-full mt-1-5 xl:mt-auto lg:mb-1-2 lg:px-2-9 xl:px-7-7' key={index}>
-                                <DetailsCard></DetailsCard>
+                                <DetailsCard itemContent={item} hash={blockDetails.hash}></DetailsCard>
                             </div>
                         })}
-                    </div> */}
-                    {/* <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
-                        <Pagination showJump />
-                    </div> */}
+                    </div>
+                    <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
+                        {/* <Pagination showJump /> */}
+                    </div>
                 </div>
 
             </div>

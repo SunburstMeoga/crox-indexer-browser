@@ -17,7 +17,7 @@ export function FilterAddress(value, startIndex = 3, endIndex = 4) {
 }
 
 export function FilterTime(value) {
-    var timestamp = new Date(value).getTime()
+    var timestamp = new Date(value * 1000).getTime()
     let date = new Date(parseInt(timestamp))
     let Year = date.getFullYear()
     let Moth = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1

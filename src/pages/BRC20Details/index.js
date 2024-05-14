@@ -29,8 +29,8 @@ const BRC20Details = () => {
     ]
     const dataFilter = [
         { title: 'All', value: 0 },
-        { title: 'Engraved casting', value: 1 },
-        { title: 'Engraved transfer', value: 2 },
+        { title: 'Inscribe-mint', value: 1 },
+        { title: 'Inscribe-transfer', value: 2 },
         { title: 'Transfer', value: 3 },
     ]
     let [cuerrentType, changeType] = useState(0)
