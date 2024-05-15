@@ -2,9 +2,19 @@ import React, { useState } from 'react'
 
 function Search() {
     let [showSelect, toggleSelect] = useState(false)
+    let [selectTarget, changeSelectTarget] = useState(0)
+    let [] = useState()
     const handleSelect = () => {
         toggleSelect(showSelect = !showSelect)
     }
+    const handleFilter = (item, index) => {
+        changeSelectTarget(selectTarget = index)
+        toggleSelect(showSelect = !showSelect)
+        console.log(item,selectTarget)
+
+    }
+    let selectList = [{title:'Brc-20'},{title: 'Block'},{title:'Transaction Hash'}]
+
     return (
         <div>
             <div className='text relative'>
@@ -19,7 +29,7 @@ function Search() {
                     </div>
                     <div className='w-20-8 py-0-6 px-1-0 lg:w-54-3 xl:w-70-4 rounded-full bg-white lg:py-1-5 lg:px-2-0 xl:py-1-2 xl:px-1-7 mt-2-8 xl:mt-3-2 flex justify-between items-center'>
                         <div className='text-line-gray font-medium text-1-0 lg:text-2-0 flex justify-start items-center relative cursor-pointer' onClick={() => handleSelect()}>
-                            <div className='pr-0-4 xl:pr-1-0 font-medium'>Brc-20</div>
+                            <div className='pr-0-4 xl:pr-1-0 font-medium'>{ selectList[selectTarget].title}</div>
                             <div className='icon iconfont icon-down1 pr-0-4 xl:pr-1-0 text-down-icon hidden lg:block'></div>
                             <div className='icon iconfont icon-down1 pr-0-4 xl:pr-1-0 text-down-icon block xl:hidden' style={{fontSize: '10px'}}></div>
 
@@ -30,8 +40,11 @@ function Search() {
                             <div className='py-1-2 cursor-pointer hover:text-white'>text</div>
                             <div className='py-1-2 cursor-pointer hover:text-white'>video</div>
                             <div className='py-1-2 cursor-pointer hover:text-white'>Audio</div> */}
-                            <div className='py-1-2 cursor-pointer hover:text-white'>Block</div>
-                            <div className='py-1-2 cursor-pointer hover:text-white'>Transaction Hash</div>
+                            {selectList.map((item, index) => {
+                                return <div key={index} className='py-1-2 cursor-pointer hover:text-white' onClick={() => {handleFilter(item, index)}}>{ item.title }</div>
+                            })}
+                            {/* <div className='py-1-2 cursor-pointer hover:text-white'>Block</div>
+                            <div className='py-1-2 cursor-pointer hover:text-white'>Transaction Hash</div> */}
                         </div>}
                         <div className='flex-1 pl-1-0'>
                             <input className='w-full h-full'></input>

@@ -126,7 +126,7 @@ const Home = () => {
                             <HomeCard cardInfo={{ point: '24.73',title: 'Number Of Address', time: '24h', amount: btcInfor.brc20addresscount, tide: 'up', trading: btcInfor.h24brc20addresscount }} />
                         </div>
                         <div className='overflow-hidden rounded-2xl border border-line-gray  bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-58-6 xl:w-54-3 lg:mb-1-7'>
-                            <HomeCard cardInfo={{point: '36.22', title: 'Number Of Transactions', time: '24h', amount: btcInfor.btctxcount, tide: 'up', trading: btcInfor.h24brc20recordcount }} />
+                            <HomeCard cardInfo={{point: '36.22', title: 'Number Of Transactions', time: '24h', amount: btcInfor.brc20recordcount, tide: 'up', trading: btcInfor.h24brc20recordcount }} />
                         </div>
                         {/* <div className='overflow-hidden rounded-2xl border border-line-gray w-full bg-card-black cursor-pointer transform ease-in-out duration-500 hover:border-slate-500 hover:shadow-zinc-950 hover:shadow-xl lg:w-54-3'>
                             <HomeCard cardInfo={{ title: 'Total Value', time: '24h', amount: '$24,437,340,581', tide: '', trading: '194,587' }} />
