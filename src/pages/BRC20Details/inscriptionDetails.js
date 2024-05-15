@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { insTionDetails } from '@/api/homeApi'
 import { useParams } from 'react-router-dom'
+import { FilterTime } from '../../utils/format'
+import { notification } from "antd";
+
 function InscriptionDetails() {
     const params = useParams()
     const { inscriptionid } = params
@@ -40,11 +43,27 @@ function InscriptionDetails() {
         console.log('查询铭文详情',insDetailsInfo)
 
     }
+    const [api, contextHolder] = notification.useNotification();
+    const handleCopyText = async (value) => {
+        // console.log(value)
+        try {
+            await navigator.clipboard.writeText(value);
+            console.log('文本已成功复制到剪贴板');
+            api['success']({
+              message: '已复制',
+              description:
+                `已将 ${value} 添加至粘贴板`,
+            });
+          } catch (error) {
+            console.error('复制文本失败:', error);
+          }
+    }
     useEffect(() => {
         getInsTionsDetails()
     }, [])
     return (
         <div>
+            {contextHolder}
             <div className='flex flex-col justify-start items-center'>
                 <div className='w-full relative '>
                     <div className=''>
@@ -56,9 +75,9 @@ function InscriptionDetails() {
                     </div>
                     <div className='absolute top-0-1 w-full flex justify-center items-center h-full'>
                         <div className='pl-2-5 lg:pl-3-3 xl:pl-9-9 w-full text-white font-light lg:font-medium'>
-                            <div className='mb-1-8 text-3-0 hidden xl:block'>Blockchain</div>
+                            <div className='mb-1-8 text-3-0 hidden xl:block'>Block</div>
                             <div className='mb-1-0 mt-2-0 lg:mt-0-1 text-3-0 lg:mb-1-8 lg:text-6-0'>#{ insDetailsInfo.inscriptionnumber}</div>
-                            <div className='text-1-2 lg:text-2-3'>{insDetailsInfo.timestamp} { insDetailsInfo.rarity}</div>
+                            <div className='text-1-2 lg:text-2-3'>{FilterTime(insDetailsInfo.timestamp)} { insDetailsInfo.rarity}</div>
                         </div>
                     </div>
                 </div>
@@ -86,7 +105,7 @@ function InscriptionDetails() {
                                 return <div key={index} className={['px-2-8 -mt-0-1 pt-1-6 lg:py-2-1 bg-module-title w-full xl:w-49-0 h-9-2 lg:h-12-1 lg:rounded-2xl', index !== detailsCard.length - 1 ? 'lg:mb-1-0' : ''].join(" ")}>
                                     <div className='flex justify-between items-center w-full'>
                                         <div className='text-1-0 lg:text-1-5 font-semibold text-select-color'>{item.title}</div>
-                                        {item.canCopy && <div className=''>
+                                        {item.canCopy && <div className='' onClick={() => handleCopyText(item.content)}>
                                             <div className='icon iconfont icon-copy2 text-primary-green cursor-pointer' style={{ fontSize: '2.4rem' }}></div>
                                         </div>}
                                     </div>

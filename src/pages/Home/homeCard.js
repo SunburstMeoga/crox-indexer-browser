@@ -10,8 +10,16 @@ const HomeCard = ({ cardInfo }) => {
                 </div>
                 <div className='flex justify-between items-center'>
                     <div className='text-white font-light text-2-0 lg:text-3-0 lg:leading-3-1'>{cardInfo.amount}</div>
-                    <div className={[' font-semibold lg:text-1-5 lg:leading-3-1', cardInfo.tide === 'up' ? 'text-title-green' : 'text-decline-red'].join("  ")}>{cardInfo.tide === 'up' ? '+' : '-'}{cardInfo.trading}</div>
+
+                    <div className='flex justify-end items-center font-semibold lg:text-1-5 lg:leading-3-1'>
+                        <div className={[' ', cardInfo.tide === 'up' ? 'text-title-green' : 'text-decline-red'].join("  ")}>{cardInfo.tide === 'up' ? '+' : '-'}{cardInfo.trading}</div>
+                        <div className='text-title-green flex justify-start items-center pl-2-0'>
+                            <div className={['icon iconfont icon-down1 ',cardInfo.tide === 'up' ? 'rotate-180' : ''].join(" ")}></div>
+                            <div className='pl-0-2'>{ cardInfo.point}%</div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     )

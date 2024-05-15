@@ -109,22 +109,44 @@ const BRC20Details = () => {
         console.log('brc20交易列表', brc20TransList.data.result.datalist)
         const { pagenumber, pagesize, totalpagecount, totalrecordcount } = brc20TransList.data.result
         upTransferDataColumns(transferDataColumns = brc20TransList.data.result.datalist)
+        let pageCountArr = []
+        if (pagenumber <= 2) {
+            // pageCountArr = [pagenumber - 2, pagenumber - 1, pagenumber + 1, pagenumber + 2, pagenumber + 3]
+            pageCountArr = [1, 2, 3, 4, 5]
+        } else {
+            pageCountArr = [pagenumber - 1, pagenumber, pagenumber + 1, pagenumber + 2, pagenumber + 3]
+        }
+        if (pagenumber === totalpagecount - 1) {
+            console.log('afsdf')
+            pageCountArr = [pagenumber - 3, pagenumber - 2, pagenumber - 1, pagenumber, pagenumber + 1]
+        }
         let obj = {
             pagenumber,
-            pagesize, totalpagecount, totalrecordcount, pageNumbers: [pagenumber + 1, pagenumber + 2, pagenumber + 3]
+            pagesize, totalpagecount, totalrecordcount, pageNumbers: pageCountArr
         }
         changeTransListPagination(transListPagination = obj)
     }
     //brc20持有量列表
     const featchBrc20HolderList = async (targetPageNumber) => {
-        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": name,  "pagesize": 10, pagenumber: targetPageNumber || 0, "fork": "202" }, "id": 83 })
+        let brc20HolderList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20address", "params": { "name": name, "pagesize": 10, pagenumber: targetPageNumber || 0, "fork": "202" }, "id": 83 })
         console.log('brc20持有量列表', brc20HolderList)
         const { pagenumber, pagesize, totalpagecount, totalrecordcount } = brc20HolderList.data.result
 
         upHolderDataColumns(holderDataColumns = brc20HolderList.data.result.datalist)
+        let pageCountArr = []
+        if (pagenumber <= 2) {
+            // pageCountArr = [pagenumber - 2, pagenumber - 1, pagenumber + 1, pagenumber + 2, pagenumber + 3]
+            pageCountArr = [1, 2, 3, 4, 5]
+        } else {
+            pageCountArr = [pagenumber - 1, pagenumber, pagenumber + 1, pagenumber + 2, pagenumber + 3]
+        }
+        if (pagenumber === totalpagecount - 1) {
+            console.log('afsdf')
+            pageCountArr = [pagenumber - 3, pagenumber - 2, pagenumber - 1, pagenumber, pagenumber + 1]
+        }
         let obj = {
             pagenumber,
-            pagesize, totalpagecount, totalrecordcount, pageNumbers: [pagenumber + 1, pagenumber + 2, pagenumber + 3]
+            pagesize, totalpagecount, totalrecordcount, pageNumbers: pageCountArr
         }
         changeHoldListPagination(holdListPagination = obj)
     }
@@ -136,7 +158,7 @@ const BRC20Details = () => {
         } else {
             featchBrc20HolderList(pageNumber - 1)
         }
-       
+
     }
     //点击上一页
     const handlePrevPage = () => {
@@ -158,6 +180,24 @@ const BRC20Details = () => {
         } else {
             if (holdListPagination.pagenumber >= Math.floor(holdListPagination.totalrecordcount / holdListPagination.totalpagecount)) return
             featchBrc20HolderList(holdListPagination.pagenumber + 1)
+        }
+    }
+    //点击第一页
+    const handleFirstPage = () => {
+        console.log('first page')
+        if (cuerrentType === 1) {
+            fetchBrc20TransferList(0)
+        } else {
+            featchBrc20HolderList(0)
+        }
+    }
+    //点击最后一页
+    const handleLastPage = () => {
+        console.log('last page')
+        if (cuerrentType === 1) {
+            fetchBrc20TransferList(holdListPagination.totalpagecount - 1)
+        } else {
+            featchBrc20HolderList(transListPagination.totalpagecount - 1)
         }
     }
     return (
@@ -230,16 +270,16 @@ const BRC20Details = () => {
                             </div>}
 
                             {transferDataColumns.length !== 0 && cuerrentType == 1 && <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} />
+                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} />
                             </div>}
 
 
 
                             {holderDataColumns.length !== 0 && cuerrentType == 0 && <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                            <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={holdListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} />
+                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={holdListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} />
                             </div>}
 
-                           
+
                         </div>
 
                     </div>

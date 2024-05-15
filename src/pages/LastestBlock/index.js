@@ -97,7 +97,7 @@ const LastestBlock = () => {
               <div className='icon iconfont icon-right ml-0-5' style={{ fontSize: '20px' }}></div>
             </div>
             {!loading && <DataTable titleColumns={titleColumnsData} dataColumns={dataColumns} />}
-            {loading && <TableLoading></TableLoading>}
+            {/* {loading && <TableLoading></TableLoading>} */}
           </div>
         </div>
 

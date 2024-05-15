@@ -8,13 +8,20 @@ const Context = React.createContext({
 const DataTable = ({ titleColumns, dataColumns }) => {
   const navigate = useNavigate()
   const [api, contextHolder] = notification.useNotification();
-  const handleCopyText = (value) => {
-    console.log(value)
-    api['success']({
-      message: '已复制',
-      description:
-        `已将 ${value} 添加至粘贴板`,
-    });
+  const handleCopyText = async (event, value) => {
+    event.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(value);
+      console.log('文本已成功复制到剪贴板');
+      api['success']({
+        message: '已复制',
+        description:
+          `已将 ${value} 添加至粘贴板`,
+      });
+    } catch (error) {
+      console.error('复制文本失败:', error);
+    }
+
   }
   return (
     <div>
@@ -40,7 +47,7 @@ const DataTable = ({ titleColumns, dataColumns }) => {
                   {titleColumns[index].filterAddress ? FilterAddress(_item[item.flag]) : (item.flag ? _item[item.flag] : '')}
                 </div>
                 {titleColumns[index].canCopy &&
-                  <div className='h-full flex flex-col justify-start pr-1-0 lg:ml-1-0 pt-1-0' onClick={() => handleCopyText(_item[item.flag])}>
+                  <div className='h-full flex flex-col justify-start pr-1-0 lg:ml-1-0 pt-1-0' onClick={(e) => handleCopyText(e, _item[item.flag])}>
                     <div className='icon iconfont icon-copy2 text-copy-icon cursor-pointer pointer-hover' style={{ fontSize: '18px' }}></div>
                   </div>
                 }

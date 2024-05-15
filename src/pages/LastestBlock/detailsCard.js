@@ -14,16 +14,23 @@ const DetailsCard = ({ itemContent, hash }) => {
 
     ]
     const [api, contextHolder] = notification.useNotification();
-    const handleCopyText = (value) => {
-        console.log(value)
-        api['success']({
-            message: '已复制',
-            description:
+    const handleCopyText = async (value) => {
+        // console.log(value)
+        try {
+            await navigator.clipboard.writeText(value);
+            console.log('文本已成功复制到剪贴板');
+            api['success']({
+              message: '已复制',
+              description:
                 `已将 ${value} 添加至粘贴板`,
-        });
+            });
+          } catch (error) {
+            console.error('复制文本失败:', error);
+          }
     }
     return (
         <div>
+            {contextHolder}
             <div className='px-1-3 pt-1-4 lg:pb-2-8 lg:pt-3-6 lg:px-2-0 xl:px-6-9 overflow-hidden lg:rounded-2xl bg-white shadow-2xl'>
                 <div className='flex justify-start items-end mb-1-4'>
                     <div className='flex justify-start items-start text-title-blue '>

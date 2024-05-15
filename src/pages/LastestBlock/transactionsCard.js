@@ -5,13 +5,19 @@ import { notification } from "antd";
 // });
 const TransactionsCard = ({ detailsInfo,transCount }) => {
     const [api, contextHolder] = notification.useNotification();
-    const handleCopyText = (value) => {
+    const handleCopyText = async (value) => {
         // console.log(value)
-        api['success']({
-            message: '已复制',
-            description:
+        try {
+            await navigator.clipboard.writeText(value);
+            console.log('文本已成功复制到剪贴板');
+            api['success']({
+              message: '已复制',
+              description:
                 `已将 ${value} 添加至粘贴板`,
-        });
+            });
+          } catch (error) {
+            console.error('复制文本失败:', error);
+          }
     }
     return (
         <div>
