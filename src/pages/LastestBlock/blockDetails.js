@@ -19,7 +19,7 @@ const BlockDetails = () => {
     const fetchBlockDetails = async (targetPageNumber) => {
         changeLoading(loading = true)
         let res = await getBlockDetails({ "jsonrpc": "2.0", "method": "getblockbrcinfo", "params": { "blockhash": hash, pagenumber: targetPageNumber || 0, "fork": "202" }, "id": 83 })
-        const { height, txmint, reward, gasused, gaslimit } = res.data.result.header
+        const { height, txmint, reward, gasused, gaslimit,usertxcount, } = res.data.result.header
         const { pagenumber, pagesize, totalpagecount, totalrecordcount } = res.data.result
         getDetailsCard(detailsCard = [
             { title: 'Block Height', content: height },
@@ -30,7 +30,7 @@ const BlockDetails = () => {
         ])
         changeBlockDetails(blockDetails = res.data.result.header)
         changeTrasactionList(transactionsList = res.data.result.datalist)
-        changeTransCount(transCount = {count: '', brc20Count: ''})
+        changeTransCount(transCount = {count: usertxcount, brc20Count: totalrecordcount})
         let arr = []
         if (pagenumber === 0 || pagenumber === 1) {
             arr = [pagenumber + 1, pagenumber + 2, pagenumber + 3, pagenumber + 4, pagenumber + 5]

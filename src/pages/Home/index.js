@@ -66,13 +66,17 @@ const Home = () => {
             let lineData = {}
             statisticsData.data.result.map(item => {
                 xData.push(item.btcblockdate)
-                yData.push(item.brc20recordcount)
-                yData2.push(item.btctxcount)
+                yData2.push(item.brc20recordcount)
+                yData.push(item.btctxcount)
             })
+            let tradMax = Math.max(...yData)
+            let tradMin = Math.min(...yData);
+            console.log(tradMax, tradMin)
             lineData['xData'] = xData
             lineData['yData'] = yData
             lineData['yData2'] = yData2
-
+            lineData['tradInterval'] = 70000
+            lineData['brc20Interval'] = 2500
             getTradeLineData(tradeLineData = lineData)
             // console.log(lineData,tradeLineData)
 

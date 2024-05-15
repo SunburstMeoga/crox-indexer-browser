@@ -39,7 +39,8 @@ module.exports = {
         'down-icon': '#D9D9D9',
         'search-border': 'rgba(169,169,169,0.6)',
         'select-item': '#A9A9A9',
-        'home-line': '#2C2C2C'
+        'home-line': '#2C2C2C',
+        'btn-green': 'rgba(94,214,0,0.43)'
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

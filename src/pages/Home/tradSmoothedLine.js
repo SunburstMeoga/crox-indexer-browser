@@ -21,7 +21,7 @@ const TradSmoothedLine = ({ tradeLineData }) => {
             },
             yAxis: {
                 type: 'value',
-                interval: 1000,
+                interval: tradeLineData.tradInterval,
                 // boundaryGap: false,
                 axisLine: {
                     lineStyle: {

@@ -21,7 +21,7 @@ const Brc20TradLine = ({ tradeLineData }) => {
             },
             yAxis: {
                 type: 'value',
-                interval: 100000,
+                interval: tradeLineData.brc20Interval,
                 // boundaryGap: false,
                 axisLine: {
                     lineStyle: {

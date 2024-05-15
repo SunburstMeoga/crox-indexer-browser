@@ -3,8 +3,8 @@ import React from 'react'
 const TableLoading = () => {
     return (
         <div>
-            <div className=''>
-                this is laoding
+            <div className='flex justify-center items-center'>
+                <img src='/images/loading-white.gif' alt='' className='w-10-0'></img>
             </div>
         </div>
     )
