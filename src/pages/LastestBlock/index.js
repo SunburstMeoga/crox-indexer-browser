@@ -14,7 +14,7 @@ const LastestBlock = () => {
     { title: 'Verify Address', titleWidth: '', colWidth: 'w-25-4 lg:pr-0-1 lg:w-24-1', canCopy: true, flag: 'mintaddress' },
     { title: 'Block Teward', titleWidth: '', colWidth: 'w-7-4 lg:w-14-4', canCopy: false, flag: 'reward' },
     { title: 'Number Of Transactions', titleWidth: '', colWidth: 'w-10-4 lg:pr-0-1 lg:w-9-6', canCopy: false, flag: 'txcount' },
-    { title: 'Inscription Trading', titleWidth: '', colWidth: 'w-8-4 lg:w-9-9', canCopy: false, flag: 'txcount' },
+    { title: 'Inscription Trading', titleWidth: '', colWidth: 'w-8-4 lg:w-9-9', canCopy: false, flag: 'brc20count' },
 
     { title: 'Time', titleWidth: '', colWidth: 'w-10-2', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])

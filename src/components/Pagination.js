@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Pagination = ({ showJump, getPageNumber, paginatioInfo,toPrevPage,toNextPage }) => {
-    console.log('paginatioInfo', paginatioInfo)
+    // console.log('paginatioInfo', paginatioInfo)
     const handlePrevPage = () => {
        toPrevPage()
     }
@@ -24,8 +24,7 @@ const Pagination = ({ showJump, getPageNumber, paginatioInfo,toPrevPage,toNextPa
                     </div>
                     {paginatioInfo.pageNumbers.map((item, index) => {
                         return <div onClick={() => handlePageNumber(item)} key={index} className={['border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black', index === paginatioInfo.pageNumbers.length - 1 ? 'border-r' : ''].join(" ")}>{ item}</div>
-                    //    <div className='border-l  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>2</div>
-                    //    <div className='border-x  border-line-gray w-3-2 h-3-2 flex justify-center items-center text-primary-green cursor-pointer bg-black'>3</div>
+                   
                    })}
                     <div onClick={() => handleNextPage()} className={[' flex justify-end items-center w-8-7 cursor-pointer', !showJump ? 'bg-primary-green text-menu-black' : 'bg-black text-white'].join(" ")}>
                         <div className='' >Next</div>

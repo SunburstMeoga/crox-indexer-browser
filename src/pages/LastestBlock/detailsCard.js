@@ -1,7 +1,9 @@
 import React from 'react'
 import { notification } from "antd";
+import { useNavigate } from 'react-router-dom';
 
 const DetailsCard = ({ itemContent, hash }) => {
+    const navigate = useNavigate()
     const detailsItem = [
         { title: 'Transaction Hash:', content: hash, isLink: true, },
         { title: 'From:', content: itemContent.from, canCopy: true },
@@ -28,7 +30,7 @@ const DetailsCard = ({ itemContent, hash }) => {
                         <div className='text-2-0 font-light lg:font-semibold'>#</div>
                         <div className='text-3-5 lg:text-4-0 ml-0-5 font-light lg:font-medium cursor-pointer hover:text-blue-500 hover:border-blue-500'>{itemContent.inscriptionnumber}</div>
                     </div>
-                    <div className='ml-0-5 font-light lg:font-extrabold text-2-4 lg:text-3-0'>{itemContent.name}</div>
+                    <div className='ml-0-5 font-light lg:font-extrabold text-2-4 lg:text-3-0 text-primary-green cursor-pointer'  onClick={() => { navigate('/brc20-details/' + itemContent.name) }}>{itemContent.name}</div>
                 </div>
                 <div className='lg:hidden w-full h-0-1 bg-black'></div>
                 <div className=''>

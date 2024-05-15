@@ -3,7 +3,7 @@ import { notification } from "antd";
 // const Context = React.createContext({
 //     name: 'Default',
 // });
-const TransactionsCard = ({ detailsInfo }) => {
+const TransactionsCard = ({ detailsInfo,transCount }) => {
     const [api, contextHolder] = notification.useNotification();
     const handleCopyText = (value) => {
         // console.log(value)
@@ -23,8 +23,8 @@ const TransactionsCard = ({ detailsInfo }) => {
                             Transactions
                         </div>
                         <div className='flex justify-start items-baseline'>
-                            <div className='text-12-5 font-bold' >10</div>
-                            <div className='flex justify-start items-baseline font-medium text-3-2'>(5<div className='text-1-5 pl-0-5'>brc20</div>)</div>
+                            <div className='text-12-5 font-bold' >{ transCount.count}</div>
+                            <div className='flex justify-start items-baseline font-medium text-3-2'>({transCount.brc20Count }<div className='text-1-5 pl-0-5'>brc20</div>)</div>
                         </div>
                     </div>
                     <div className='border-l border-line-transction flex-1 font-bold'>

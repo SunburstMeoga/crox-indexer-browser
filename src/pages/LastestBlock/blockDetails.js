@@ -6,26 +6,64 @@ import Pagination from '@/components/Pagination'
 import { useParams } from 'react-router-dom'
 import { getBlockDetails } from '@/api/homeApi'
 import { FilterTime } from '../../utils/format'
-
+import TableLoading from '@/components/TableLoading'
 const BlockDetails = () => {
     const params = useParams()
     const { hash } = params
     let [detailsCard, getDetailsCard] = useState([])
     let [blockDetails, changeBlockDetails] = useState([])
     let [transactionsList, changeTrasactionList] = useState([])
-    const fetchBlockDetails = async () => {
-        let res = await getBlockDetails({ "jsonrpc": "2.0", "method": "getblockbrcinfo", "params": { "blockhash": hash, "fork": "202" }, "id": 83 })
-        const { height, txmint, reward } = res.data.result.header
+    let [blockTranPagination, changeBlockTranPagination] = useState({})
+    let [transCount,changeTransCount] = useState({})
+    let [loading, changeLoading] = useState(false)
+    const fetchBlockDetails = async (targetPageNumber) => {
+        changeLoading(loading = true)
+        let res = await getBlockDetails({ "jsonrpc": "2.0", "method": "getblockbrcinfo", "params": { "blockhash": hash, pagenumber: targetPageNumber || 0, "fork": "202" }, "id": 83 })
+        const { height, txmint, reward, gasused, gaslimit } = res.data.result.header
+        const { pagenumber, pagesize, totalpagecount, totalrecordcount } = res.data.result
         getDetailsCard(detailsCard = [
             { title: 'Block Height', content: height },
             { title: 'Verification Address', content: txmint, canCopy: true },
             { title: 'Block Reward', content: `${reward} HAH` },
-            { title: 'Gas Used', content: 'null' },
-            { title: 'Gas Limit', content: 'null' },
+            { title: 'Gas Used', content: gasused },
+            { title: 'Gas Limit', content: gaslimit },
         ])
         changeBlockDetails(blockDetails = res.data.result.header)
         changeTrasactionList(transactionsList = res.data.result.datalist)
+        changeTransCount(transCount = {count: '', brc20Count: ''})
+        let arr = []
+        if (pagenumber === 0 || pagenumber === 1) {
+            arr = [pagenumber + 1, pagenumber + 2, pagenumber + 3, pagenumber + 4, pagenumber + 5]
+        } else {
+            arr = [pagenumber - 1, pagenumber, pagenumber + 1, pagenumber + 2, pagenumber + 3]
+        }
+        let obj = {
+            pagenumber,
+            pagesize, totalpagecount, totalrecordcount, pageNumbers: arr
+        }
+        changeBlockTranPagination(blockTranPagination = obj)
         console.log('区块详情', res)
+        changeLoading(loading = false)
+    }
+    //点击分页器某个页数
+    const handlePageNumber = (pageNumber) => {
+        console.log('click page numnber', pageNumber)
+        fetchBlockDetails(pageNumber - 1)
+
+    }
+    //点击上一页
+    const handlePrevPage = () => {
+        console.log('上一页', blockTranPagination.pagenumber - 1)
+        if (blockTranPagination.pagenumber <= 0) return
+        fetchBlockDetails(blockTranPagination.pagenumber - 1)
+
+    }
+    //点击下一页
+    const handleNextPage = () => {
+        console.log('下一页', blockTranPagination.pagenumber)
+        if (blockTranPagination.pagenumber >= Math.floor(blockTranPagination.totalrecordcount / blockTranPagination.totalpagecount)) return
+        fetchBlockDetails(blockTranPagination.pagenumber + 1)
+
     }
     useEffect(() => {
         fetchBlockDetails()
@@ -41,7 +79,7 @@ const BlockDetails = () => {
                     </div>
                     <div className='absolute top-0-1 w-full flex justify-center items-center h-full'>
                         <div className='pl-2-5 lg:pl-9-9 w-full text-white font-light lg:font-medium'>
-                            <div className='mb-1-8 text-3-0 hidden lg:block'>Blockchain</div>
+                            <div className='mb-1-8 text-3-0 hidden lg:block'>Block</div>
                             <div className='mb-1-0 mt-2-0 lg:mt-0-1 text-3-0 lg:mb-1-8 lg:text-6-0'>#{blockDetails.height}</div>
                             <div className='text-1-2 lg:text-2-3'>{FilterTime(blockDetails.time)} common</div>
                         </div>
@@ -49,7 +87,7 @@ const BlockDetails = () => {
                 </div>
                 <div className='flex flex-col justify-start items-center min-h-svh bg-primary-green w-full pt-2-0 lg:pt-0-1 xl:pt-4-4'>
                     <div className='w-full xl:px-7-7 hidden lg:block'>
-                        <TransactionsCard detailsInfo={detailsCard}></TransactionsCard>
+                        <TransactionsCard detailsInfo={detailsCard} transCount={transCount}></TransactionsCard>
                     </div>
                     <div className='w-full pl-0-6 lg:pl-2-9 xl:pl-7-7 text-module-title mt-0-1 lg:mt-3-2 '>
                         <div className='text-5-2 lg:text-6-8 font-bold'>
@@ -62,6 +100,9 @@ const BlockDetails = () => {
                     {/* <div className='w-full  justify-end pr-7-7 mb-0-7 hidden xl:flex'>
                         <PageSize />
                     </div> */}
+                    <div className=''>
+                        {loading && <TableLoading></TableLoading>}
+                    </div>
                     <div className='w-full'>
                         {transactionsList.map((item, index) => {
                             return <div className='w-full mt-1-5 xl:mt-auto lg:mb-1-2 lg:px-2-9 xl:px-7-7' key={index}>
@@ -70,7 +111,8 @@ const BlockDetails = () => {
                         })}
                     </div>
                     <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
-                        {/* <Pagination showJump /> */}
+                        {transactionsList.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockTranPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} />}
+
                     </div>
                 </div>
 

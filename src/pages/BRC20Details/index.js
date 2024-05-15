@@ -29,9 +29,9 @@ const BRC20Details = () => {
     ]
     const dataFilter = [
         { title: 'All', value: 0 },
-        { title: 'Inscribe-mint', value: 1 },
-        { title: 'Inscribe-transfer', value: 2 },
-        { title: 'Transfer', value: 3 },
+        { title: 'Inscribe-mint', value: 2 },
+        { title: 'Inscribe-transfer', value: 3 },
+        { title: 'Transfer', value: 4 },
     ]
     let [cuerrentType, changeType] = useState(0)
     let [currentFilter, changeFilter] = useState(0)
@@ -40,7 +40,7 @@ const BRC20Details = () => {
         changeType(cuerrentType = index)
     }
     const handleDataFilter = (item, index) => {
-        changeFilter(currentFilter = index)
+        changeFilter(currentFilter = item.value)
         console.log(currentFilter)
 
         if (cuerrentType === 1) {
@@ -77,7 +77,7 @@ const BRC20Details = () => {
 
     const { name } = useParams()
     useEffect(() => {
-        let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": dataFilter[currentFilter].value }, "pagesize": 100, "id": 83 }
+        let data = { "jsonrpc": "2.0", "method": "getbrc20details", "params": { "type": "brc-20", "fork": "202", "name": name, "gettype": currentFilter }, "pagesize": 100, "id": 83 }
         fetchBRC20Details(data)
         featchBrc20HolderList(0)
         fetchBrc20TransferList(0)
@@ -104,7 +104,8 @@ const BRC20Details = () => {
     }
     //brc20交易列表
     const fetchBrc20TransferList = async (targetPageNumber) => {
-        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": dataFilter[currentFilter].value, pagenumber: targetPageNumber || 0, "fork": "202", "pagesize": 10, }, "id": 83 })
+        console.log(currentFilter)
+        let brc20TransList = await getBrc20TransList({ "jsonrpc": "2.0", "method": "listbrc20txdetails", "params": { "name": name, "gettype": currentFilter, pagenumber: targetPageNumber || 0, "fork": "202", "pagesize": 10, }, "id": 83 })
         console.log('brc20交易列表', brc20TransList.data.result.datalist)
         const { pagenumber, pagesize, totalpagecount, totalrecordcount } = brc20TransList.data.result
         upTransferDataColumns(transferDataColumns = brc20TransList.data.result.datalist)
@@ -209,7 +210,7 @@ const BRC20Details = () => {
                                     className={[
                                         'px-1-5 lg:px-1-3 py-0-7 rounded-xl lg:rounded-2xl font-semibold cursor-pointer text-1-2 lg:text-1-5 mb-1-0 lg:mb-auto',
                                         index !== 0 ? "lg:ml-1-3" : "",
-                                        currentFilter === index ? "bg-title-green text-black" : "bg-black text-line-gray"
+                                        currentFilter === item.value ? "bg-title-green text-black" : "bg-black text-line-gray"
                                     ].join(" ")}>{item.title}</div>
                             })}
                         </div>}
