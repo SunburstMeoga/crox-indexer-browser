@@ -10,6 +10,7 @@ const BlockDetails = lazy(() => import('@/pages/LastestBlock/blockDetails'))
 const Search = lazy(() => import('@/pages/Search'))
 const TransferDataDetails = lazy(() => import('@/pages/BRC20Details/transferDataDetails'))
 const InscriptionDetails = lazy(() => import('@/pages/BRC20Details/inscriptionDetails'))
+const Brc20List = lazy(() => import('@/pages/Home/brc20List'))
 const router = createBrowserRouter([
     {
         path: '/',
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path: '/search',
                 element: <Suspense><Search></Search></Suspense>,
+            },
+            {
+                path: '/brc20',
+                element: <Suspense><Brc20List></Brc20List></Suspense>,
             }
         ]
     }

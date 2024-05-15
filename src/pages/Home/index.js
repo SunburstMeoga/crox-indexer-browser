@@ -69,13 +69,13 @@ const Home = () => {
                 yData2.push(item.brc20recordcount)
                 yData.push(item.btctxcount)
             })
-            let tradMax = Math.max(...yData)
-            let tradMin = Math.min(...yData);
-            console.log(tradMax, tradMin)
+            // let tradMax = Math.max(...yData)
+            // let tradMin = Math.min(...yData);
+            // console.log(tradMax, tradMin)
             lineData['xData'] = xData
-            lineData['yData'] = yData
-            lineData['yData2'] = yData2
-            lineData['tradInterval'] = 70000
+            lineData['yData'] = yData2
+            lineData['yData2'] = yData2.reverse()
+            lineData['tradInterval'] = 2500
             lineData['brc20Interval'] = 2500
             getTradeLineData(tradeLineData = lineData)
             // console.log(lineData,tradeLineData)
@@ -139,7 +139,9 @@ const Home = () => {
                 </div>
             </div>
             <div className='w-full bg-primary-green flex flex-col items-center pt-2-7'>
-                <div className='px-1-3 lg:2-7-0 xl:px-5-9 w-full text-title-blue text-4-0 lg:text-black font-medium lg:font-bold module-title lg:mb-4-6 eading-point-128 lg:text-10-0 xl:text-12-5 '>
+                <div
+                    onClick={() => { navigate('/brc20') }}
+                    className='px-1-3 lg:2-7-0 xl:px-5-9 w-full text-title-blue text-4-0 lg:text-black font-medium lg:font-bold module-title lg:mb-4-6 eading-point-128 lg:text-10-0 xl:text-12-5 cursor-pointer transform ease-in-out duration-500 hover:text-white'>
                     Brc-20
                 </div>
                 <div className='w-full mt-2-0  px-1-3 lg:mt-auto lg:mb-5-2 lg:px-2-6 xl:px-6-9 relative overflow-x-hidden'>

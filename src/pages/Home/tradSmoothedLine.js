@@ -7,6 +7,65 @@ const TradSmoothedLine = ({ tradeLineData }) => {
         let myChart = echarts.init(element);
         myChart.clear()
         let option;
+        // option = {
+
+        //     xAxis: {
+        //         type: 'category',
+        //         data: tradeLineData.xData,
+        //         boundaryGap: false,
+        //         axisLine: {
+        //             lineStyle: {
+        //                 color: '#E4A132' // 横坐标刻度线的颜色
+        //             }
+        //         },
+        //     },
+        //     yAxis: {
+        //         type: 'value',
+        //         interval: tradeLineData.tradInterval,
+        //         // boundaryGap: false,
+        //         axisLine: {
+        //             lineStyle: {
+        //                 color: '#fff'
+        //             }
+        //         },
+        //         splitLine: {
+        //             lineStyle: {
+        //                 color: '#000' // 纵坐标横线颜色
+        //             }
+        //         }
+        //     },
+        //     series: [
+        //         {
+        //             data: tradeLineData.yData,
+        //             type: 'line',
+        //             smooth: true,
+        //             symbolSize: 8,   // 圆点大小
+        //             lineStyle: {
+        //                 width: 4, // 线条宽度
+        //                 color: '#0ea5e9',
+        //             },
+        //             // areaStyle: {
+        //             //     gradient: {
+        //             //         colorStops: [
+        //             //             { offset: 0, color: 'rgba(14, 165, 233, 1)' },  // 渐变起始颜色和透明度
+        //             //             { offset: 1, color: 'rgba(14, 165, 233, 0)' }     // 渐变结束颜色和透明度
+        //             //         ],
+        //             //         globalCoord: true  // 是否使用全局坐标系，默认为 false
+        //             //     }
+        //             // }
+        //         },
+        //     ],
+        //     grid: {
+        //         top: 20,
+        //         // left: 40,
+        //         // right: 10,
+        //         // bottom: ,
+        //         bottom: 20,
+        //         left:40,
+        //         // width: 'auto',
+        //         // height: 'auto'
+        //     },
+        // };
         option = {
 
             xAxis: {
@@ -21,7 +80,7 @@ const TradSmoothedLine = ({ tradeLineData }) => {
             },
             yAxis: {
                 type: 'value',
-                interval: tradeLineData.tradInterval,
+                interval: tradeLineData.brc20Interval,
                 // boundaryGap: false,
                 axisLine: {
                     lineStyle: {
@@ -36,7 +95,7 @@ const TradSmoothedLine = ({ tradeLineData }) => {
             },
             series: [
                 {
-                    data: tradeLineData.yData,
+                    data: tradeLineData.yData2,
                     type: 'line',
                     smooth: true,
                     symbolSize: 8,   // 圆点大小
@@ -44,15 +103,7 @@ const TradSmoothedLine = ({ tradeLineData }) => {
                         width: 4, // 线条宽度
                         color: '#0ea5e9',
                     },
-                    // areaStyle: {
-                    //     gradient: {
-                    //         colorStops: [
-                    //             { offset: 0, color: 'rgba(14, 165, 233, 1)' },  // 渐变起始颜色和透明度
-                    //             { offset: 1, color: 'rgba(14, 165, 233, 0)' }     // 渐变结束颜色和透明度
-                    //         ],
-                    //         globalCoord: true  // 是否使用全局坐标系，默认为 false
-                    //     }
-                    // }
+                  
                 },
             ],
             grid: {
@@ -61,9 +112,7 @@ const TradSmoothedLine = ({ tradeLineData }) => {
                 // right: 10,
                 // bottom: ,
                 bottom: 20,
-                left:40,
-                // width: 'auto',
-                // height: 'auto'
+                left:60,
             },
         };
         option && myChart.setOption(option);
