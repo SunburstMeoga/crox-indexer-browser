@@ -35,10 +35,14 @@ const BlockDetails = () => {
         changeTrasactionList(transactionsList = res.data.result.datalist)
         changeTransCount(transCount = { count: usertxcount, brc20Count: totalrecordcount })
         let arr = []
+        
         if (pagenumber === 0 || pagenumber === 1) {
             arr = [pagenumber + 1, pagenumber + 2, pagenumber + 3, pagenumber + 4, pagenumber + 5]
         } else {
             arr = [pagenumber - 1, pagenumber, pagenumber + 1, pagenumber + 2, pagenumber + 3]
+        }
+        if (totalpagecount < 5) {
+            arr = [pagenumber + 1, pagenumber + 2, pagenumber + 3]
         }
         let obj = {
             pagenumber,
@@ -88,7 +92,7 @@ const BlockDetails = () => {
         fetchBlockDetails(inputValue - 1)
     }
     const goBack = () => {
-        navigate(-1,{ replace: true });
+        navigate('/latest-block',{ replace: true });
     }
     useEffect(() => {
         fetchBlockDetails()
@@ -152,7 +156,7 @@ const BlockDetails = () => {
                         </div>} */}
                     </div>
                     <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
-                        {transactionsList.length !== 0 &&
+                        {transactionsList.length !== 0 && transactionsList.length >= 10 &&
                             <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockTranPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} toPage={toPage} inputValue={inputValue}
                                 onChange={handleInputChange} />}
 
