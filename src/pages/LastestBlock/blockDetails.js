@@ -3,12 +3,13 @@ import TransactionsCard from './transactionsCard'
 import PageSize from '@/components/PageSize'
 import DetailsCard from './detailsCard'
 import Pagination from '@/components/Pagination'
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate } from 'react-router-dom'
 import { getBlockDetails } from '@/api/homeApi'
 import { FilterTime } from '../../utils/format'
 import TableLoading from '@/components/TableLoading'
 const BlockDetails = () => {
     const params = useParams()
+    const navigate = useNavigate();
     const { hash } = params
     let [detailsCard, getDetailsCard] = useState([])
     let [blockDetails, changeBlockDetails] = useState([])
@@ -86,6 +87,9 @@ const BlockDetails = () => {
         console.log(inputValue)
         fetchBlockDetails(inputValue - 1)
     }
+    const goBack = () => {
+        navigate(-1,{ replace: true });
+    }
     useEffect(() => {
         fetchBlockDetails()
     }, [])
@@ -125,11 +129,27 @@ const BlockDetails = () => {
                         {loading && <TableLoading></TableLoading>}
                     </div>
                     <div className='w-full'>
-                        {transactionsList.map((item, index) => {
+                        {transactionsList.length !== 0 && transactionsList.map((item, index) => {
                             return <div className='w-full mt-1-5 xl:mt-auto lg:mb-1-2 lg:px-2-9 xl:px-7-7' key={index}>
                                 <DetailsCard itemContent={item} hash={blockDetails.hash}></DetailsCard>
                             </div>
                         })}
+                        {transactionsList.length === 0 && !loading && <div className='lg:px-2-9 xl:px-7-7 '>
+                            <div className='flex flex-col justify-center items-center rounded-xl bg-white py-2-0 ml-auto mr-auto'>
+                                <div className='text-4-0 text-empty-word'>Not Data</div>
+                                <div className=''>
+                                    <img className='' src='/images/empty.png'></img>
+                                </div>
+                                <div onClick={() => {goBack()}} className='px-2-0 py-1-0 text-1-5 rounded-xl bg-select-color text-white -mt-2-0 cursor-pointer'>Go Back</div>
+                            </div>
+                        </div>}
+                        {/* {transactionsList.length === 0 && !loading && <div className='flex flex-col justify-center items-center rounded-xl bg-white  ml-auto mr-auto'>
+                            <div className='text-4-0 text-empty-word'>Not Data</div>
+                            <div className=''>
+                                <img className='' src='/images/empty.png'></img>
+                            </div>
+                            <div className='px-2-0 py-1-0 text-1-5 rounded-xl bg-select-color text-white '>Go Back</div>
+                        </div>} */}
                     </div>
                     <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
                         {transactionsList.length !== 0 &&
