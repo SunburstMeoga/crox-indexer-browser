@@ -53,3 +53,11 @@ export const getbrc20syncinfo = (data) => {
 export const insTionDetails = (data) => {
     return post('', data)
 }
+//btc区块的brc20交易
+export const btcBlockBrc20Trans = (data) => {
+    return post('', data)
+}
+//btc交易ID查brc20交易
+export const btcInfo = (data) => {
+    return post('', data)
+}

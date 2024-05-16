@@ -22,6 +22,7 @@ const BRC20Details = () => {
     ])
     let [transListPagination, changeTransListPagination] = useState({})
     let [holdListPagination, changeHoldListPagination] = useState({})
+    let [inputValue, setInputValue] = useState(1);
 
     const dataTypes = [
         { title: 'Holder', vlaue: 0 },
@@ -38,6 +39,11 @@ const BRC20Details = () => {
 
     const handleDataType = (item, index) => {
         changeType(cuerrentType = index)
+        if (index === 0) {
+            featchBrc20HolderList(0)
+        } else {
+            fetchBrc20TransferList(0)
+        }
     }
     const handleDataFilter = (item, index) => {
         changeFilter(currentFilter = item.value)
@@ -125,6 +131,7 @@ const BRC20Details = () => {
             pagesize, totalpagecount, totalrecordcount, pageNumbers: pageCountArr
         }
         changeTransListPagination(transListPagination = obj)
+        setInputValue(inputValue = transListPagination.pagenumber + 1)
     }
     //brc20持有量列表
     const featchBrc20HolderList = async (targetPageNumber) => {
@@ -149,6 +156,8 @@ const BRC20Details = () => {
             pagesize, totalpagecount, totalrecordcount, pageNumbers: pageCountArr
         }
         changeHoldListPagination(holdListPagination = obj)
+        setInputValue(inputValue = holdListPagination.pagenumber + 1)
+
     }
     //点击分页器某个页数
     const handlePageNumber = (pageNumber) => {
@@ -175,10 +184,10 @@ const BRC20Details = () => {
     const handleNextPage = () => {
         console.log(cuerrentType)
         if (cuerrentType == 1) {
-            if (transListPagination.pagenumber >= Math.floor(transListPagination.totalrecordcount / transListPagination.totalpagecount)) return
+            // if (transListPagination.pagenumber >= Math.floor(transListPagination.totalrecordcount / transListPagination.totalpagecount)) return
             fetchBrc20TransferList(transListPagination.pagenumber + 1)
         } else {
-            if (holdListPagination.pagenumber >= Math.floor(holdListPagination.totalrecordcount / holdListPagination.totalpagecount)) return
+            // if (holdListPagination.pagenumber >= Math.floor(holdListPagination.totalrecordcount / holdListPagination.totalpagecount)) return
             featchBrc20HolderList(holdListPagination.pagenumber + 1)
         }
     }
@@ -198,6 +207,17 @@ const BRC20Details = () => {
             fetchBrc20TransferList(holdListPagination.totalpagecount - 1)
         } else {
             featchBrc20HolderList(transListPagination.totalpagecount - 1)
+        }
+    }
+    const handleInputChange = (newValue) => {
+        setInputValue(newValue);
+        console.log(newValue)
+    }
+    const toPage = () => {
+        if (cuerrentType === 1) {
+            fetchBrc20TransferList(inputValue - 1)
+        } else {
+            featchBrc20HolderList(inputValue - 1)
         }
     }
     return (
@@ -226,7 +246,6 @@ const BRC20Details = () => {
                                 <div className='lg:pl-2-3 w-21-1 lg:w-auto text-1-0 break-words text-wrap lg:text-1-5 font-semibold lg:font-light lg:flex lg:items-center lg:justify-start '><div className='mb-3-0 lg:mb-auto'>{item.title}</div> <div className='text-word-gray lg:text-select-color '>{item.content}</div> </div>
                             </div>
                         })}
-
                     </div>
                 </div>
                 <div className='lg:px-2-2 xl:px-6-9 w-full lg:mb-3-7'>
@@ -270,13 +289,15 @@ const BRC20Details = () => {
                             </div>}
 
                             {transferDataColumns.length !== 0 && cuerrentType == 1 && <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} />
+                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={transListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} toPage={toPage} inputValue={inputValue}
+                                    onChange={handleInputChange} />
                             </div>}
 
 
 
                             {holderDataColumns.length !== 0 && cuerrentType == 0 && <div className='w-full lg:flex justify-end mt-1-3 hidden'>
-                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={holdListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} />
+                                <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={holdListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} toPage={toPage} inputValue={inputValue}
+                                    onChange={handleInputChange} />
                             </div>}
 
 

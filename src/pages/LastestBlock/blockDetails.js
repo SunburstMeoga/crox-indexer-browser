@@ -14,12 +14,14 @@ const BlockDetails = () => {
     let [blockDetails, changeBlockDetails] = useState([])
     let [transactionsList, changeTrasactionList] = useState([])
     let [blockTranPagination, changeBlockTranPagination] = useState({})
-    let [transCount,changeTransCount] = useState({})
+    let [transCount, changeTransCount] = useState({})
     let [loading, changeLoading] = useState(false)
+    let [inputValue, setInputValue] = useState('');
+
     const fetchBlockDetails = async (targetPageNumber) => {
         changeLoading(loading = true)
         let res = await getBlockDetails({ "jsonrpc": "2.0", "method": "getblockbrcinfo", "params": { "blockhash": hash, pagenumber: targetPageNumber || 0, "fork": "202" }, "id": 83 })
-        const { height, txmint, reward, gasused, gaslimit,usertxcount, } = res.data.result.header
+        const { height, txmint, reward, gasused, gaslimit, usertxcount, } = res.data.result.header
         const { pagenumber, pagesize, totalpagecount, totalrecordcount } = res.data.result
         getDetailsCard(detailsCard = [
             { title: 'Block Height', content: height },
@@ -30,7 +32,7 @@ const BlockDetails = () => {
         ])
         changeBlockDetails(blockDetails = res.data.result.header)
         changeTrasactionList(transactionsList = res.data.result.datalist)
-        changeTransCount(transCount = {count: usertxcount, brc20Count: totalrecordcount})
+        changeTransCount(transCount = { count: usertxcount, brc20Count: totalrecordcount })
         let arr = []
         if (pagenumber === 0 || pagenumber === 1) {
             arr = [pagenumber + 1, pagenumber + 2, pagenumber + 3, pagenumber + 4, pagenumber + 5]
@@ -42,6 +44,7 @@ const BlockDetails = () => {
             pagesize, totalpagecount, totalrecordcount, pageNumbers: arr
         }
         changeBlockTranPagination(blockTranPagination = obj)
+        setInputValue(inputValue = blockTranPagination.pagenumber + 1)
         console.log('区块详情', res)
         changeLoading(loading = false)
     }
@@ -64,6 +67,24 @@ const BlockDetails = () => {
         if (blockTranPagination.pagenumber >= Math.floor(blockTranPagination.totalrecordcount / blockTranPagination.totalpagecount)) return
         fetchBlockDetails(blockTranPagination.pagenumber + 1)
 
+    }
+    //点击第一页
+    const handleFirstPage = () => {
+        console.log('first page')
+        fetchBlockDetails(0)
+    }
+    //点击最后一页
+    const handleLastPage = () => {
+        console.log('last page')
+        fetchBlockDetails(blockTranPagination.totalpagecount - 1)
+    }
+    const handleInputChange = (newValue) => {
+        setInputValue(newValue);
+        console.log(newValue)
+    };
+    const toPage = () => {
+        console.log(inputValue)
+        fetchBlockDetails(inputValue - 1)
     }
     useEffect(() => {
         fetchBlockDetails()
@@ -111,7 +132,9 @@ const BlockDetails = () => {
                         })}
                     </div>
                     <div className='w-full  justify-end mb-7-0 pr-7-8 hidden lg:flex'>
-                        {transactionsList.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockTranPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} />}
+                        {transactionsList.length !== 0 &&
+                            <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockTranPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} toPage={toPage} inputValue={inputValue}
+                                onChange={handleInputChange} />}
 
                     </div>
                 </div>

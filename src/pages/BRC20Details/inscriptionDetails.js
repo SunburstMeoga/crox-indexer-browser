@@ -38,7 +38,7 @@ function InscriptionDetails() {
         }, {
             title: 'Hash:', content: insDetailsInfo.revealtxid
         }, {
-            title: 'ID:', content: inscriptionid
+            title: 'ID:', content: inscriptionid,canCopy: true
             }])
         console.log('查询铭文详情',insDetailsInfo)
 

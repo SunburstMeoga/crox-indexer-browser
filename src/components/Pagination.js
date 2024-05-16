@@ -1,7 +1,8 @@
 import React from 'react'
 
-const Pagination = ({ showJump, getPageNumber, paginatioInfo, toPrevPage, toNextPage,toFirstPage,toLastPage }) => {
-    console.log('paginatioInfo', paginatioInfo.pageNumbers)
+const Pagination = ({ showJump, getPageNumber, paginatioInfo, toPrevPage, toNextPage,toFirstPage,toLastPage, onChange,inputValue,toPage }) => {
+    // console.log('paginatioInfo', paginatioInfo.pageNumbers)
+
     const handlePrevPage = () => {
         toPrevPage()
     }
@@ -17,6 +18,16 @@ const Pagination = ({ showJump, getPageNumber, paginatioInfo, toPrevPage, toNext
     const handleLastPage = () => {
         toLastPage()
     }
+    const jumpPage = () => {
+        toPage()
+    }
+    const handleInputChange = (event) => {
+        // 获取输入框的新值
+        const newValue = Number(event.target.value)
+        // 调用父组件传递过来的回调函数，将新值传递给父组件
+        onChange(newValue);
+        // console.log(newValue)
+      };
     // let pageNumbers = [1,2,3]
     return (
         <div>
@@ -49,10 +60,10 @@ const Pagination = ({ showJump, getPageNumber, paginatioInfo, toPrevPage, toNext
                 {showJump && <div className='flex justify-start items-center text-black text-1-5 font-medium ml-4-2'>
                     <div className=''>page</div>
                     <div className='h-3-2 w-4-1 bg-black rounded-xl flex justify-center items-center text-white mx-1-0'>
-                        <input className='bg-black text-center w-full h-full rounded-xl text-primary-green'  value={paginatioInfo.pagenumber + 1}></input>
+                        <input className='bg-black text-center w-full h-full rounded-xl text-primary-green'  onChange={handleInputChange}  value={inputValue}></input>
                     </div>
-                    <div>of 100</div>
-                    <div className='h-2-3 w-5-0 text-black rounded-full flex justify-center items-center bg-btn-green ml-1-0 cursor-pointer'>Go</div>
+                    <div>of { paginatioInfo.totalpagecount}</div>
+                    <div onClick={() => jumpPage()} className='h-2-3 w-5-0 text-black rounded-full flex justify-center items-center bg-btn-green ml-1-0 cursor-pointer'>Go</div>
                 </div>}
             </div>
         </div>

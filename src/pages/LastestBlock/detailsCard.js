@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const DetailsCard = ({ itemContent, hash }) => {
     const navigate = useNavigate()
     const detailsItem = [
-        { title: 'Transaction Hash:', content: hash, isLink: true, },
+        { title: 'Transaction Hash:', content: itemContent.btctxid, isLink: true, canCopy: true},
         { title: 'From:', content: itemContent.from, canCopy: true },
         { title: 'To:', content: itemContent.to, canCopy: true },
         { title: 'Brc20 Quantity:', content: itemContent.amount },

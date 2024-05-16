@@ -18,6 +18,7 @@ const LastestBlock = () => {
     { title: 'Time', titleWidth: '', colWidth: 'w-10-2', canCopy: false, flag: 'time' }]
   let [dataColumns, changeDataColumns] = useState([])
   let [blockListPagination, changeBlockListPagination] = useState({})
+  let [inputValue, setInputValue] = useState(1);
   let [loading,changeLoading] = useState(false)
   useEffect(() => {
     fetchListBlock(0)
@@ -46,6 +47,7 @@ const LastestBlock = () => {
         pagesize, totalpagecount, totalrecordcount, pageNumbers: pageCountArr
       }
       changeBlockListPagination(blockListPagination = obj)
+      setInputValue(inputValue = blockListPagination.pagenumber + 1)
     } catch (err) {
       console.log(err)
       changeLoading(loading = false)
@@ -81,6 +83,14 @@ const LastestBlock = () => {
     console.log('last page')
     fetchListBlock(blockListPagination.totalpagecount - 1)
   }
+  const handleInputChange = (newValue) => {
+    setInputValue(newValue);
+    console.log(newValue)
+  }
+  const toPage = () => {
+    console.log(inputValue)
+    fetchListBlock(inputValue - 1)
+  }
   return (
     <div className='bg-primary-green w-full min-h-svh '>
       <div className='w-full flex flex-col justify-start items-center '>
@@ -102,7 +112,8 @@ const LastestBlock = () => {
         </div>
 
         <div className='w-full hidden lg:flex justify-end mb-7-0 pr-7-8'>
-          {dataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} />}
+          {dataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={blockListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} toPage={ toPage} inputValue={inputValue} 
+        onChange={handleInputChange} />}
         </div>
       </div>
     </div>
