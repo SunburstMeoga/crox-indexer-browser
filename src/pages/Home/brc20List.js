@@ -7,6 +7,7 @@ import { getBrc20List } from '@/api/homeApi';
 const Brc20List = () => {
     let [dataColumns, upDataColumns] = useState([])
     let [brc20ListPagination, changeBrc20ListPagination] = useState({})
+    let [inputValue, setInputValue] = useState(1);
 
     const titleColumnsData = [
         { title: 'Name', titleWidth: '', colWidth: 'w-5-0 lg:w-9-0', flag: 'name' },
@@ -38,6 +39,7 @@ const Brc20List = () => {
                 pagesize, totalpagecount, totalrecordcount, pageNumbers: pageCountArr
             }
             changeBrc20ListPagination(brc20ListPagination = obj)
+            setInputValue(inputValue = brc20ListPagination.pagenumber + 1)
         } catch (err) {
             console.log(err)
         }
@@ -70,6 +72,14 @@ const Brc20List = () => {
         console.log('last page')
         fetchBRC20List(brc20ListPagination.totalpagecount - 1)
     }
+    const handleInputChange = (newValue) => {
+        setInputValue(newValue);
+        console.log(newValue)
+    }
+    const toPage = () => {
+        console.log(inputValue)
+        fetchBRC20List(inputValue - 1)
+    }
     useEffect(() => {
         fetchBRC20List()
     }, [])
@@ -86,7 +96,8 @@ const Brc20List = () => {
                 <Brc20ListTable titleColumnsData={titleColumnsData} dataColumns={dataColumns} />
             </div>
             <div className='w-full hidden lg:flex justify-end mb-7-0 pr-7-8'>
-                {dataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={brc20ListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} />}
+                {dataColumns.length !== 0 && <Pagination showJump getPageNumber={handlePageNumber} paginatioInfo={brc20ListPagination} toPrevPage={handlePrevPage} toNextPage={handleNextPage} toFirstPage={handleFirstPage} toLastPage={handleLastPage} toPage={toPage} inputValue={inputValue}
+                    onChange={handleInputChange} />}
             </div>
         </div>
     )
